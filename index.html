@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>코스피 밸류에이션 대시보드 | 한국은행 ECOS 공식 연동</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>코스피 밸류에이션 대시보드 | 선긋기 툴 탑재</title>
 <script src="libs/chart.umd.min.js"></script>
 <script src="libs/chartjs-plugin-annotation.min.js"></script>
 <style>
@@ -36,6 +36,8 @@
   --blue-glow: rgba(59,130,246,0.4);
   --purple: #8b5cf6;
   --purple-bg: rgba(139,92,246,0.12);
+  --yellow: #ffd166;
+  --cyan: #00f5d4;
   --radius: 14px;
   --shadow: 0 4px 24px rgba(0,0,0,0.3);
 }
@@ -112,25 +114,6 @@ a:hover { text-decoration: underline; }
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: 1.2px; color: var(--text-dim); margin-bottom: 14px;
 }
-
-/* ========================================
-   LIVE STATUS BANNER
-   ======================================== */
-.live-banner {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 20px; border-radius: var(--radius);
-  background: linear-gradient(135deg, rgba(0,214,143,0.08), rgba(59,130,246,0.08));
-  border: 1px solid rgba(0,214,143,0.25);
-  font-size: 0.82rem; color: var(--text-sub); margin-bottom: 20px;
-}
-.live-banner b { color: var(--green); }
-
-.btn-sm {
-  padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border);
-  background: var(--bg-card); color: var(--text-sub); cursor: pointer;
-  font-size: 0.75rem; transition: all 0.2s;
-}
-.btn-sm:hover { border-color: var(--purple); color: #a78bfa; }
 
 /* ========================================
    CYCLE BAR (Phase Meter)
@@ -235,12 +218,12 @@ a:hover { text-decoration: underline; }
 }
 
 /* ========================================
-   CHART
+   CHART & DRAWING TOOLBAR
    ======================================== */
 .chart-card { margin-bottom: 20px; }
 .chart-header {
   display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 10px; margin-bottom: 14px;
+  flex-wrap: wrap; gap: 10px; margin-bottom: 12px;
 }
 .chart-btns { display: flex; gap: 6px; }
 .chart-btn {
@@ -252,7 +235,45 @@ a:hover { text-decoration: underline; }
 .chart-btn.active { background: var(--purple-bg); border-color: var(--purple); color: #a78bfa; }
 .chart-btn:hover  { border-color: var(--purple); }
 
-.chart-wrap { position: relative; height: 400px; }
+/* 선 긋기 툴바 (Drawing Toolbar) */
+.draw-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px;
+  background: var(--bg-card-alt); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 14px; margin-bottom: 14px;
+}
+.dt-group { display: flex; align-items: center; gap: 6px; }
+.dt-label { font-size: 0.72rem; color: var(--text-dim); font-weight: 700; margin-right: 4px; }
+
+.dt-btn {
+  padding: 5px 12px; border-radius: 7px; border: 1px solid var(--border);
+  background: var(--bg-card); color: var(--text-sub); cursor: pointer;
+  font-size: 0.74rem; font-weight: 700; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.dt-btn:hover { border-color: var(--purple); color: var(--text-main); }
+.dt-btn.active {
+  background: var(--purple-bg); border-color: var(--purple); color: #c4b5fd;
+  box-shadow: 0 0 10px rgba(139,92,246,0.3);
+}
+
+.color-dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid transparent; cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.color-dot:hover { transform: scale(1.15); }
+.color-dot.active {
+  transform: scale(1.2); border-color: #fff;
+  box-shadow: 0 0 8px currentColor;
+}
+.c-yellow { background: #ffd166; color: #ffd166; }
+.c-red    { background: #ff4d5e; color: #ff4d5e; }
+.c-green  { background: #00d68f; color: #00d68f; }
+.c-cyan   { background: #00f5d4; color: #00f5d4; }
+.c-purple { background: #a78bfa; color: #a78bfa; }
+
+.chart-wrap { position: relative; height: 400px; touch-action: none; }
 
 /* ========================================
    INDICATORS ROW
@@ -285,40 +306,6 @@ a:hover { text-decoration: underline; }
 }
 
 /* ========================================
-   MODAL
-   ======================================== */
-.modal-bg {
-  display: none; position: fixed; inset: 0; z-index: 500;
-  background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
-  align-items: center; justify-content: center;
-}
-.modal-bg.open { display: flex; }
-.modal {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 18px; padding: 30px; width: 500px; max-width: 92vw;
-  max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow);
-}
-.modal h2 { font-size: 1.05rem; margin-bottom: 18px; }
-.fg { margin-bottom: 14px; }
-.fg label { display: block; font-size: 0.76rem; color: var(--text-sub); margin-bottom: 5px; font-weight: 600; }
-.fg input, .fg select {
-  width: 100%; padding: 9px 13px;
-  background: var(--bg-card-alt); border: 1px solid var(--border);
-  border-radius: 9px; color: var(--text-main); font-size: 0.88rem;
-}
-.fg input:focus, .fg select:focus { outline: none; border-color: var(--purple); }
-.modal-foot { display: flex; gap: 10px; margin-top: 22px; }
-
-.btn {
-  padding: 10px 22px; border-radius: 9px; border: none;
-  cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: all 0.2s;
-}
-.btn-pr { background: var(--purple); color: #fff; }
-.btn-pr:hover { background: #7c3aed; }
-.btn-sc { background: var(--bg-card-alt); border: 1px solid var(--border); color: var(--text-sub); }
-.btn-sc:hover { background: var(--bg-hover); }
-
-/* ========================================
    TOAST
    ======================================== */
 .toast {
@@ -343,7 +330,8 @@ a:hover { text-decoration: underline; }
   .top-grid  { grid-template-columns: 1fr; }
   .tl-card   { flex-direction: column; }
   .ind-grid  { grid-template-columns: 1fr; }
-  .chart-wrap { height: 260px; }
+  .chart-wrap { height: 280px; }
+  .draw-toolbar { justify-content: center; }
 }
 </style>
 </head>
@@ -357,19 +345,12 @@ a:hover { text-decoration: underline; }
   </div>
   <div class="header-actions">
     <span class="update-time" id="elUpdate">-</span>
-    <button class="btn-icon" onclick="openModal()" title="설정">⚙️</button>
     <button class="btn-icon" onclick="refreshData()" title="데이터 새로고침">🔄</button>
   </div>
 </header>
 
 <!-- ===== MAIN ===== -->
 <main class="main">
-
-  <!-- Live Status Banner -->
-  <div class="live-banner" id="elBanner">
-    <span>🏛️ <b>한국은행 ECOS 공식 API</b>에서 최신 뉴스심리지수 및 시장 데이터를 정상 수신했습니다.</span>
-    <button class="btn-sm" onclick="refreshData()">즉시 재조회 🔄</button>
-  </div>
 
   <!-- Cycle Bar -->
   <div class="cycle-row" id="elCycle">
@@ -426,18 +407,43 @@ a:hover { text-decoration: underline; }
     </div>
   </div>
 
-  <!-- Chart -->
+  <!-- Chart Card with Drawing Toolbar -->
   <div class="card chart-card">
     <div class="chart-header">
       <span class="card-label" style="margin:0;">📉 뉴스심리지수 &amp; 3개월 이동평균선 (일별 시계열)</span>
       <div class="chart-btns" id="elRangeBtns">
         <button class="chart-btn" onclick="setRange('3m',this)">3개월</button>
-        <button class="chart-btn active" onclick="setRange('6m',this)">6개월</button>
+        <button class="chart-btn" onclick="setRange('6m',this)">6개월</button>
         <button class="chart-btn" onclick="setRange('1y',this)">1년</button>
-        <button class="chart-btn" onclick="setRange('all',this)">전체</button>
+        <button class="chart-btn active" onclick="setRange('all',this)">전체</button>
       </div>
     </div>
-    <div class="chart-wrap"><canvas id="cvMain"></canvas></div>
+
+    <!-- 🖌️ 선 긋기 툴바 -->
+    <div class="draw-toolbar">
+      <div class="dt-group">
+        <span class="dt-label">도구:</span>
+        <button class="dt-btn active" id="btnToolNone" onclick="setDrawTool('none', this)">👆 기본(커서)</button>
+        <button class="dt-btn" id="btnToolTrend" onclick="setDrawTool('trend', this)">✏️ 추세선</button>
+        <button class="dt-btn" id="btnToolHori" onclick="setDrawTool('horizontal', this)">📏 수평선</button>
+      </div>
+      <div class="dt-group">
+        <span class="dt-label">색상:</span>
+        <button class="color-dot c-yellow active" onclick="setLineColor('#ffd166', this)" title="노랑"></button>
+        <button class="color-dot c-red" onclick="setLineColor('#ff4d5e', this)" title="빨강"></button>
+        <button class="color-dot c-green" onclick="setLineColor('#00d68f', this)" title="초록"></button>
+        <button class="color-dot c-cyan" onclick="setLineColor('#00f5d4', this)" title="시안"></button>
+        <button class="color-dot c-purple" onclick="setLineColor('#a78bfa', this)" title="보라"></button>
+      </div>
+      <div class="dt-group">
+        <button class="dt-btn" onclick="undoLastLine()" title="마지막 선 지우기">↩️ 취소</button>
+        <button class="dt-btn" onclick="clearAllLines()" title="모든 선 삭제">🗑️ 전체 삭제</button>
+      </div>
+    </div>
+
+    <div class="chart-wrap" id="chartWrapper">
+      <canvas id="cvMain"></canvas>
+    </div>
   </div>
 
   <!-- Indicators -->
@@ -481,21 +487,6 @@ a:hover { text-decoration: underline; }
   뉴스심리지수 기준값 100 = 장기 평균 &nbsp;|&nbsp; ≥110 과열 · ≤90 침체
 </footer>
 
-<!-- ===== MODAL ===== -->
-<div class="modal-bg" id="elModal" onclick="if(event.target===this)closeModal()">
-<div class="modal">
-  <h2>⚙️ 데이터 설정</h2>
-  <div class="fg">
-    <label>ECOS API 인증키</label>
-    <input id="mKey" value="TWSDJSZHSK3FJKI0KDUP" readonly style="color:var(--green);font-weight:700;">
-    <div style="font-size:0.7rem;color:var(--text-dim);margin-top:4px;">현재 인증키가 정상 등록되어 실시간 데이터를 자동 수신 중입니다.</div>
-  </div>
-  <div class="modal-foot">
-    <button class="btn btn-pr" onclick="closeModal()">확인</button>
-  </div>
-</div>
-</div>
-
 <!-- Toast -->
 <div class="toast" id="elToast"></div>
 
@@ -511,16 +502,265 @@ function toast(msg){
   const t=$('elToast'); t.textContent=msg;
   t.classList.add('show');
   clearTimeout(t._tid);
-  t._tid = setTimeout(()=>t.classList.remove('show'),3800);
+  t._tid = setTimeout(()=>t.classList.remove('show'),3200);
 }
 
 const S = {
   raw:[], ma:[], zone:null, trend:null,
-  range:'6m', chart:null,
+  range:'all', chart:null,
   latestVal: null, latestMA: null, latestDate: null,
   ind: {}
 };
 
+// ========================================
+// ✏️ 선 긋기 상태 및 로컬스토리지 관리
+// ========================================
+let activeTool = 'none'; // 'none', 'trend', 'horizontal'
+let currentColor = '#ffd166';
+let userLines = JSON.parse(localStorage.getItem('user_chart_lines') || '[]');
+let isDrawing = false;
+let startCoords = null;
+let currentPreview = null;
+
+function saveLines(){
+  localStorage.setItem('user_chart_lines', JSON.stringify(userLines));
+}
+
+// ========================================
+// Chart.js 사용자 선 오버레이 플러그인
+// ========================================
+const userLinesPlugin = {
+  id: 'userLinesPlugin',
+  afterDatasetsDraw(chart) {
+    const { ctx, scales: { x, y } } = chart;
+    ctx.save();
+
+    // 1. 저장된 모든 선 그리기
+    for (const line of userLines) {
+      ctx.strokeStyle = line.color || '#ffd166';
+      ctx.lineWidth = 2.2;
+      ctx.setLineDash(line.dash || []);
+
+      if (line.type === 'horizontal') {
+        const yPx = y.getPixelForValue(line.val);
+        if (yPx >= y.top && yPx <= y.bottom) {
+          ctx.beginPath();
+          ctx.moveTo(x.left, yPx);
+          ctx.lineTo(x.right, yPx);
+          ctx.stroke();
+
+          // 우측 끝에 수치 배지 표시
+          ctx.fillStyle = line.color;
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText(Number(line.val).toFixed(1), x.right - 34, yPx - 5);
+        }
+      } else if (line.type === 'trend') {
+        const x1 = x.getPixelForValue(line.date1);
+        const y1 = y.getPixelForValue(line.val1);
+        const x2 = x.getPixelForValue(line.date2);
+        const y2 = y.getPixelForValue(line.val2);
+
+        // 유효한 좌표인 경우만 렌더링
+        if (!isNaN(x1) && !isNaN(y1) && !isNaN(x2) && !isNaN(y2)) {
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+
+          // 양 끝 점 표시
+          ctx.fillStyle = line.color;
+          ctx.beginPath();
+          ctx.arc(x1, y1, 3.5, 0, Math.PI * 2);
+          ctx.arc(x2, y2, 3.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    // 2. 드래그 중인 실시간 임시 미리보기 선
+    if (isDrawing && currentPreview) {
+      ctx.strokeStyle = currentColor;
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 4]);
+      ctx.beginPath();
+      ctx.moveTo(currentPreview.x1, currentPreview.y1);
+      ctx.lineTo(currentPreview.x2, currentPreview.y2);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+};
+
+// 툴바 함수들
+window.setDrawTool = function(tool, btn) {
+  activeTool = tool;
+  document.querySelectorAll('.draw-toolbar .dt-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const canvas = $('cvMain');
+  if (tool === 'none') {
+    canvas.style.cursor = 'default';
+    toast('👆 기본 커서 모드 (툴팁 활성화)');
+  } else if (tool === 'trend') {
+    canvas.style.cursor = 'crosshair';
+    toast('✏️ 추세선: 시작점을 클릭하고 끝점까지 드래그하세요');
+  } else if (tool === 'horizontal') {
+    canvas.style.cursor = 'crosshair';
+    toast('📏 수평선: 원하는 지수 위치를 클릭하세요');
+  }
+
+  // 툴팁 설정 토글
+  if (S.chart && S.chart.options.plugins.tooltip) {
+    S.chart.options.plugins.tooltip.enabled = (tool === 'none');
+  }
+};
+
+window.setLineColor = function(color, btn) {
+  currentColor = color;
+  document.querySelectorAll('.color-dot').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  toast('🎨 선 색상이 변경되었습니다');
+};
+
+window.undoLastLine = function() {
+  if (userLines.length > 0) {
+    const popped = userLines.pop();
+    saveLines();
+    if (S.chart) S.chart.render();
+    toast('↩️ 마지막 선을 지웠습니다');
+  } else {
+    toast('지울 선이 없습니다');
+  }
+};
+
+window.clearAllLines = function() {
+  if (userLines.length === 0) return;
+  if (confirm('그려진 모든 선을 삭제하시겠습니까?')) {
+    userLines = [];
+    saveLines();
+    if (S.chart) S.chart.render();
+    toast('🗑️ 모든 선이 삭제되었습니다');
+  }
+};
+
+// ========================================
+// 마우스 및 모바일 터치 이벤트 바인딩
+// ========================================
+function setupDrawingEvents(canvas) {
+  function getCanvasPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return {
+      x: clientX - rect.left,
+      y: clientY - rect.top
+    };
+  }
+
+  function handleStart(e) {
+    if (activeTool === 'none' || !S.chart) return;
+    if (e.touches && e.touches.length > 1) return; // 멀티터치 무시
+
+    const pos = getCanvasPos(e);
+    const chart = S.chart;
+    const x = chart.scales.x;
+    const y = chart.scales.y;
+
+    if (pos.x < x.left || pos.x > x.right || pos.y < y.top || pos.y > y.bottom) return;
+
+    if (e.cancelable) e.preventDefault();
+
+    // 1. 수평선 클릭
+    if (activeTool === 'horizontal') {
+      const yVal = y.getValueForPixel(pos.y);
+      userLines.push({
+        type: 'horizontal',
+        val: Math.round(yVal * 10) / 10,
+        color: currentColor,
+        id: Date.now()
+      });
+      saveLines();
+      chart.render();
+      toast(`📏 수평 지지/저항선 생성 (${yVal.toFixed(1)})`);
+      return;
+    }
+
+    // 2. 추세선 시작
+    if (activeTool === 'trend') {
+      isDrawing = true;
+      const xIdx = Math.round(x.getValueForPixel(pos.x));
+      const labels = chart.data.labels;
+      const safeIdx = Math.max(0, Math.min(labels.length - 1, xIdx));
+      const date = labels[safeIdx];
+      const yVal = y.getValueForPixel(pos.y);
+
+      startCoords = { px: pos.x, py: pos.y, date, val: yVal };
+      currentPreview = { x1: pos.x, y1: pos.y, x2: pos.x, y2: pos.y };
+    }
+  }
+
+  function handleMove(e) {
+    if (!isDrawing || !startCoords || !S.chart) return;
+    if (e.cancelable) e.preventDefault();
+
+    const pos = getCanvasPos(e);
+    currentPreview.x2 = pos.x;
+    currentPreview.y2 = pos.y;
+    S.chart.render();
+  }
+
+  function handleEnd(e) {
+    if (!isDrawing || !startCoords || !S.chart) return;
+    isDrawing = false;
+
+    const chart = S.chart;
+    const x = chart.scales.x;
+    const y = chart.scales.y;
+
+    const endX = currentPreview.x2;
+    const endY = currentPreview.y2;
+
+    const xIdx = Math.round(x.getValueForPixel(endX));
+    const labels = chart.data.labels;
+    const safeIdx = Math.max(0, Math.min(labels.length - 1, xIdx));
+    const date2 = labels[safeIdx];
+    const val2 = y.getValueForPixel(endY);
+
+    // 최소 드래그 거리 판정 (10px 이상 드래그해야 선 생성)
+    const dist = Math.hypot(endX - startCoords.px, endY - startCoords.py);
+    if (dist > 10 && date2 && startCoords.date) {
+      userLines.push({
+        type: 'trend',
+        date1: startCoords.date,
+        val1: Math.round(startCoords.val * 10) / 10,
+        date2: date2,
+        val2: Math.round(val2 * 10) / 10,
+        color: currentColor,
+        id: Date.now()
+      });
+      saveLines();
+      toast('✏️ 추세선이 저장되었습니다');
+    }
+
+    startCoords = null;
+    currentPreview = null;
+    chart.render();
+  }
+
+  // Pointer & Touch & Mouse Event 등록
+  canvas.addEventListener('mousedown', handleStart);
+  window.addEventListener('mousemove', handleMove);
+  window.addEventListener('mouseup', handleEnd);
+
+  canvas.addEventListener('touchstart', handleStart, { passive: false });
+  window.addEventListener('touchmove', handleMove, { passive: false });
+  window.addEventListener('touchend', handleEnd);
+}
+
+// ========================================
+// STRATEGY & RENDERING
+// ========================================
 const STRAT = {
   overheated:{
     ph:'🔴 과열 / 고평가 국면',
@@ -616,7 +856,9 @@ function renderChart(){
 
   if(S.chart) S.chart.destroy();
 
-  S.chart = new Chart($('cvMain').getContext('2d'),{
+  const ctx = $('cvMain').getContext('2d');
+
+  S.chart = new Chart(ctx, {
     type:'line',
     data:{
       labels,
@@ -640,12 +882,14 @@ function renderChart(){
         }
       ]
     },
+    plugins: [userLinesPlugin],
     options:{
       responsive:true, maintainAspectRatio:false,
       interaction:{ mode:'index', intersect:false },
       plugins:{
         legend:{ labels:{ color:'#8b97b5', usePointStyle:true, pointStyle:'line', font:{size:12} } },
         tooltip:{
+          enabled: (activeTool === 'none'),
           backgroundColor:'#162040', titleColor:'#e4e8f1', bodyColor:'#e4e8f1',
           borderColor:'#243158', borderWidth:1, padding:12, cornerRadius:8,
           callbacks:{ label:c=> c.raw==null?null:`${c.dataset.label}: ${Number(c.raw).toFixed(2)}` }
@@ -742,7 +986,7 @@ async function loadData(){
     const res = await fetch('data.json?t=' + Date.now());
     if(!res.ok) throw new Error('data.json 로드 실패');
     const json = await res.json();
-    
+
     S.raw = json.timeSeries || [];
     S.ma = json.maSeries || [];
     S.trend = json.trend || 'down';
@@ -760,7 +1004,7 @@ async function loadData(){
     renderInd();
 
     $('elUpdate').textContent = '갱신: ' + (json.updatedAt || new Date().toLocaleString('ko-KR'));
-    toast('✅ 한국은행 ECOS 공식 데이터 로드 완료!');
+    toast('✅ 실시간 데이터 로드 완료! 상단에서 선긋기를 해보세요.');
   }catch(err){
     console.error(err);
     toast('⚠️ 데이터 로딩 실패, 로컬 데이터를 확인해주세요.');
@@ -773,13 +1017,10 @@ function refreshData(){
 }
 window.refreshData=refreshData;
 
-function openModal(){ $('elModal').classList.add('open'); }
-function closeModal(){ $('elModal').classList.remove('open'); }
-window.openModal=openModal;
-window.closeModal=closeModal;
-
-// Auto load on launch
-document.addEventListener('DOMContentLoaded', loadData);
+document.addEventListener('DOMContentLoaded', () => {
+  setupDrawingEvents($('cvMain'));
+  loadData();
+});
 
 })();
 </script>
