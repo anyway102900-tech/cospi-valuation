@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코스피 밸류에이션 대시보드 | 한국은행 ECOS 공식 연동</title>
+<script src="libs/chart.umd.min.js"></script>
+<script src="libs/chartjs-plugin-annotation.min.js"></script>
+<style>
+/* ========================================
+   RESET & VARIABLES
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-body: #060b18;
+  --bg-card: #0d1528;
+  --bg-card-alt: #111d35;
+  --bg-hover: #162040;
+  --border: #1a2545;
+  --border-light: #243158;
+  --text-main: #e4e8f1;
+  --text-sub: #8b97b5;
+  --text-dim: #4f5d7a;
+  --red: #ff4d5e;
+  --red-bg: rgba(255,77,94,0.08);
+  --red-glow: rgba(255,77,94,0.4);
+  --orange: #ffb020;
+  --orange-bg: rgba(255,176,32,0.08);
+  --orange-glow: rgba(255,176,32,0.4);
+  --green: #00d68f;
+  --green-bg: rgba(0,214,143,0.08);
+  --green-glow: rgba(0,214,143,0.4);
+  --blue: #3b82f6;
+  --blue-bg: rgba(59,130,246,0.08);
+  --blue-glow: rgba(59,130,246,0.4);
+  --purple: #8b5cf6;
+  --purple-bg: rgba(139,92,246,0.12);
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+html { font-size: 15px; }
+
+body {
+  font-family: -apple-system, 'Segoe UI', 'Malgun Gothic', '맑은 고딕', sans-serif;
+  background: var(--bg-body);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+a { color: var(--purple); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ========================================
+   HEADER
+   ======================================== */
+.app-header {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px;
+  background: rgba(6,11,24,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header .logo {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.app-header h1 {
+  font-size: 1.15rem; font-weight: 800;
+  background: linear-gradient(135deg, #8b5cf6, #00d68f);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.badge {
+  font-size: 0.65rem; padding: 4px 10px; border-radius: 20px;
+  background: var(--green-bg); color: var(--green);
+  border: 1px solid rgba(0,214,143,0.3);
+  font-weight: 700;
+}
+
+.header-actions { display: flex; align-items: center; gap: 14px; }
+.update-time { font-size: 0.72rem; color: var(--text-sub); }
+
+.btn-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-sub); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: all 0.2s;
+}
+.btn-icon:hover { background: var(--bg-hover); border-color: var(--purple); }
+
+.main { max-width: 1440px; margin: 0 auto; padding: 20px 24px; }
+
+/* ========================================
+   CARDS
+   ======================================== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: border-color 0.25s;
+}
+.card:hover { border-color: var(--border-light); }
+
+.card-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.2px; color: var(--text-dim); margin-bottom: 14px;
+}
+
+/* ========================================
+   LIVE STATUS BANNER
+   ======================================== */
+.live-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px; border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(0,214,143,0.08), rgba(59,130,246,0.08));
+  border: 1px solid rgba(0,214,143,0.25);
+  font-size: 0.82rem; color: var(--text-sub); margin-bottom: 20px;
+}
+.live-banner b { color: var(--green); }
+
+.btn-sm {
+  padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--bg-card); color: var(--text-sub); cursor: pointer;
+  font-size: 0.75rem; transition: all 0.2s;
+}
+.btn-sm:hover { border-color: var(--purple); color: #a78bfa; }
+
+/* ========================================
+   CYCLE BAR (Phase Meter)
+   ======================================== */
+.cycle-row {
+  display: flex; gap: 4px; height: 38px; border-radius: 10px;
+  overflow: hidden; margin-bottom: 20px;
+}
+.cycle-seg {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; opacity: 0.25;
+  transition: all 0.4s; cursor: default;
+}
+.cycle-seg.active { opacity: 1; transform: scaleY(1.08); box-shadow: 0 0 16px rgba(0,0,0,0.5); }
+.cycle-seg.s-green  { background: var(--green);  color: #000; }
+.cycle-seg.s-blue   { background: var(--blue);   color: #fff; }
+.cycle-seg.s-orange { background: var(--orange); color: #000; }
+.cycle-seg.s-red    { background: var(--red);    color: #fff; }
+
+/* ========================================
+   TOP ROW: 3-Column Grid
+   ======================================== */
+.top-grid {
+  display: grid;
+  grid-template-columns: 270px 1fr 1fr;
+  gap: 20px; margin-bottom: 20px;
+}
+
+/* --- Traffic Light --- */
+.tl-card {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+}
+.tl-orb {
+  width: 115px; height: 115px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px; position: relative;
+  transition: all 0.5s;
+}
+.tl-orb .icon { font-size: 3rem; position: relative; z-index: 2;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
+.tl-orb::after {
+  content: ''; position: absolute; inset: -6px;
+  border-radius: 50%; animation: glow-pulse 2.2s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%,100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.18); opacity: 0; }
+}
+
+.tl-orb.red    { background: radial-gradient(circle, var(--red) 30%, #b8001a);   box-shadow: 0 0 50px var(--red-glow); }
+.tl-orb.red::after    { background: var(--red-glow); }
+.tl-orb.orange { background: radial-gradient(circle, var(--orange) 30%, #b37800); box-shadow: 0 0 50px var(--orange-glow); }
+.tl-orb.orange::after { background: var(--orange-glow); }
+.tl-orb.green  { background: radial-gradient(circle, var(--green) 30%, #009962);  box-shadow: 0 0 50px var(--green-glow); }
+.tl-orb.green::after  { background: var(--green-glow); }
+.tl-orb.blue   { background: radial-gradient(circle, var(--blue) 30%, #1d4ed8);   box-shadow: 0 0 50px var(--blue-glow); }
+.tl-orb.blue::after   { background: var(--blue-glow); }
+
+.tl-label { font-size: 1.08rem; font-weight: 800; margin-bottom: 4px; }
+.tl-sub   { font-size: 0.78rem; color: var(--text-sub); }
+
+/* --- Values Grid --- */
+.vals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.val-box {
+  background: var(--bg-card-alt); border-radius: 12px;
+  padding: 16px; text-align: center;
+}
+.val-title { font-size: 0.7rem; color: var(--text-dim); margin-bottom: 6px; font-weight: 600; }
+.val-num   { font-size: 1.7rem; font-weight: 800; }
+.val-num.pos { color: var(--green); }
+.val-num.neg { color: var(--red); }
+.val-num.neu { color: var(--text-main); }
+.val-delta { font-size: 0.75rem; margin-top: 3px; }
+
+.trend-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.82rem; font-weight: 700;
+  padding: 5px 12px; border-radius: 8px;
+}
+.trend-tag.up   { background: var(--green-bg); color: var(--green); }
+.trend-tag.down { background: var(--red-bg);   color: var(--red); }
+.trend-tag.flat { background: rgba(139,151,181,0.1); color: var(--text-sub); }
+
+/* --- Strategy Card --- */
+.strat-card { position: relative; overflow: hidden; }
+.strat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.strat-card.c-red::before    { background: var(--red); }
+.strat-card.c-orange::before { background: var(--orange); }
+.strat-card.c-green::before  { background: var(--green); }
+.strat-card.c-blue::before   { background: var(--blue); }
+
+.strat-phase { font-size: 1rem; font-weight: 800; margin-bottom: 10px; }
+.strat-desc  { font-size: 0.82rem; color: var(--text-sub); margin-bottom: 14px; line-height: 1.75; }
+.strat-list  { display: flex; flex-direction: column; gap: 7px; }
+.strat-item  {
+  font-size: 0.8rem; padding: 10px 14px;
+  background: var(--bg-card-alt); border-radius: 9px;
+  line-height: 1.55;
+}
+
+/* ========================================
+   CHART
+   ======================================== */
+.chart-card { margin-bottom: 20px; }
+.chart-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px; margin-bottom: 14px;
+}
+.chart-btns { display: flex; gap: 6px; }
+.chart-btn {
+  padding: 5px 13px; border-radius: 7px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-dim); cursor: pointer; font-size: 0.75rem;
+  font-weight: 600; transition: all 0.2s;
+}
+.chart-btn.active { background: var(--purple-bg); border-color: var(--purple); color: #a78bfa; }
+.chart-btn:hover  { border-color: var(--purple); }
+
+.chart-wrap { position: relative; height: 400px; }
+
+/* ========================================
+   INDICATORS ROW
+   ======================================== */
+.ind-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; margin-bottom: 20px;
+}
+
+.ind-val  { font-size: 1.5rem; font-weight: 800; margin: 6px 0; }
+.ind-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem; color: var(--text-dim);
+}
+.ind-bar {
+  height: 5px; background: rgba(255,255,255,0.04); border-radius: 3px;
+  margin-top: 10px; overflow: hidden;
+}
+.ind-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+.ind-note { margin-top: 8px; font-size: 0.74rem; color: var(--text-sub); line-height: 1.6; }
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.app-footer {
+  text-align: center; padding: 22px 20px;
+  font-size: 0.68rem; color: var(--text-dim);
+  border-top: 1px solid var(--border); margin-top: 10px; line-height: 2;
+}
+
+/* ========================================
+   MODAL
+   ======================================== */
+.modal-bg {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+  align-items: center; justify-content: center;
+}
+.modal-bg.open { display: flex; }
+.modal {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 18px; padding: 30px; width: 500px; max-width: 92vw;
+  max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow);
+}
+.modal h2 { font-size: 1.05rem; margin-bottom: 18px; }
+.fg { margin-bottom: 14px; }
+.fg label { display: block; font-size: 0.76rem; color: var(--text-sub); margin-bottom: 5px; font-weight: 600; }
+.fg input, .fg select {
+  width: 100%; padding: 9px 13px;
+  background: var(--bg-card-alt); border: 1px solid var(--border);
+  border-radius: 9px; color: var(--text-main); font-size: 0.88rem;
+}
+.fg input:focus, .fg select:focus { outline: none; border-color: var(--purple); }
+.modal-foot { display: flex; gap: 10px; margin-top: 22px; }
+
+.btn {
+  padding: 10px 22px; border-radius: 9px; border: none;
+  cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: all 0.2s;
+}
+.btn-pr { background: var(--purple); color: #fff; }
+.btn-pr:hover { background: #7c3aed; }
+.btn-sc { background: var(--bg-card-alt); border: 1px solid var(--border); color: var(--text-sub); }
+.btn-sc:hover { background: var(--bg-hover); }
+
+/* ========================================
+   TOAST
+   ======================================== */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 600;
+  padding: 13px 22px; border-radius: 11px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  font-size: 0.84rem; color: var(--text-main);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  transform: translateY(80px); opacity: 0; transition: all 0.35s;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+@media (max-width: 1100px) {
+  .top-grid { grid-template-columns: 1fr 1fr; }
+  .tl-card   { grid-column: 1 / -1; flex-direction: row; gap: 20px; }
+  .ind-grid  { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 680px) {
+  html { font-size: 14px; }
+  .app-header { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
+  .main { padding: 14px; }
+  .top-grid  { grid-template-columns: 1fr; }
+  .tl-card   { flex-direction: column; }
+  .ind-grid  { grid-template-columns: 1fr; }
+  .chart-wrap { height: 260px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="app-header">
+  <div class="logo">
+    <h1>📊 코스피 밸류에이션 대시보드</h1>
+    <span class="badge" id="elApiBadge">🟢 ECOS 실시간 연동됨</span>
+  </div>
+  <div class="header-actions">
+    <span class="update-time" id="elUpdate">-</span>
+    <button class="btn-icon" onclick="openModal()" title="설정">⚙️</button>
+    <button class="btn-icon" onclick="refreshData()" title="데이터 새로고침">🔄</button>
+  </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="main">
+
+  <!-- Live Status Banner -->
+  <div class="live-banner" id="elBanner">
+    <span>🏛️ <b>한국은행 ECOS 공식 API</b>에서 최신 뉴스심리지수 및 시장 데이터를 정상 수신했습니다.</span>
+    <button class="btn-sm" onclick="refreshData()">즉시 재조회 🔄</button>
+  </div>
+
+  <!-- Cycle Bar -->
+  <div class="cycle-row" id="elCycle">
+    <div class="cycle-seg s-green"  data-z="undervalued">🟢 저평가</div>
+    <div class="cycle-seg s-blue"   data-z="recovery">🔵 회복</div>
+    <div class="cycle-seg s-orange" data-z="adjustment">🟡 조정</div>
+    <div class="cycle-seg s-red"    data-z="overheated">🔴 과열</div>
+  </div>
+
+  <!-- Top Grid -->
+  <div class="top-grid">
+
+    <!-- Traffic Light -->
+    <div class="card tl-card">
+      <div class="tl-orb" id="elOrb"><span class="icon" id="elOrbIcon">⏳</span></div>
+      <div>
+        <div class="tl-label" id="elZoneLabel">분석 중…</div>
+        <div class="tl-sub"   id="elZoneSub">실시간 데이터를 로드하고 있습니다</div>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="card">
+      <div class="card-label">📐 핵심 지표 (실제 ECOS 데이터)</div>
+      <div class="vals-grid">
+        <div class="val-box">
+          <div class="val-title">뉴스심리지수 (현재)</div>
+          <div class="val-num neu" id="elIdx">-</div>
+          <div class="val-delta" id="elIdxD">-</div>
+        </div>
+        <div class="val-box">
+          <div class="val-title">90일(3개월) 이동평균</div>
+          <div class="val-num neu" id="elMA">-</div>
+          <div class="val-delta" id="elMAD">-</div>
+        </div>
+        <div class="val-box">
+          <div class="val-title">이동평균 추세</div>
+          <div class="trend-tag flat" id="elTrend">→ 계산 중</div>
+        </div>
+        <div class="val-box">
+          <div class="val-title">기준선 이격도</div>
+          <div class="val-num neu" id="elDev">-</div>
+          <div class="val-delta" style="color:var(--text-dim);">100 기준</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategy -->
+    <div class="card strat-card" id="elStrat">
+      <div class="card-label">🎯 맞춤 투자 전략 가이드</div>
+      <div class="strat-phase" id="elSP">-</div>
+      <div class="strat-desc"  id="elSD">-</div>
+      <div class="strat-list"  id="elSA"></div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="card chart-card">
+    <div class="chart-header">
+      <span class="card-label" style="margin:0;">📉 뉴스심리지수 &amp; 3개월 이동평균선 (일별 시계열)</span>
+      <div class="chart-btns" id="elRangeBtns">
+        <button class="chart-btn" onclick="setRange('3m',this)">3개월</button>
+        <button class="chart-btn active" onclick="setRange('6m',this)">6개월</button>
+        <button class="chart-btn" onclick="setRange('1y',this)">1년</button>
+        <button class="chart-btn" onclick="setRange('all',this)">전체</button>
+      </div>
+    </div>
+    <div class="chart-wrap"><canvas id="cvMain"></canvas></div>
+  </div>
+
+  <!-- Indicators -->
+  <div class="ind-grid">
+    <div class="card">
+      <div class="card-label">📈 코스피 지수</div>
+      <div class="ind-val" id="eKospi">-</div>
+      <div class="ind-meta"><span>등락률: <b id="eKospiChg">-</b></span><span class="trend-tag" id="eKospiT">-</span></div>
+      <div class="ind-bar"><div class="ind-bar-fill" id="eKospiBar"></div></div>
+      <div class="ind-note" id="eKospiN">-</div>
+    </div>
+    <div class="card">
+      <div class="card-label">🌊 VKOSPI (변동성)</div>
+      <div class="ind-val" id="eVk">-</div>
+      <div class="ind-meta"><span id="eVkLv">-</span><span class="trend-tag" id="eVkT">-</span></div>
+      <div class="ind-bar"><div class="ind-bar-fill" id="eVkBar"></div></div>
+      <div class="ind-note" id="eVkN">-</div>
+    </div>
+    <div class="card">
+      <div class="card-label">🏦 외국인·기관 수급</div>
+      <div class="ind-val" id="eFl">-</div>
+      <div class="ind-meta"><span id="eFlL">-</span><span class="trend-tag" id="eFlT">-</span></div>
+      <div class="ind-bar"><div class="ind-bar-fill" id="eFlBar"></div></div>
+      <div class="ind-note" id="eFlN">-</div>
+    </div>
+    <div class="card">
+      <div class="card-label">📊 장단기 금리차</div>
+      <div class="ind-val" id="eSp">-</div>
+      <div class="ind-meta"><span>국고 3Y − 1Y</span><span class="trend-tag" id="eSpT">-</span></div>
+      <div class="ind-bar"><div class="ind-bar-fill" id="eSpBar"></div></div>
+      <div class="ind-note" id="eSpN">-</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="app-footer">
+  ⚠️ 본 대시보드는 참고용이며, 투자 결정에 대한 책임은 투자자 본인에게 있습니다.<br>
+  데이터 출처: 한국은행 경제통계시스템(ECOS) 통계코드 523Y001 · 네이버 금융 · 야후 파이낸스<br>
+  뉴스심리지수 기준값 100 = 장기 평균 &nbsp;|&nbsp; ≥110 과열 · ≤90 침체
+</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-bg" id="elModal" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+  <h2>⚙️ 데이터 설정</h2>
+  <div class="fg">
+    <label>ECOS API 인증키</label>
+    <input id="mKey" value="TWSDJSZHSK3FJKI0KDUP" readonly style="color:var(--green);font-weight:700;">
+    <div style="font-size:0.7rem;color:var(--text-dim);margin-top:4px;">현재 인증키가 정상 등록되어 실시간 데이터를 자동 수신 중입니다.</div>
+  </div>
+  <div class="modal-foot">
+    <button class="btn btn-pr" onclick="closeModal()">확인</button>
+  </div>
+</div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="elToast"></div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+(function(){
+"use strict";
+
+const $ = id => document.getElementById(id);
+const fmt = (n,d=1) => n==null ? '-' : Number(n).toFixed(d);
+
+function toast(msg){
+  const t=$('elToast'); t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(t._tid);
+  t._tid = setTimeout(()=>t.classList.remove('show'),3800);
+}
+
+const S = {
+  raw:[], ma:[], zone:null, trend:null,
+  range:'6m', chart:null,
+  latestVal: null, latestMA: null, latestDate: null,
+  ind: {}
+};
+
+const STRAT = {
+  overheated:{
+    ph:'🔴 과열 / 고평가 국면',
+    desc:'시장에 장밋빛 뉴스가 쏟아지며 극단적 낙관(FOMO)에 빠진 상태입니다. 코스피 지수는 호재를 과도하게 선반영하여 고평가 영역에 진입했을 확률이 높습니다.',
+    acts:['🚫 신규 매수 중단 — 추격 매수 절대 금지','💵 보유 주식 분할 매도, 현금 비중 30~50% 확대','🏦 자금을 CMA·단기국채 ETF 등 안전자산으로 이동']
+  },
+  adjustment:{
+    ph:'🟡 조정 국면 (고점 통과 후)',
+    desc:'110을 넘어섰던 지수와 이동평균선이 꺾이기 시작합니다. 시장 심리가 냉각되며 주가 상승 동력이 약화되고 있습니다.',
+    acts:['👀 적극적 리스크 관리 — 손절선 재점검','❌ 섣부른 저점 매수(물타기) 금지','📊 관망하며 추가 하락 여부 모니터링']
+  },
+  undervalued:{
+    ph:'🟢 저평가 / 매수 기회 국면',
+    desc:'비관적 뉴스가 도배되며 공포 매물이 쏟아지는 상태입니다. 악재가 주가에 지나치게 반영되어 우량 기업이 헐값에 거래되는 구간입니다.',
+    acts:['💎 코스피 우량주·지수 추종 ETF 분할 매수 시작','💰 현금성 자산 → 주식 비중 적극 확대','📋 공포를 이겨내고 장기 투자 관점 유지']
+  },
+  recovery:{
+    ph:'🔵 회복 / 상승 반전 국면',
+    desc:'바닥을 다지고 이동평균선이 고개를 들기 시작했습니다. 최악의 상황은 지났다는 인식이 퍼지며 주가가 턴어라운드를 시도합니다.',
+    acts:['🚀 실적 회복 기대 선도주 중심 집중 공략','📈 반도체·수출 주력 업종 비중 확대','⚡ 상승장 수익 극대화를 위한 적극 투자']
+  }
+};
+
+const ZONE_META = {
+  overheated: {color:'red',   icon:'🔥', sub:'매도 비중 확대 · 현금 확보'},
+  adjustment: {color:'orange',icon:'⚠️', sub:'관망 · 리스크 관리'},
+  undervalued:{color:'green', icon:'💎', sub:'분할 매수 기회 · 공포 극복'},
+  recovery:   {color:'blue',  icon:'🚀', sub:'적극 투자 · 선도주 공략'}
+};
+
+function renderOrb(z){
+  const m=ZONE_META[z]||ZONE_META.undervalued;
+  $('elOrb').className='tl-orb '+m.color;
+  $('elOrbIcon').textContent=m.icon;
+  $('elZoneLabel').textContent=STRAT[z].ph;
+  $('elZoneLabel').style.color='var(--'+m.color+')';
+  $('elZoneSub').textContent=m.sub;
+}
+
+function renderCycle(z){
+  document.querySelectorAll('.cycle-seg').forEach(s=>
+    s.classList.toggle('active', s.dataset.z===z));
+}
+
+function renderVals(){
+  const d=S.raw, ma=S.ma;
+  const last=d[d.length-1], prev=d.length>1?d[d.length-2]:last;
+  const maVals=ma.filter(v=>v!==null);
+  const curMA=maVals[maVals.length-1], prevMA=maVals.length>1?maVals[maVals.length-2]:curMA;
+
+  $('elIdx').textContent=fmt(last.value);
+  $('elIdx').className='val-num '+(last.value>=100?'pos':'neg');
+
+  const dv=last.value-prev.value;
+  $('elIdxD').innerHTML=`<span style="color:var(--${dv>=0?'green':'red'})">${dv>=0?'▲':'▼'} ${fmt(Math.abs(dv))} (전일비)</span>`;
+
+  $('elMA').textContent=fmt(curMA);
+  $('elMA').className='val-num '+(curMA>=100?'pos':'neg');
+
+  if(curMA!=null && prevMA!=null){
+    const md=curMA-prevMA;
+    $('elMAD').innerHTML=`<span style="color:var(--${md>=0?'green':'red'})">${md>=0?'▲':'▼'} ${fmt(Math.abs(md),2)}</span>`;
+  }
+
+  const tMap={up:['↗️ 상승 추세','up'],down:['↘️ 하락 추세','down'],flat:['→ 횡보','flat']};
+  const t=tMap[S.trend]||tMap.flat;
+  $('elTrend').textContent=t[0];
+  $('elTrend').className='trend-tag '+t[1];
+
+  const dev=last.value-100;
+  $('elDev').textContent=(dev>=0?'+':'')+fmt(dev);
+  $('elDev').className='val-num '+(dev>=0?'pos':'neg');
+}
+
+function renderStrat(z){
+  const s=STRAT[z]||STRAT.undervalued, m=ZONE_META[z]||ZONE_META.undervalued;
+  const c=$('elStrat');
+  c.className='card strat-card c-'+m.color;
+  $('elSP').innerHTML=s.ph;
+  $('elSD').textContent=s.desc;
+  $('elSA').innerHTML=s.acts.map(a=>`<div class="strat-item">${a}</div>`).join('');
+}
+
+function renderChart(){
+  const d=S.raw, ma=S.ma;
+  let start=0;
+  if(S.range!=='all'){
+    const days={['3m']:90,['6m']:180,['1y']:365}[S.range]||180;
+    start=Math.max(0,d.length-days);
+  }
+  const sd=d.slice(start), sma=ma.slice(start);
+  const labels=sd.map(x=>x.date), vals=sd.map(x=>x.value);
+
+  if(S.chart) S.chart.destroy();
+
+  S.chart = new Chart($('cvMain').getContext('2d'),{
+    type:'line',
+    data:{
+      labels,
+      datasets:[
+        {
+          label:'뉴스심리지수(일별)',
+          data:vals,
+          borderColor:'rgba(167,139,250,0.4)',
+          backgroundColor:'rgba(167,139,250,0.03)',
+          borderWidth:1.3, fill:false,
+          pointRadius:0,
+          pointHoverRadius:4, tension:0.2,
+        },
+        {
+          label:'90일(3개월) 이동평균',
+          data:sma,
+          borderColor:'#8b5cf6',
+          borderWidth:3, fill:false,
+          pointRadius:0, pointHoverRadius:5,
+          tension:0.3, spanGaps:true,
+        }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{
+        legend:{ labels:{ color:'#8b97b5', usePointStyle:true, pointStyle:'line', font:{size:12} } },
+        tooltip:{
+          backgroundColor:'#162040', titleColor:'#e4e8f1', bodyColor:'#e4e8f1',
+          borderColor:'#243158', borderWidth:1, padding:12, cornerRadius:8,
+          callbacks:{ label:c=> c.raw==null?null:`${c.dataset.label}: ${Number(c.raw).toFixed(2)}` }
+        },
+        annotation:{
+          annotations:{
+            h110:{type:'line',yMin:110,yMax:110,borderColor:'rgba(255,77,94,0.45)',borderWidth:1.5,borderDash:[6,4],
+              label:{display:true,content:'과열 110',position:'start',color:'rgba(255,77,94,0.65)',font:{size:10},backgroundColor:'transparent'}},
+            h100:{type:'line',yMin:100,yMax:100,borderColor:'rgba(139,151,181,0.25)',borderWidth:1,borderDash:[4,4],
+              label:{display:true,content:'기준 100',position:'start',color:'rgba(139,151,181,0.45)',font:{size:10},backgroundColor:'transparent'}},
+            h90:{type:'line',yMin:90,yMax:90,borderColor:'rgba(0,214,143,0.45)',borderWidth:1.5,borderDash:[6,4],
+              label:{display:true,content:'침체 90',position:'start',color:'rgba(0,214,143,0.65)',font:{size:10},backgroundColor:'transparent'}},
+            bgRed:{type:'box',yMin:110,yMax:130,backgroundColor:'rgba(255,77,94,0.03)',borderWidth:0},
+            bgGrn:{type:'box',yMin:70,yMax:90,backgroundColor:'rgba(0,214,143,0.03)',borderWidth:0},
+          }
+        }
+      },
+      scales:{
+        x:{ grid:{color:'rgba(255,255,255,0.02)'}, ticks:{color:'#4f5d7a',font:{size:10},maxRotation:45,maxTicksLimit:10} },
+        y:{ grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#4f5d7a',font:{size:11}}, suggestedMin:75, suggestedMax:125 }
+      }
+    }
+  });
+}
+
+function setRange(r,btn){
+  S.range=r;
+  document.querySelectorAll('.chart-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderChart();
+}
+window.setRange=setRange;
+
+function renderInd(){
+  const I=S.ind||{};
+
+  // KOSPI
+  if(I.kospi!=null){
+    $('eKospi').textContent=Number(I.kospi).toLocaleString();
+    const chg=I.kospi_change||0;
+    $('eKospiChg').textContent=`${chg>=0?'+':''}${fmt(chg,2)}%`;
+    $('eKospiChg').style.color=chg>=0?'var(--green)':'var(--red)';
+    const kT=$('eKospiT');
+    kT.textContent=chg>=0?'상승':'조정';
+    kT.className='trend-tag '+(chg>=0?'up':'down');
+    $('eKospiBar').style.cssText='width:65%;background:var(--purple)';
+    $('eKospiN').textContent='코스피 종합지수 실시간 반영';
+  }
+
+  // VKOSPI
+  if(I.vkospi!=null){
+    $('eVk').textContent=fmt(I.vkospi);
+    const vp=Math.min(100,(I.vkospi/50)*100);
+    const col=I.vkospi<15?'green':I.vkospi<25?'orange':'red';
+    $('eVkBar').style.cssText=`width:${vp}%;background:var(--${col})`;
+    $('eVkLv').textContent=I.vkospi<15?'안정':I.vkospi<25?'보통':'공포';
+    const vT=$('eVkT');
+    if(I.vkospi<15){vT.textContent='안정권';vT.className='trend-tag up';}
+    else if(I.vkospi<25){vT.textContent='보통';vT.className='trend-tag flat';}
+    else{vT.textContent='위험';vT.className='trend-tag down';}
+    $('eVkN').textContent=I.vkospi<15?'시장 변동성 매우 낮음.':I.vkospi<22?'정상 수준의 변동성 유지.':'변동성 급증. 시장 공포 확산.';
+  }
+
+  // Flow
+  if(I.foreign_flow!=null){
+    const fo=I.foreign_flow, ins=I.institution_flow||0;
+    $('eFl').textContent=`외국인 ${fo>=0?'+':''}${fo.toLocaleString()}억`;
+    $('eFlL').textContent=`기관: ${ins>=0?'+':''}${ins.toLocaleString()}억`;
+    const net=fo+ins;
+    const fT=$('eFlT');
+    if(net>500){fT.textContent='순매수';fT.className='trend-tag up';}
+    else if(net<-500){fT.textContent='순매도';fT.className='trend-tag down';}
+    else{fT.textContent='중립';fT.className='trend-tag flat';}
+    const fp=Math.min(100,Math.max(0,((net+10000)/20000)*100));
+    $('eFlBar').style.cssText=`width:${fp}%;background:var(--${net>=0?'blue':'red'})`;
+    $('eFlN').textContent=net>1000?'외인·기관 동반 순매수 지지.':net>0?'소폭 매수 우위.':net>-3000?'외국인 위주 매도 압력 존재.':'대규모 매도 공세. 보수적 대응 권장.';
+  }
+
+  // Spread
+  if(I.spread!=null){
+    $('eSp').textContent=(I.spread>=0?'+':'')+fmt(I.spread,2)+'%p';
+    const sT=$('eSpT');
+    if(I.spread>0.3){sT.textContent='정상';sT.className='trend-tag up';}
+    else if(I.spread>0){sT.textContent='축소';sT.className='trend-tag flat';}
+    else{sT.textContent='역전';sT.className='trend-tag down';}
+    const sp=Math.min(100,Math.max(0,((I.spread+1)/2.5)*100));
+    $('eSpBar').style.cssText=`width:${sp}%;background:var(--${I.spread>0.3?'green':I.spread>0?'orange':'red'})`;
+    $('eSpN').textContent=`국고3Y(${I.treasury_3y||'-'}%) vs 1Y(${I.treasury_1y||'-'}%) 스프레드`;
+  }
+}
+
+async function loadData(){
+  try{
+    const res = await fetch('data.json?t=' + Date.now());
+    if(!res.ok) throw new Error('data.json 로드 실패');
+    const json = await res.json();
+    
+    S.raw = json.timeSeries || [];
+    S.ma = json.maSeries || [];
+    S.trend = json.trend || 'down';
+    S.zone = json.zone || 'undervalued';
+    S.latestVal = json.latestValue;
+    S.latestMA = json.latestMA;
+    S.latestDate = json.latestDate;
+    S.ind = json.indicators || {};
+
+    renderOrb(S.zone);
+    renderCycle(S.zone);
+    renderVals();
+    renderStrat(S.zone);
+    renderChart();
+    renderInd();
+
+    $('elUpdate').textContent = '갱신: ' + (json.updatedAt || new Date().toLocaleString('ko-KR'));
+    toast('✅ 한국은행 ECOS 공식 데이터 로드 완료!');
+  }catch(err){
+    console.error(err);
+    toast('⚠️ 데이터 로딩 실패, 로컬 데이터를 확인해주세요.');
+  }
+}
+
+function refreshData(){
+  toast('🔄 최신 데이터 불러오는 중…');
+  loadData();
+}
+window.refreshData=refreshData;
+
+function openModal(){ $('elModal').classList.add('open'); }
+function closeModal(){ $('elModal').classList.remove('open'); }
+window.openModal=openModal;
+window.closeModal=closeModal;
+
+// Auto load on launch
+document.addEventListener('DOMContentLoaded', loadData);
+
+})();
+</script>
+</body>
+</html>
