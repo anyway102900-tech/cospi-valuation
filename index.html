@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>코스피 밸류에이션 &amp; HTS 캔들 대시보드 (완전 동기화)</title>
+<title>코스피 밸류에이션 &amp; HTS 캔들 대시보드 (확대/축소 &amp; 수직선)</title>
 <script src="libs/chart.umd.min.js"></script>
 <script src="libs/chartjs-plugin-annotation.min.js"></script>
 <style>
@@ -248,6 +248,20 @@ a:hover { text-decoration: underline; }
 }
 .chart-btn:hover { border-color: var(--purple); color: var(--text-main); }
 
+/* 🔍 확대/축소/리셋 툴바 */
+.zoom-btns { display: flex; gap: 4px; }
+.zoom-btn {
+  padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--bg-card-alt);
+  color: var(--text-sub); cursor: pointer; font-size: 0.73rem;
+  font-weight: 800; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.zoom-btn:hover {
+  border-color: var(--purple); color: #ffffff;
+  background: var(--bg-hover);
+}
+
 /* 이동평균선 범례 배지 */
 .ma-legend {
   display: flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 700;
@@ -262,7 +276,7 @@ a:hover { text-decoration: underline; }
   background: var(--bg-card-alt); border: 1px solid var(--border);
   border-radius: 9px; padding: 7px 12px; margin-bottom: 12px;
 }
-.dt-group { display: flex; align-items: center; gap: 5px; }
+.dt-group { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
 .dt-label { font-size: 0.7rem; color: var(--text-dim); font-weight: 700; margin-right: 3px; }
 
 .dt-btn {
@@ -433,7 +447,7 @@ a:hover { text-decoration: underline; }
 
   <!-- ========================================================
        CHART 1: [위 차트] 뉴스심리지수 & 3개월 이동평균선
-       (마스터 컨트롤러 탑재: 일봉/월봉 + 1M/3M/6M/12M/전체)
+       (마스터 컨트롤러: 일봉/월봉 + 기간 + 줌 버튼)
        ======================================================== -->
   <div class="card chart-card">
     <div class="chart-header">
@@ -458,16 +472,24 @@ a:hover { text-decoration: underline; }
           <button class="chart-btn" data-r="12m" onclick="setMasterRange('12m',this)">12개월</button>
           <button class="chart-btn active" data-r="all" onclick="setMasterRange('all',this)">전체</button>
         </div>
+
+        <!-- 3. 🔍 차트 확대 / 축소 / 리셋 컨트롤러 -->
+        <div class="zoom-btns">
+          <button class="zoom-btn" onclick="zoomCharts(0.75)" title="차트 확대 (마우스 휠 위로도 가능)">🔍➕ 확대</button>
+          <button class="zoom-btn" onclick="zoomCharts(1.33)" title="차트 축소 (마우스 휠 아래로도 가능)">🔍➖ 축소</button>
+          <button class="zoom-btn" onclick="resetZoom()" title="기본 배율로 리셋">🔄 리셋</button>
+        </div>
       </div>
     </div>
 
-    <!-- 심리지수 선 긋기 툴바 -->
+    <!-- 심리지수 선 긋기 툴바 (수직선 추가!) -->
     <div class="draw-toolbar" id="tbNsi">
       <div class="dt-group">
         <span class="dt-label">선긋기:</span>
         <button class="dt-btn active" onclick="setDrawTool('nsi','none',this)">👆 커서(십자선연동)</button>
         <button class="dt-btn" onclick="setDrawTool('nsi','trend',this)">✏️ 추세선</button>
         <button class="dt-btn" onclick="setDrawTool('nsi','horizontal',this)">📏 수평선</button>
+        <button class="dt-btn" onclick="setDrawTool('nsi','vertical',this)">📐 수직선</button>
       </div>
       <div class="dt-group">
         <span class="dt-label">색상:</span>
@@ -495,7 +517,7 @@ a:hover { text-decoration: underline; }
     <div class="chart-header">
       <div style="display:flex;align-items:center;gap:10px;">
         <span class="card-label" style="margin:0;">🕯️ [아래 차트 - 가격 지표] 코스피 종합주가 HTS 캔들 차트 (독립형)</span>
-        <span class="sync-badge">🔗 위 차트와 같은 날짜 표시</span>
+        <span class="sync-badge">🔗 위 차트와 같은 날짜 및 줌 동기화</span>
       </div>
       
       <div class="chart-controls">
@@ -508,13 +530,14 @@ a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- 코스피 캔들 선 긋기 툴바 -->
+    <!-- 코스피 캔들 선 긋기 툴바 (수직선 추가!) -->
     <div class="draw-toolbar" id="tbKospi">
       <div class="dt-group">
         <span class="dt-label">선긋기:</span>
         <button class="dt-btn active" onclick="setDrawTool('kospi','none',this)">👆 커서(십자선연동)</button>
         <button class="dt-btn" onclick="setDrawTool('kospi','trend',this)">✏️ 추세선</button>
         <button class="dt-btn" onclick="setDrawTool('kospi','horizontal',this)">📏 지지/저항 수평선</button>
+        <button class="dt-btn" onclick="setDrawTool('kospi','vertical',this)">📐 수직선</button>
       </div>
       <div class="dt-group">
         <span class="dt-label">색상:</span>
@@ -573,7 +596,7 @@ a:hover { text-decoration: underline; }
 <footer class="app-footer">
   ⚠️ 본 대시보드는 참고용이며, 투자 결정에 대한 책임은 투자자 본인에게 있습니다.<br>
   데이터 출처: 한국은행 경제통계시스템(ECOS) 통계코드 523Y001 · 네이버 금융 FChart OHLCV API<br>
-  뉴스심리지수 기준값 100 = 장기 평균 &nbsp;|&nbsp; 빨간 캔들 = 양봉(상승), 파란 캔들 = 음봉(하락)
+  뉴스심리지수 기준값 100 = 장기 평균 &nbsp;|&nbsp; 마우스 휠로 위아래 차트 동시 줌 인/아웃 가능
 </footer>
 
 <!-- Toast -->
@@ -604,6 +627,15 @@ const S = {
   masterTf: 'day',      // 'day' (일봉) or 'month' (월봉)
   masterRange: 'all',   // '1m', '3m', '6m', '12m', 'all'
 
+  // 🔍 줌 윈도우 상태 (동적 줌 인/아웃)
+  zoomWindow: {
+    isCustom: false,
+    nsiStart: 0,
+    nsiEnd: 0,
+    kospiStart: 0,
+    kospiEnd: 0
+  },
+
   nsiChart: null,
   kospiChart: null,
 
@@ -617,7 +649,7 @@ const S = {
 };
 
 // ========================================
-// ✏️ 선 긋기 상태 관리
+// ✏️ 선 긋기 상태 관리 (수직선 지원)
 // ========================================
 const drawState = {
   nsi: {
@@ -651,8 +683,13 @@ window.setDrawTool = function(target, tool, btn) {
     chart.options.plugins.tooltip.enabled = (tool === 'none');
   }
 
-  const name = (tool === 'none') ? '👆 커서 모드 (십자선 연동)' : (tool === 'trend' ? '✏️ 추세선 긋기' : '📏 수평선 긋기');
-  toast(`${name} 선택됨`);
+  const names = {
+    none: '👆 커서 모드 (십자선 연동)',
+    trend: '✏️ 추세선 긋기 (드래그)',
+    horizontal: '📏 수평선 긋기 (클릭)',
+    vertical: '📐 수직선 긋기 (클릭)'
+  };
+  toast(`${names[tool] || tool} 선택됨`);
 };
 
 window.setLineColor = function(target, color, btn) {
@@ -705,6 +742,7 @@ function makeUserLinesPlugin(target) {
         ctx.lineWidth = 2.2;
 
         if (line.type === 'horizontal') {
+          // 📏 수평선
           const yPx = y.getPixelForValue(line.val);
           if (yPx >= y.top && yPx <= y.bottom) {
             ctx.beginPath();
@@ -716,7 +754,27 @@ function makeUserLinesPlugin(target) {
             ctx.font = 'bold 11px sans-serif';
             ctx.fillText(Number(line.val).toFixed(target === 'kospi' ? 0 : 1), x.right - 44, yPx - 5);
           }
+        } else if (line.type === 'vertical') {
+          // 📐 수직선
+          const xPx = x.getPixelForValue(line.date);
+          if (!isNaN(xPx) && xPx >= x.left && xPx <= x.right) {
+            ctx.beginPath();
+            ctx.moveTo(xPx, y.top);
+            ctx.lineTo(xPx, y.bottom);
+            ctx.stroke();
+
+            // 날짜 배지
+            ctx.fillStyle = line.color;
+            ctx.font = 'bold 10px sans-serif';
+            const tw = ctx.measureText(line.date).width + 8;
+            ctx.fillRect(xPx - tw / 2, y.bottom + 2, tw, 15);
+            ctx.fillStyle = '#060b18';
+            ctx.textAlign = 'center';
+            ctx.fillText(line.date, xPx, y.bottom + 13);
+            ctx.textAlign = 'start';
+          }
         } else if (line.type === 'trend') {
+          // ✏️ 추세선
           const x1 = x.getPixelForValue(line.date1);
           const y1 = y.getPixelForValue(line.val1);
           const x2 = x.getPixelForValue(line.date2);
@@ -737,7 +795,7 @@ function makeUserLinesPlugin(target) {
         }
       }
 
-      // 2. 드래그 중인 임시 선
+      // 2. 드래그 중인 임시 선 (추세선 또는 수직선 프리뷰)
       if (ds.isDrawing && ds.preview) {
         ctx.strokeStyle = ds.color;
         ctx.lineWidth = 2;
@@ -760,7 +818,6 @@ function makeUserLinesPlugin(target) {
           ctx.lineTo(syncXPx, y.bottom);
           ctx.stroke();
 
-          // 날짜 라벨 배지 (하단 축에 표시)
           ctx.fillStyle = 'rgba(108, 92, 231, 0.85)';
           const textW = ctx.measureText(S.syncCrosshairDate).width + 12;
           ctx.fillRect(syncXPx - textW / 2, y.bottom + 2, textW, 16);
@@ -778,7 +835,7 @@ function makeUserLinesPlugin(target) {
 }
 
 // ========================================
-// 🖱️ 차트 이벤트 (선긋기 + 실시간 십자선 동기화)
+// 🖱️ 차트 이벤트 (선긋기 + 십자선 동기화)
 // ========================================
 function setupChartEvents(canvas, target, getChart) {
   function getPos(e) {
@@ -800,6 +857,7 @@ function setupChartEvents(canvas, target, getChart) {
 
     if (e.cancelable) e.preventDefault();
 
+    // 1. 수평선 클릭
     if (ds.tool === 'horizontal') {
       const yVal = y.getValueForPixel(pos.y);
       ds.lines.push({
@@ -814,6 +872,27 @@ function setupChartEvents(canvas, target, getChart) {
       return;
     }
 
+    // 2. 📐 수직선 클릭
+    if (ds.tool === 'vertical') {
+      const xIdx = Math.round(x.getValueForPixel(pos.x));
+      const labels = chart.data.labels;
+      const safeIdx = Math.max(0, Math.min(labels.length - 1, xIdx));
+      const date = labels[safeIdx];
+      if (date) {
+        ds.lines.push({
+          type: 'vertical',
+          date: date,
+          color: ds.color,
+          id: Date.now()
+        });
+        saveLines(target);
+        chart.render();
+        toast(`📐 수직선 생성 (${date})`);
+      }
+      return;
+    }
+
+    // 3. ✏️ 추세선 드래그 시작
     if (ds.tool === 'trend') {
       ds.isDrawing = true;
       const xIdx = Math.round(x.getValueForPixel(pos.x));
@@ -855,11 +934,9 @@ function setupChartEvents(canvas, target, getChart) {
         if (date && date !== S.syncCrosshairDate) {
           S.syncCrosshairDate = date;
 
-          // 두 차트 동시 재렌더링 (세로 점선 동기화)
           if (S.nsiChart) S.nsiChart.render();
           if (S.kospiChart) S.kospiChart.render();
 
-          // 반대편 차트 툴팁도 해당 날짜에 맞춰 트리거
           const otherChart = (target === 'nsi') ? S.kospiChart : S.nsiChart;
           if (otherChart) {
             const otherIdx = otherChart.data.labels.indexOf(date);
@@ -932,6 +1009,13 @@ function setupChartEvents(canvas, target, getChart) {
     }
   }
 
+  // 휠 이벤트 (줌 인 / 줌 아웃)
+  canvas.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const factor = (e.deltaY < 0) ? 0.75 : 1.33;
+    zoomCharts(factor);
+  }, { passive: false });
+
   canvas.addEventListener('mousedown', handleStart);
   window.addEventListener('mousemove', handleMove);
   window.addEventListener('mouseup', handleEnd);
@@ -976,13 +1060,11 @@ const htsCandlestickPlugin = {
       ctx.fillStyle = color;
       ctx.lineWidth = Math.max(1, candleW * 0.16);
 
-      // 꼬리 (심지 - High ~ Low)
       ctx.beginPath();
       ctx.moveTo(xPx, yHigh);
       ctx.lineTo(xPx, yLow);
       ctx.stroke();
 
-      // 몸통 (Body - Open ~ Close)
       const topY = Math.min(yOpen, yClose);
       const bodyH = Math.max(1.8, Math.abs(yClose - yOpen));
       ctx.fillRect(xPx - candleW / 2, topY, candleW, bodyH);
@@ -992,20 +1074,31 @@ const htsCandlestickPlugin = {
 };
 
 // ========================================
-// 🔗 동기화 계산 함수 (같은 시작 날짜로 슬라이스)
+// 🔗 동기화 계산 함수 (줌 상태 반영)
 // ========================================
 function computeSyncedRange() {
   const isDay = (S.masterTf === 'day');
-  const r = S.masterRange;
+  const zw = S.zoomWindow;
 
+  // 커스텀 줌 상태인 경우
+  if (zw.isCustom) {
+    return {
+      nsiStart: zw.nsiStart,
+      nsiEnd: zw.nsiEnd,
+      kospiStart: zw.kospiStart,
+      kospiEnd: zw.kospiEnd
+    };
+  }
+
+  // 기본 기간 버튼 상태
+  const r = S.masterRange;
   if (isDay) {
     if (r === 'all') {
-      return { nsiStart: 0, kospiStart: 0 };
+      return { nsiStart: 0, nsiEnd: S.raw.length, kospiStart: 0, kospiEnd: S.kospiDaily ? S.kospiDaily.candles.length : 0 };
     }
     const days = { ['1m']: 30, ['3m']: 90, ['6m']: 180, ['12m']: 365 }[r] || 90;
 
-    // 최신 날짜 기준 N일 전 캘린더 날짜 계산
-    const lastDateStr = S.raw[S.raw.length - 1].date; // YYYY-MM-DD
+    const lastDateStr = S.raw[S.raw.length - 1].date;
     const lastDate = new Date(lastDateStr);
     const cutoff = new Date(lastDate);
     cutoff.setDate(cutoff.getDate() - days);
@@ -1015,28 +1108,74 @@ function computeSyncedRange() {
     const kospiAll = S.kospiDaily ? S.kospiDaily.candles : [];
     const kospiStart = Math.max(0, kospiAll.findIndex(c => c.date >= cutoffStr));
 
-    return { nsiStart, kospiStart };
+    return { nsiStart, nsiEnd: S.raw.length, kospiStart, kospiEnd: kospiAll.length };
   } else {
     // 월봉 모드
-    if (r === 'all') return { nsiStart: 0, kospiStart: 0 };
+    const kospiAll = S.kospiMonthly ? S.kospiMonthly.candles : [];
+    if (r === 'all') {
+      return { nsiStart: 0, nsiEnd: S.raw.length, kospiStart: 0, kospiEnd: kospiAll.length };
+    }
     const months = { ['1m']: 6, ['3m']: 12, ['6m']: 24, ['12m']: 36 }[r] || 24;
 
-    const kospiAll = S.kospiMonthly ? S.kospiMonthly.candles : [];
     const kospiStart = Math.max(0, kospiAll.length - months);
     const cutoffDateStr = kospiAll[kospiStart] ? kospiAll[kospiStart].date : '';
-
     const nsiStart = cutoffDateStr ? Math.max(0, S.raw.findIndex(d => d.date >= cutoffDateStr)) : 0;
-    return { nsiStart, kospiStart };
+
+    return { nsiStart, nsiEnd: S.raw.length, kospiStart, kospiEnd: kospiAll.length };
   }
 }
+
+// ========================================
+// 🔍 차트 확대 / 축소 / 리셋 함수
+// ========================================
+window.zoomCharts = function(factor) {
+  const current = computeSyncedRange();
+  const isDay = (S.masterTf === 'day');
+  const kospiAll = (isDay ? S.kospiDaily : S.kospiMonthly).candles;
+
+  // NSI 줌 계산
+  const nsiTotal = S.raw.length;
+  const nsiLen = current.nsiEnd - current.nsiStart;
+  const newNsiLen = Math.max(10, Math.min(nsiTotal, Math.round(nsiLen * factor)));
+  const nsiDiff = nsiLen - newNsiLen;
+  const newNsiStart = Math.max(0, Math.min(nsiTotal - newNsiLen, current.nsiStart + Math.round(nsiDiff)));
+  const newNsiEnd = Math.min(nsiTotal, newNsiStart + newNsiLen);
+
+  // KOSPI 줌 계산
+  const kospiTotal = kospiAll.length;
+  const kospiLen = current.kospiEnd - current.kospiStart;
+  const newKospiLen = Math.max(8, Math.min(kospiTotal, Math.round(kospiLen * factor)));
+  const kospiDiff = kospiLen - newKospiLen;
+  const newKospiStart = Math.max(0, Math.min(kospiTotal - newKospiLen, current.kospiStart + Math.round(kospiDiff)));
+  const newKospiEnd = Math.min(kospiTotal, newKospiStart + newKospiLen);
+
+  S.zoomWindow = {
+    isCustom: true,
+    nsiStart: newNsiStart,
+    nsiEnd: newNsiEnd,
+    kospiStart: newKospiStart,
+    kospiEnd: newKospiEnd
+  };
+
+  renderNsiChart();
+  renderKospiChart();
+  toast(factor < 1 ? '🔍➕ 차트 확대' : '🔍➖ 차트 축소');
+};
+
+window.resetZoom = function() {
+  S.zoomWindow.isCustom = false;
+  renderNsiChart();
+  renderKospiChart();
+  toast('🔄 기본 배율로 리셋 완료');
+};
 
 // ========================================
 // [위 차트] 뉴스심리지수 렌더링
 // ========================================
 function renderNsiChart(){
-  const { nsiStart } = computeSyncedRange();
-  const sd = S.raw.slice(nsiStart);
-  const sma = S.ma.slice(nsiStart);
+  const { nsiStart, nsiEnd } = computeSyncedRange();
+  const sd = S.raw.slice(nsiStart, nsiEnd);
+  const sma = S.ma.slice(nsiStart, nsiEnd);
   const labels = sd.map(x => x.date);
   const vals = sd.map(x => x.value);
 
@@ -1107,15 +1246,15 @@ function renderKospiChart(){
   const source = isDay ? S.kospiDaily : S.kospiMonthly;
   if (!source || !source.candles || source.candles.length === 0) return;
 
-  const { kospiStart } = computeSyncedRange();
+  const { kospiStart, kospiEnd } = computeSyncedRange();
   const allCandles = source.candles;
-  const candles = allCandles.slice(kospiStart);
+  const candles = allCandles.slice(kospiStart, kospiEnd);
   const labels = candles.map(c => c.date);
   const closes = candles.map(c => c.close);
 
-  const ma1 = (isDay ? source.ma20 : source.ma5).slice(kospiStart);
-  const ma2 = (isDay ? source.ma60 : source.ma20).slice(kospiStart);
-  const ma3 = (isDay ? source.ma120 : source.ma60).slice(kospiStart);
+  const ma1 = (isDay ? source.ma20 : source.ma5).slice(kospiStart, kospiEnd);
+  const ma2 = (isDay ? source.ma60 : source.ma20).slice(kospiStart, kospiEnd);
+  const ma3 = (isDay ? source.ma120 : source.ma60).slice(kospiStart, kospiEnd);
 
   const ma1Label = isDay ? '20일선' : '5월선';
   const ma2Label = isDay ? '60일선' : '20월선';
@@ -1244,14 +1383,14 @@ function renderKospiChart(){
 }
 
 // ========================================
-// 🌟 마스터 제어기 함수 (두 차트 동시 제어)
+// 🌟 마스터 제어기 함수
 // ========================================
 window.setMasterTimeframe = function(tf, btn){
   S.masterTf = tf;
+  S.zoomWindow.isCustom = false;
   $('tabDaily').classList.toggle('active', tf === 'day');
   $('tabMonthly').classList.toggle('active', tf === 'month');
 
-  // 두 차트 동시 렌더링
   renderNsiChart();
   renderKospiChart();
   toast(tf === 'day' ? '☀️ 전체 차트 일봉 모드 동기화' : '🌙 전체 차트 월봉 모드 동기화');
@@ -1259,10 +1398,10 @@ window.setMasterTimeframe = function(tf, btn){
 
 window.setMasterRange = function(r, btn){
   S.masterRange = r;
+  S.zoomWindow.isCustom = false;
   $('elMasterRangeBtns').querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  // 두 차트 동시 렌더링 (같은 시작일로 즉시 동기화!)
   renderNsiChart();
   renderKospiChart();
 
@@ -1442,7 +1581,7 @@ async function loadData(){
     renderInd();
 
     $('elUpdate').textContent = '갱신: ' + (json.updatedAt || new Date().toLocaleString('ko-KR'));
-    toast('✅ 완전 동기화 대시보드 로드 완료!');
+    toast('✅ 확대/축소 및 수직선 툴 탑재 완료!');
   }catch(err){
     console.error(err);
     toast('⚠️ 데이터 로딩 실패, 로컬 데이터를 확인해주세요.');
