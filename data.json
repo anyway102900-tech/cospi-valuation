@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-15 08:35:55",
-  "source": "한국은행 ECOS 및 네이버 금융 공식 데이터",
+  "updatedAt": "2026-11-15 23:39:25",
+  "source": "한국은행 ECOS (통계표 523Y001, 802Y001) 및 네이버 금융 공식 데이터",
   "trend": "down",
   "zone": "undervalued",
   "latestValue": 89.05,
@@ -15209,5 +15209,5147 @@
       null,
       3395.74
     ]
+  },
+  "foreignDaily": [
+    {
+      "date": "2024-01-02",
+      "rawDate": "20240102",
+      "netBuy": 2282.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 7214.7
+    },
+    {
+      "date": "2024-01-03",
+      "rawDate": "20240103",
+      "netBuy": -973.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 7044.4
+    },
+    {
+      "date": "2024-01-04",
+      "rawDate": "20240104",
+      "netBuy": 1149.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6995.1
+    },
+    {
+      "date": "2024-01-05",
+      "rawDate": "20240105",
+      "netBuy": -510.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6972.5
+    },
+    {
+      "date": "2024-01-08",
+      "rawDate": "20240108",
+      "netBuy": 1700.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6946.2
+    },
+    {
+      "date": "2024-01-09",
+      "rawDate": "20240109",
+      "netBuy": 656.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6927.1
+    },
+    {
+      "date": "2024-01-10",
+      "rawDate": "20240110",
+      "netBuy": -238.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6873.2
+    },
+    {
+      "date": "2024-01-11",
+      "rawDate": "20240111",
+      "netBuy": 22962.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6870.0
+    },
+    {
+      "date": "2024-01-12",
+      "rawDate": "20240112",
+      "netBuy": -2119.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6881.0
+    },
+    {
+      "date": "2024-01-15",
+      "rawDate": "20240115",
+      "netBuy": -498.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6882.8
+    },
+    {
+      "date": "2024-01-16",
+      "rawDate": "20240116",
+      "netBuy": -1839.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6804.5
+    },
+    {
+      "date": "2024-01-17",
+      "rawDate": "20240117",
+      "netBuy": -9056.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6637.3
+    },
+    {
+      "date": "2024-01-18",
+      "rawDate": "20240118",
+      "netBuy": -1326.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6648.2
+    },
+    {
+      "date": "2024-01-19",
+      "rawDate": "20240119",
+      "netBuy": 7028.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6741.3
+    },
+    {
+      "date": "2024-01-22",
+      "rawDate": "20240122",
+      "netBuy": 3001.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6719.0
+    },
+    {
+      "date": "2024-01-23",
+      "rawDate": "20240123",
+      "netBuy": 1411.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6758.2
+    },
+    {
+      "date": "2024-01-24",
+      "rawDate": "20240124",
+      "netBuy": 726.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6735.4
+    },
+    {
+      "date": "2024-01-25",
+      "rawDate": "20240125",
+      "netBuy": 457.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6734.3
+    },
+    {
+      "date": "2024-01-26",
+      "rawDate": "20240126",
+      "netBuy": 3789.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6756.0
+    },
+    {
+      "date": "2024-01-29",
+      "rawDate": "20240129",
+      "netBuy": 5468.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6839.0
+    },
+    {
+      "date": "2024-01-30",
+      "rawDate": "20240130",
+      "netBuy": -134.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6833.3
+    },
+    {
+      "date": "2024-01-31",
+      "rawDate": "20240131",
+      "netBuy": 892.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6824.1
+    },
+    {
+      "date": "2024-02-01",
+      "rawDate": "20240201",
+      "netBuy": 10452.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6949.8
+    },
+    {
+      "date": "2024-02-02",
+      "rawDate": "20240202",
+      "netBuy": 19344.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7150.5
+    },
+    {
+      "date": "2024-02-05",
+      "rawDate": "20240205",
+      "netBuy": 1795.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7088.5
+    },
+    {
+      "date": "2024-02-06",
+      "rawDate": "20240206",
+      "netBuy": 3378.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7048.2
+    },
+    {
+      "date": "2024-02-07",
+      "rawDate": "20240207",
+      "netBuy": 5390.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7143.3
+    },
+    {
+      "date": "2024-02-08",
+      "rawDate": "20240208",
+      "netBuy": 4113.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7172.7
+    },
+    {
+      "date": "2024-02-13",
+      "rawDate": "20240213",
+      "netBuy": 9608.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7257.9
+    },
+    {
+      "date": "2024-02-14",
+      "rawDate": "20240214",
+      "netBuy": 1077.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7180.3
+    },
+    {
+      "date": "2024-02-15",
+      "rawDate": "20240215",
+      "netBuy": -93.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7159.0
+    },
+    {
+      "date": "2024-02-16",
+      "rawDate": "20240216",
+      "netBuy": 5643.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7256.0
+    },
+    {
+      "date": "2024-02-19",
+      "rawDate": "20240219",
+      "netBuy": 6158.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7341.8
+    },
+    {
+      "date": "2024-02-20",
+      "rawDate": "20240220",
+      "netBuy": 1081.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7282.2
+    },
+    {
+      "date": "2024-02-21",
+      "rawDate": "20240221",
+      "netBuy": -648.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7269.9
+    },
+    {
+      "date": "2024-02-22",
+      "rawDate": "20240222",
+      "netBuy": 1694.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7299.3
+    },
+    {
+      "date": "2024-02-23",
+      "rawDate": "20240223",
+      "netBuy": 1465.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7308.6
+    },
+    {
+      "date": "2024-02-26",
+      "rawDate": "20240226",
+      "netBuy": 1192.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7249.1
+    },
+    {
+      "date": "2024-02-27",
+      "rawDate": "20240227",
+      "netBuy": 359.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7196.3
+    },
+    {
+      "date": "2024-02-28",
+      "rawDate": "20240228",
+      "netBuy": 4779.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7269.8
+    },
+    {
+      "date": "2024-02-29",
+      "rawDate": "20240229",
+      "netBuy": 1795.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7250.5
+    },
+    {
+      "date": "2024-03-04",
+      "rawDate": "20240304",
+      "netBuy": 7702.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7337.3
+    },
+    {
+      "date": "2024-03-05",
+      "rawDate": "20240305",
+      "netBuy": 855.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7269.0
+    },
+    {
+      "date": "2024-03-06",
+      "rawDate": "20240306",
+      "netBuy": -3774.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7243.8
+    },
+    {
+      "date": "2024-03-07",
+      "rawDate": "20240307",
+      "netBuy": -3246.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7259.4
+    },
+    {
+      "date": "2024-03-08",
+      "rawDate": "20240308",
+      "netBuy": 1821.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7348.2
+    },
+    {
+      "date": "2024-03-11",
+      "rawDate": "20240311",
+      "netBuy": -1062.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7289.4
+    },
+    {
+      "date": "2024-03-12",
+      "rawDate": "20240312",
+      "netBuy": -3723.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7348.6
+    },
+    {
+      "date": "2024-03-13",
+      "rawDate": "20240313",
+      "netBuy": 3348.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7382.4
+    },
+    {
+      "date": "2024-03-14",
+      "rawDate": "20240314",
+      "netBuy": 4726.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7452.0
+    },
+    {
+      "date": "2024-03-15",
+      "rawDate": "20240315",
+      "netBuy": -10355.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7306.5
+    },
+    {
+      "date": "2024-03-18",
+      "rawDate": "20240318",
+      "netBuy": -869.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7357.4
+    },
+    {
+      "date": "2024-03-19",
+      "rawDate": "20240319",
+      "netBuy": -2414.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7276.0
+    },
+    {
+      "date": "2024-03-20",
+      "rawDate": "20240320",
+      "netBuy": 8538.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7373.4
+    },
+    {
+      "date": "2024-03-21",
+      "rawDate": "20240321",
+      "netBuy": 18783.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7554.3
+    },
+    {
+      "date": "2024-03-22",
+      "rawDate": "20240322",
+      "netBuy": 6668.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7541.0
+    },
+    {
+      "date": "2024-03-25",
+      "rawDate": "20240325",
+      "netBuy": -433.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7508.7
+    },
+    {
+      "date": "2024-03-26",
+      "rawDate": "20240326",
+      "netBuy": 6230.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7568.7
+    },
+    {
+      "date": "2024-03-27",
+      "rawDate": "20240327",
+      "netBuy": 2929.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7564.5
+    },
+    {
+      "date": "2024-03-28",
+      "rawDate": "20240328",
+      "netBuy": 735.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7540.4
+    },
+    {
+      "date": "2024-03-29",
+      "rawDate": "20240329",
+      "netBuy": 7823.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7544.4
+    },
+    {
+      "date": "2024-04-01",
+      "rawDate": "20240401",
+      "netBuy": 2707.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7546.5
+    },
+    {
+      "date": "2024-04-02",
+      "rawDate": "20240402",
+      "netBuy": 10065.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7567.6
+    },
+    {
+      "date": "2024-04-03",
+      "rawDate": "20240403",
+      "netBuy": 5.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7439.6
+    },
+    {
+      "date": "2024-04-04",
+      "rawDate": "20240404",
+      "netBuy": 5864.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7537.9
+    },
+    {
+      "date": "2024-04-05",
+      "rawDate": "20240405",
+      "netBuy": -1131.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7461.7
+    },
+    {
+      "date": "2024-04-08",
+      "rawDate": "20240408",
+      "netBuy": 2061.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7471.7
+    },
+    {
+      "date": "2024-04-09",
+      "rawDate": "20240409",
+      "netBuy": 3036.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7435.7
+    },
+    {
+      "date": "2024-04-11",
+      "rawDate": "20240411",
+      "netBuy": 10651.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7444.4
+    },
+    {
+      "date": "2024-04-12",
+      "rawDate": "20240412",
+      "netBuy": 146.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7374.8
+    },
+    {
+      "date": "2024-04-15",
+      "rawDate": "20240415",
+      "netBuy": -2381.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7340.7
+    },
+    {
+      "date": "2024-04-16",
+      "rawDate": "20240416",
+      "netBuy": -2703.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7171.9
+    },
+    {
+      "date": "2024-04-17",
+      "rawDate": "20240417",
+      "netBuy": -1692.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7102.8
+    },
+    {
+      "date": "2024-04-18",
+      "rawDate": "20240418",
+      "netBuy": 5746.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7237.9
+    },
+    {
+      "date": "2024-04-19",
+      "rawDate": "20240419",
+      "netBuy": -3489.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7120.9
+    },
+    {
+      "date": "2024-04-22",
+      "rawDate": "20240422",
+      "netBuy": -7504.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7218.5
+    },
+    {
+      "date": "2024-04-23",
+      "rawDate": "20240423",
+      "netBuy": -253.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7199.9
+    },
+    {
+      "date": "2024-04-24",
+      "rawDate": "20240424",
+      "netBuy": 4924.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7345.2
+    },
+    {
+      "date": "2024-04-25",
+      "rawDate": "20240425",
+      "netBuy": -2892.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7216.3
+    },
+    {
+      "date": "2024-04-26",
+      "rawDate": "20240426",
+      "netBuy": 4731.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7291.0
+    },
+    {
+      "date": "2024-04-29",
+      "rawDate": "20240429",
+      "netBuy": 3452.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7376.3
+    },
+    {
+      "date": "2024-04-30",
+      "rawDate": "20240430",
+      "netBuy": 2384.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7390.5
+    },
+    {
+      "date": "2024-05-02",
+      "rawDate": "20240502",
+      "netBuy": 27.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7367.0
+    },
+    {
+      "date": "2024-05-03",
+      "rawDate": "20240503",
+      "netBuy": 945.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7346.8
+    },
+    {
+      "date": "2024-05-07",
+      "rawDate": "20240507",
+      "netBuy": 11155.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7507.6
+    },
+    {
+      "date": "2024-05-08",
+      "rawDate": "20240508",
+      "netBuy": 4001.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7560.8
+    },
+    {
+      "date": "2024-05-09",
+      "rawDate": "20240509",
+      "netBuy": -3587.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7469.0
+    },
+    {
+      "date": "2024-05-10",
+      "rawDate": "20240510",
+      "netBuy": 1483.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7502.3
+    },
+    {
+      "date": "2024-05-13",
+      "rawDate": "20240513",
+      "netBuy": 201.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7501.5
+    },
+    {
+      "date": "2024-05-14",
+      "rawDate": "20240514",
+      "netBuy": 845.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7507.8
+    },
+    {
+      "date": "2024-05-16",
+      "rawDate": "20240516",
+      "netBuy": 4257.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7569.8
+    },
+    {
+      "date": "2024-05-17",
+      "rawDate": "20240517",
+      "netBuy": -2415.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7493.0
+    },
+    {
+      "date": "2024-05-20",
+      "rawDate": "20240520",
+      "netBuy": -161.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7540.6
+    },
+    {
+      "date": "2024-05-21",
+      "rawDate": "20240521",
+      "netBuy": -1066.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7491.5
+    },
+    {
+      "date": "2024-05-22",
+      "rawDate": "20240522",
+      "netBuy": 2941.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7491.9
+    },
+    {
+      "date": "2024-05-23",
+      "rawDate": "20240523",
+      "netBuy": 3618.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7488.2
+    },
+    {
+      "date": "2024-05-24",
+      "rawDate": "20240524",
+      "netBuy": -3135.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7391.9
+    },
+    {
+      "date": "2024-05-27",
+      "rawDate": "20240527",
+      "netBuy": -1367.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7487.3
+    },
+    {
+      "date": "2024-05-28",
+      "rawDate": "20240528",
+      "netBuy": 442.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7487.1
+    },
+    {
+      "date": "2024-05-29",
+      "rawDate": "20240529",
+      "netBuy": -10274.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7359.4
+    },
+    {
+      "date": "2024-05-30",
+      "rawDate": "20240530",
+      "netBuy": -7849.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7244.7
+    },
+    {
+      "date": "2024-05-31",
+      "rawDate": "20240531",
+      "netBuy": -13369.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7244.8
+    },
+    {
+      "date": "2024-06-03",
+      "rawDate": "20240603",
+      "netBuy": 1890.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7372.1
+    },
+    {
+      "date": "2024-06-04",
+      "rawDate": "20240604",
+      "netBuy": -2113.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7314.9
+    },
+    {
+      "date": "2024-06-05",
+      "rawDate": "20240605",
+      "netBuy": 5916.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7392.9
+    },
+    {
+      "date": "2024-06-07",
+      "rawDate": "20240607",
+      "netBuy": 2861.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7481.7
+    },
+    {
+      "date": "2024-06-10",
+      "rawDate": "20240610",
+      "netBuy": 170.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7423.6
+    },
+    {
+      "date": "2024-06-11",
+      "rawDate": "20240611",
+      "netBuy": -2240.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7433.2
+    },
+    {
+      "date": "2024-06-12",
+      "rawDate": "20240612",
+      "netBuy": 2342.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7494.7
+    },
+    {
+      "date": "2024-06-13",
+      "rawDate": "20240613",
+      "netBuy": 15449.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7570.9
+    },
+    {
+      "date": "2024-06-14",
+      "rawDate": "20240614",
+      "netBuy": 7315.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7584.2
+    },
+    {
+      "date": "2024-06-17",
+      "rawDate": "20240617",
+      "netBuy": -1374.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7540.7
+    },
+    {
+      "date": "2024-06-18",
+      "rawDate": "20240618",
+      "netBuy": 6493.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7595.6
+    },
+    {
+      "date": "2024-06-19",
+      "rawDate": "20240619",
+      "netBuy": 2757.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7686.6
+    },
+    {
+      "date": "2024-06-20",
+      "rawDate": "20240620",
+      "netBuy": 4966.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7717.3
+    },
+    {
+      "date": "2024-06-21",
+      "rawDate": "20240621",
+      "netBuy": -3424.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7651.7
+    },
+    {
+      "date": "2024-06-24",
+      "rawDate": "20240624",
+      "netBuy": -5299.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7606.2
+    },
+    {
+      "date": "2024-06-25",
+      "rawDate": "20240625",
+      "netBuy": 610.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7632.4
+    },
+    {
+      "date": "2024-06-26",
+      "rawDate": "20240626",
+      "netBuy": 4335.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7680.4
+    },
+    {
+      "date": "2024-06-27",
+      "rawDate": "20240627",
+      "netBuy": 5136.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7661.7
+    },
+    {
+      "date": "2024-06-28",
+      "rawDate": "20240628",
+      "netBuy": 322.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7697.0
+    },
+    {
+      "date": "2024-07-01",
+      "rawDate": "20240701",
+      "netBuy": -633.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7716.3
+    },
+    {
+      "date": "2024-07-02",
+      "rawDate": "20240702",
+      "netBuy": -333.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7651.6
+    },
+    {
+      "date": "2024-07-03",
+      "rawDate": "20240703",
+      "netBuy": 1014.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7689.4
+    },
+    {
+      "date": "2024-07-04",
+      "rawDate": "20240704",
+      "netBuy": 3218.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7776.2
+    },
+    {
+      "date": "2024-07-05",
+      "rawDate": "20240705",
+      "netBuy": 13130.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7882.1
+    },
+    {
+      "date": "2024-07-08",
+      "rawDate": "20240708",
+      "netBuy": 5284.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7872.7
+    },
+    {
+      "date": "2024-07-09",
+      "rawDate": "20240709",
+      "netBuy": 3274.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7887.6
+    },
+    {
+      "date": "2024-07-10",
+      "rawDate": "20240710",
+      "netBuy": 5269.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7891.9
+    },
+    {
+      "date": "2024-07-11",
+      "rawDate": "20240711",
+      "netBuy": 6105.0,
+      "ratio": 33.72,
+      "foreignHoldingVal": 7969.4
+    },
+    {
+      "date": "2024-07-12",
+      "rawDate": "20240712",
+      "netBuy": -5501.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7853.6
+    },
+    {
+      "date": "2024-07-15",
+      "rawDate": "20240715",
+      "netBuy": -770.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7870.4
+    },
+    {
+      "date": "2024-07-16",
+      "rawDate": "20240716",
+      "netBuy": 1883.0,
+      "ratio": 33.72,
+      "foreignHoldingVal": 7884.1
+    },
+    {
+      "date": "2024-07-17",
+      "rawDate": "20240717",
+      "netBuy": -2566.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7822.7
+    },
+    {
+      "date": "2024-07-18",
+      "rawDate": "20240718",
+      "netBuy": -3495.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7770.5
+    },
+    {
+      "date": "2024-07-19",
+      "rawDate": "20240719",
+      "netBuy": -4202.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7689.2
+    },
+    {
+      "date": "2024-07-22",
+      "rawDate": "20240722",
+      "netBuy": -854.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7603.8
+    },
+    {
+      "date": "2024-07-23",
+      "rawDate": "20240723",
+      "netBuy": 2470.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7636.0
+    },
+    {
+      "date": "2024-07-24",
+      "rawDate": "20240724",
+      "netBuy": -2635.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7590.3
+    },
+    {
+      "date": "2024-07-25",
+      "rawDate": "20240725",
+      "netBuy": -6767.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7456.9
+    },
+    {
+      "date": "2024-07-26",
+      "rawDate": "20240726",
+      "netBuy": -473.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7513.1
+    },
+    {
+      "date": "2024-07-29",
+      "rawDate": "20240729",
+      "netBuy": 4474.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7609.5
+    },
+    {
+      "date": "2024-07-30",
+      "rawDate": "20240730",
+      "netBuy": -2449.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7535.1
+    },
+    {
+      "date": "2024-07-31",
+      "rawDate": "20240731",
+      "netBuy": 1493.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7627.6
+    },
+    {
+      "date": "2024-08-01",
+      "rawDate": "20240801",
+      "netBuy": 4410.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7646.9
+    },
+    {
+      "date": "2024-08-02",
+      "rawDate": "20240802",
+      "netBuy": -8479.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7380.9
+    },
+    {
+      "date": "2024-08-05",
+      "rawDate": "20240805",
+      "netBuy": -15238.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 6732.2
+    },
+    {
+      "date": "2024-08-06",
+      "rawDate": "20240806",
+      "netBuy": -1742.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 6954.2
+    },
+    {
+      "date": "2024-08-07",
+      "rawDate": "20240807",
+      "netBuy": -187.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7084.1
+    },
+    {
+      "date": "2024-08-08",
+      "rawDate": "20240808",
+      "netBuy": -5196.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7049.3
+    },
+    {
+      "date": "2024-08-09",
+      "rawDate": "20240809",
+      "netBuy": 2.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7137.2
+    },
+    {
+      "date": "2024-08-12",
+      "rawDate": "20240812",
+      "netBuy": 785.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7219.1
+    },
+    {
+      "date": "2024-08-13",
+      "rawDate": "20240813",
+      "netBuy": 1333.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7229.3
+    },
+    {
+      "date": "2024-08-14",
+      "rawDate": "20240814",
+      "netBuy": 3918.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7294.8
+    },
+    {
+      "date": "2024-08-16",
+      "rawDate": "20240816",
+      "netBuy": 12108.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7444.7
+    },
+    {
+      "date": "2024-08-19",
+      "rawDate": "20240819",
+      "netBuy": -1196.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7380.4
+    },
+    {
+      "date": "2024-08-20",
+      "rawDate": "20240820",
+      "netBuy": 2929.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7438.4
+    },
+    {
+      "date": "2024-08-21",
+      "rawDate": "20240821",
+      "netBuy": 311.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7450.6
+    },
+    {
+      "date": "2024-08-22",
+      "rawDate": "20240822",
+      "netBuy": 687.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7467.0
+    },
+    {
+      "date": "2024-08-23",
+      "rawDate": "20240823",
+      "netBuy": -2952.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7451.2
+    },
+    {
+      "date": "2024-08-26",
+      "rawDate": "20240826",
+      "netBuy": -4667.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7436.4
+    },
+    {
+      "date": "2024-08-27",
+      "rawDate": "20240827",
+      "netBuy": -4075.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7412.2
+    },
+    {
+      "date": "2024-08-28",
+      "rawDate": "20240828",
+      "netBuy": -3435.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7415.6
+    },
+    {
+      "date": "2024-08-29",
+      "rawDate": "20240829",
+      "netBuy": -4208.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7339.9
+    },
+    {
+      "date": "2024-08-30",
+      "rawDate": "20240830",
+      "netBuy": -3790.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7370.5
+    },
+    {
+      "date": "2024-09-02",
+      "rawDate": "20240902",
+      "netBuy": 2387.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7388.3
+    },
+    {
+      "date": "2024-09-03",
+      "rawDate": "20240903",
+      "netBuy": -2907.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7339.7
+    },
+    {
+      "date": "2024-09-04",
+      "rawDate": "20240904",
+      "netBuy": -9888.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7107.4
+    },
+    {
+      "date": "2024-09-05",
+      "rawDate": "20240905",
+      "netBuy": -5858.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7087.6
+    },
+    {
+      "date": "2024-09-06",
+      "rawDate": "20240906",
+      "netBuy": -2661.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7003.7
+    },
+    {
+      "date": "2024-09-09",
+      "rawDate": "20240909",
+      "netBuy": -5422.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 6978.9
+    },
+    {
+      "date": "2024-09-10",
+      "rawDate": "20240910",
+      "netBuy": -6708.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 6944.1
+    },
+    {
+      "date": "2024-09-11",
+      "rawDate": "20240911",
+      "netBuy": -10351.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 6909.9
+    },
+    {
+      "date": "2024-09-12",
+      "rawDate": "20240912",
+      "netBuy": 2782.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7068.9
+    },
+    {
+      "date": "2024-09-13",
+      "rawDate": "20240913",
+      "netBuy": -9577.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7075.5
+    },
+    {
+      "date": "2024-09-19",
+      "rawDate": "20240919",
+      "netBuy": -11756.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7090.4
+    },
+    {
+      "date": "2024-09-20",
+      "rawDate": "20240920",
+      "netBuy": -337.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7125.6
+    },
+    {
+      "date": "2024-09-23",
+      "rawDate": "20240923",
+      "netBuy": -7023.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7145.9
+    },
+    {
+      "date": "2024-09-24",
+      "rawDate": "20240924",
+      "netBuy": -3773.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7225.4
+    },
+    {
+      "date": "2024-09-25",
+      "rawDate": "20240925",
+      "netBuy": -5701.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7131.4
+    },
+    {
+      "date": "2024-09-26",
+      "rawDate": "20240926",
+      "netBuy": 4953.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7334.9
+    },
+    {
+      "date": "2024-09-27",
+      "rawDate": "20240927",
+      "netBuy": 2659.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7280.3
+    },
+    {
+      "date": "2024-09-30",
+      "rawDate": "20240930",
+      "netBuy": -10032.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7121.6
+    },
+    {
+      "date": "2024-10-02",
+      "rawDate": "20241002",
+      "netBuy": -3074.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7038.1
+    },
+    {
+      "date": "2024-10-04",
+      "rawDate": "20241004",
+      "netBuy": 428.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7058.5
+    },
+    {
+      "date": "2024-10-07",
+      "rawDate": "20241007",
+      "netBuy": 292.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7168.3
+    },
+    {
+      "date": "2024-10-08",
+      "rawDate": "20241008",
+      "netBuy": -3810.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7121.7
+    },
+    {
+      "date": "2024-10-10",
+      "rawDate": "20241010",
+      "netBuy": 1626.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7130.6
+    },
+    {
+      "date": "2024-10-11",
+      "rawDate": "20241011",
+      "netBuy": -5991.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7123.7
+    },
+    {
+      "date": "2024-10-14",
+      "rawDate": "20241014",
+      "netBuy": 915.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7196.3
+    },
+    {
+      "date": "2024-10-15",
+      "rawDate": "20241015",
+      "netBuy": 2904.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7226.4
+    },
+    {
+      "date": "2024-10-16",
+      "rawDate": "20241016",
+      "netBuy": -6597.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7165.1
+    },
+    {
+      "date": "2024-10-17",
+      "rawDate": "20241017",
+      "netBuy": -4049.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7158.4
+    },
+    {
+      "date": "2024-10-18",
+      "rawDate": "20241018",
+      "netBuy": -4785.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7117.1
+    },
+    {
+      "date": "2024-10-21",
+      "rawDate": "20241021",
+      "netBuy": 221.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7148.1
+    },
+    {
+      "date": "2024-10-22",
+      "rawDate": "20241022",
+      "netBuy": -2814.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7054.0
+    },
+    {
+      "date": "2024-10-23",
+      "rawDate": "20241023",
+      "netBuy": 2116.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7135.3
+    },
+    {
+      "date": "2024-10-24",
+      "rawDate": "20241024",
+      "netBuy": -6074.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7078.6
+    },
+    {
+      "date": "2024-10-25",
+      "rawDate": "20241025",
+      "netBuy": -3909.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7083.6
+    },
+    {
+      "date": "2024-10-28",
+      "rawDate": "20241028",
+      "netBuy": -1283.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7164.9
+    },
+    {
+      "date": "2024-10-29",
+      "rawDate": "20241029",
+      "netBuy": -1177.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7180.2
+    },
+    {
+      "date": "2024-10-30",
+      "rawDate": "20241030",
+      "netBuy": -3357.0,
+      "ratio": 33.64,
+      "foreignHoldingVal": 7113.4
+    },
+    {
+      "date": "2024-10-31",
+      "rawDate": "20241031",
+      "netBuy": -8583.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7008.7
+    },
+    {
+      "date": "2024-11-01",
+      "rawDate": "20241101",
+      "netBuy": -390.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 6971.2
+    },
+    {
+      "date": "2024-11-04",
+      "rawDate": "20241104",
+      "netBuy": 297.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7097.5
+    },
+    {
+      "date": "2024-11-05",
+      "rawDate": "20241105",
+      "netBuy": -1444.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7063.4
+    },
+    {
+      "date": "2024-11-06",
+      "rawDate": "20241106",
+      "netBuy": -1031.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7026.1
+    },
+    {
+      "date": "2024-11-07",
+      "rawDate": "20241107",
+      "netBuy": 1046.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7028.9
+    },
+    {
+      "date": "2024-11-08",
+      "rawDate": "20241108",
+      "netBuy": -132.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7020.1
+    },
+    {
+      "date": "2024-11-11",
+      "rawDate": "20241111",
+      "netBuy": -4817.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 6938.1
+    },
+    {
+      "date": "2024-11-12",
+      "rawDate": "20241112",
+      "netBuy": -3064.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 6802.1
+    },
+    {
+      "date": "2024-11-13",
+      "rawDate": "20241113",
+      "netBuy": -6308.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 6626.6
+    },
+    {
+      "date": "2024-11-14",
+      "rawDate": "20241114",
+      "netBuy": -2333.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 6632.9
+    },
+    {
+      "date": "2024-11-15",
+      "rawDate": "20241115",
+      "netBuy": -595.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6635.9
+    },
+    {
+      "date": "2024-11-18",
+      "rawDate": "20241118",
+      "netBuy": -530.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6783.4
+    },
+    {
+      "date": "2024-11-19",
+      "rawDate": "20241119",
+      "netBuy": -3300.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6789.0
+    },
+    {
+      "date": "2024-11-20",
+      "rawDate": "20241120",
+      "netBuy": -1823.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6835.8
+    },
+    {
+      "date": "2024-11-21",
+      "rawDate": "20241121",
+      "netBuy": -2593.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6834.5
+    },
+    {
+      "date": "2024-11-22",
+      "rawDate": "20241122",
+      "netBuy": 1175.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6888.7
+    },
+    {
+      "date": "2024-11-25",
+      "rawDate": "20241125",
+      "netBuy": -747.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6976.7
+    },
+    {
+      "date": "2024-11-26",
+      "rawDate": "20241126",
+      "netBuy": -690.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6940.6
+    },
+    {
+      "date": "2024-11-27",
+      "rawDate": "20241127",
+      "netBuy": -3349.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6888.8
+    },
+    {
+      "date": "2024-11-28",
+      "rawDate": "20241128",
+      "netBuy": -4919.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6892.6
+    },
+    {
+      "date": "2024-11-29",
+      "rawDate": "20241129",
+      "netBuy": -7494.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6761.0
+    },
+    {
+      "date": "2024-12-02",
+      "rawDate": "20241202",
+      "netBuy": -1309.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6755.1
+    },
+    {
+      "date": "2024-12-03",
+      "rawDate": "20241203",
+      "netBuy": 5655.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6878.5
+    },
+    {
+      "date": "2024-12-04",
+      "rawDate": "20241204",
+      "netBuy": -4071.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6779.5
+    },
+    {
+      "date": "2024-12-05",
+      "rawDate": "20241205",
+      "netBuy": -3174.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6720.0
+    },
+    {
+      "date": "2024-12-06",
+      "rawDate": "20241206",
+      "netBuy": -2841.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6683.4
+    },
+    {
+      "date": "2024-12-09",
+      "rawDate": "20241209",
+      "netBuy": 1027.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6497.5
+    },
+    {
+      "date": "2024-12-10",
+      "rawDate": "20241210",
+      "netBuy": -1047.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6654.0
+    },
+    {
+      "date": "2024-12-11",
+      "rawDate": "20241211",
+      "netBuy": -1376.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6721.0
+    },
+    {
+      "date": "2024-12-12",
+      "rawDate": "20241212",
+      "netBuy": -209.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6830.2
+    },
+    {
+      "date": "2024-12-13",
+      "rawDate": "20241213",
+      "netBuy": -1739.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6863.2
+    },
+    {
+      "date": "2024-12-16",
+      "rawDate": "20241216",
+      "netBuy": -4339.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6848.4
+    },
+    {
+      "date": "2024-12-17",
+      "rawDate": "20241217",
+      "netBuy": -7020.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6755.3
+    },
+    {
+      "date": "2024-12-18",
+      "rawDate": "20241218",
+      "netBuy": 3924.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6832.3
+    },
+    {
+      "date": "2024-12-19",
+      "rawDate": "20241219",
+      "netBuy": -4338.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6698.4
+    },
+    {
+      "date": "2024-12-20",
+      "rawDate": "20241220",
+      "netBuy": -8224.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6609.0
+    },
+    {
+      "date": "2024-12-23",
+      "rawDate": "20241223",
+      "netBuy": 1448.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6713.2
+    },
+    {
+      "date": "2024-12-24",
+      "rawDate": "20241224",
+      "netBuy": -62.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6712.5
+    },
+    {
+      "date": "2024-12-26",
+      "rawDate": "20241226",
+      "netBuy": 204.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6682.9
+    },
+    {
+      "date": "2024-12-27",
+      "rawDate": "20241227",
+      "netBuy": -1739.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6608.6
+    },
+    {
+      "date": "2024-12-30",
+      "rawDate": "20241230",
+      "netBuy": -1207.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6596.3
+    },
+    {
+      "date": "2025-01-02",
+      "rawDate": "20250102",
+      "netBuy": -2382.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6596.5
+    },
+    {
+      "date": "2025-01-03",
+      "rawDate": "20250103",
+      "netBuy": 2843.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6713.3
+    },
+    {
+      "date": "2025-01-06",
+      "rawDate": "20250106",
+      "netBuy": 3705.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6842.2
+    },
+    {
+      "date": "2025-01-07",
+      "rawDate": "20250107",
+      "netBuy": 1629.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6849.5
+    },
+    {
+      "date": "2025-01-08",
+      "rawDate": "20250108",
+      "netBuy": 2220.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6930.7
+    },
+    {
+      "date": "2025-01-09",
+      "rawDate": "20250109",
+      "netBuy": 7510.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6935.6
+    },
+    {
+      "date": "2025-01-10",
+      "rawDate": "20250110",
+      "netBuy": -38.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6918.1
+    },
+    {
+      "date": "2025-01-13",
+      "rawDate": "20250113",
+      "netBuy": -8743.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6842.5
+    },
+    {
+      "date": "2025-01-14",
+      "rawDate": "20250114",
+      "netBuy": -2965.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6862.6
+    },
+    {
+      "date": "2025-01-15",
+      "rawDate": "20250115",
+      "netBuy": 568.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6860.3
+    },
+    {
+      "date": "2025-01-16",
+      "rawDate": "20250116",
+      "netBuy": 6263.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6941.7
+    },
+    {
+      "date": "2025-01-17",
+      "rawDate": "20250117",
+      "netBuy": -2338.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6929.7
+    },
+    {
+      "date": "2025-01-20",
+      "rawDate": "20250120",
+      "netBuy": -4185.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6920.4
+    },
+    {
+      "date": "2025-01-21",
+      "rawDate": "20250121",
+      "netBuy": -1729.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6915.5
+    },
+    {
+      "date": "2025-01-22",
+      "rawDate": "20250122",
+      "netBuy": 3507.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6994.6
+    },
+    {
+      "date": "2025-01-23",
+      "rawDate": "20250123",
+      "netBuy": -6196.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6907.9
+    },
+    {
+      "date": "2025-01-24",
+      "rawDate": "20250124",
+      "netBuy": 2734.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6965.2
+    },
+    {
+      "date": "2025-01-31",
+      "rawDate": "20250131",
+      "netBuy": -11756.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6910.5
+    },
+    {
+      "date": "2025-02-03",
+      "rawDate": "20250203",
+      "netBuy": -8707.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6735.3
+    },
+    {
+      "date": "2025-02-04",
+      "rawDate": "20250204",
+      "netBuy": 772.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6813.8
+    },
+    {
+      "date": "2025-02-05",
+      "rawDate": "20250205",
+      "netBuy": 656.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6907.6
+    },
+    {
+      "date": "2025-02-06",
+      "rawDate": "20250206",
+      "netBuy": 3556.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6982.2
+    },
+    {
+      "date": "2025-02-07",
+      "rawDate": "20250207",
+      "netBuy": -2400.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6941.8
+    },
+    {
+      "date": "2025-02-10",
+      "rawDate": "20250210",
+      "netBuy": -2770.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6942.9
+    },
+    {
+      "date": "2025-02-11",
+      "rawDate": "20250211",
+      "netBuy": 1408.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6991.0
+    },
+    {
+      "date": "2025-02-12",
+      "rawDate": "20250212",
+      "netBuy": 3706.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7016.8
+    },
+    {
+      "date": "2025-02-13",
+      "rawDate": "20250213",
+      "netBuy": -1134.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7110.6
+    },
+    {
+      "date": "2025-02-14",
+      "rawDate": "20250214",
+      "netBuy": -3204.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7131.9
+    },
+    {
+      "date": "2025-02-17",
+      "rawDate": "20250217",
+      "netBuy": -2235.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7183.0
+    },
+    {
+      "date": "2025-02-18",
+      "rawDate": "20250218",
+      "netBuy": 189.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7229.5
+    },
+    {
+      "date": "2025-02-19",
+      "rawDate": "20250219",
+      "netBuy": 3956.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7357.2
+    },
+    {
+      "date": "2025-02-20",
+      "rawDate": "20250220",
+      "netBuy": -2884.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7311.9
+    },
+    {
+      "date": "2025-02-21",
+      "rawDate": "20250221",
+      "netBuy": -2163.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7309.2
+    },
+    {
+      "date": "2025-02-24",
+      "rawDate": "20250224",
+      "netBuy": -2001.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7280.9
+    },
+    {
+      "date": "2025-02-25",
+      "rawDate": "20250225",
+      "netBuy": -3206.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 7238.4
+    },
+    {
+      "date": "2025-02-26",
+      "rawDate": "20250226",
+      "netBuy": -3221.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 7265.9
+    },
+    {
+      "date": "2025-02-27",
+      "rawDate": "20250227",
+      "netBuy": -1786.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 7212.6
+    },
+    {
+      "date": "2025-02-28",
+      "rawDate": "20250228",
+      "netBuy": -15562.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 6964.8
+    },
+    {
+      "date": "2025-03-04",
+      "rawDate": "20250304",
+      "netBuy": -1945.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 6954.2
+    },
+    {
+      "date": "2025-03-05",
+      "rawDate": "20250305",
+      "netBuy": -2265.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7032.2
+    },
+    {
+      "date": "2025-03-06",
+      "rawDate": "20250306",
+      "netBuy": 1375.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7069.5
+    },
+    {
+      "date": "2025-03-07",
+      "rawDate": "20250307",
+      "netBuy": 591.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7036.8
+    },
+    {
+      "date": "2025-03-10",
+      "rawDate": "20250310",
+      "netBuy": -4292.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7055.0
+    },
+    {
+      "date": "2025-03-11",
+      "rawDate": "20250311",
+      "netBuy": -15403.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 6964.2
+    },
+    {
+      "date": "2025-03-12",
+      "rawDate": "20250312",
+      "netBuy": 3796.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7066.1
+    },
+    {
+      "date": "2025-03-13",
+      "rawDate": "20250313",
+      "netBuy": -4809.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 7061.8
+    },
+    {
+      "date": "2025-03-14",
+      "rawDate": "20250314",
+      "netBuy": -2954.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 7049.2
+    },
+    {
+      "date": "2025-03-17",
+      "rawDate": "20250317",
+      "netBuy": 6223.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7174.0
+    },
+    {
+      "date": "2025-03-18",
+      "rawDate": "20250318",
+      "netBuy": 4437.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7179.9
+    },
+    {
+      "date": "2025-03-19",
+      "rawDate": "20250319",
+      "netBuy": 3052.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7227.7
+    },
+    {
+      "date": "2025-03-20",
+      "rawDate": "20250320",
+      "netBuy": 5515.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7254.7
+    },
+    {
+      "date": "2025-03-21",
+      "rawDate": "20250321",
+      "netBuy": 8503.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 7273.3
+    },
+    {
+      "date": "2025-03-24",
+      "rawDate": "20250324",
+      "netBuy": 62.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 7241.3
+    },
+    {
+      "date": "2025-03-25",
+      "rawDate": "20250325",
+      "netBuy": -752.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 7197.0
+    },
+    {
+      "date": "2025-03-26",
+      "rawDate": "20250326",
+      "netBuy": 3508.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 7275.3
+    },
+    {
+      "date": "2025-03-27",
+      "rawDate": "20250327",
+      "netBuy": 887.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 7177.8
+    },
+    {
+      "date": "2025-03-28",
+      "rawDate": "20250328",
+      "netBuy": -6422.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 7040.7
+    },
+    {
+      "date": "2025-03-31",
+      "rawDate": "20250331",
+      "netBuy": -15772.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 6825.8
+    },
+    {
+      "date": "2025-04-01",
+      "rawDate": "20250401",
+      "netBuy": -3912.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 6934.8
+    },
+    {
+      "date": "2025-04-02",
+      "rawDate": "20250402",
+      "netBuy": -7272.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 6891.8
+    },
+    {
+      "date": "2025-04-03",
+      "rawDate": "20250403",
+      "netBuy": -13776.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 6836.1
+    },
+    {
+      "date": "2025-04-04",
+      "rawDate": "20250404",
+      "netBuy": -17893.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 6775.8
+    },
+    {
+      "date": "2025-04-07",
+      "rawDate": "20250407",
+      "netBuy": -20992.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 6397.0
+    },
+    {
+      "date": "2025-04-08",
+      "rawDate": "20250408",
+      "netBuy": -6468.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 6414.1
+    },
+    {
+      "date": "2025-04-09",
+      "rawDate": "20250409",
+      "netBuy": -10048.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 6303.4
+    },
+    {
+      "date": "2025-04-10",
+      "rawDate": "20250410",
+      "netBuy": 3286.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 6714.8
+    },
+    {
+      "date": "2025-04-11",
+      "rawDate": "20250411",
+      "netBuy": -6898.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6677.5
+    },
+    {
+      "date": "2025-04-14",
+      "rawDate": "20250414",
+      "netBuy": -2437.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6741.8
+    },
+    {
+      "date": "2025-04-15",
+      "rawDate": "20250415",
+      "netBuy": -1183.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6798.3
+    },
+    {
+      "date": "2025-04-16",
+      "rawDate": "20250416",
+      "netBuy": -4588.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6720.2
+    },
+    {
+      "date": "2025-04-17",
+      "rawDate": "20250417",
+      "netBuy": -3510.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6781.4
+    },
+    {
+      "date": "2025-04-18",
+      "rawDate": "20250418",
+      "netBuy": -1045.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6817.3
+    },
+    {
+      "date": "2025-04-21",
+      "rawDate": "20250421",
+      "netBuy": -2883.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6831.5
+    },
+    {
+      "date": "2025-04-22",
+      "rawDate": "20250422",
+      "netBuy": -2421.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6826.6
+    },
+    {
+      "date": "2025-04-23",
+      "rawDate": "20250423",
+      "netBuy": -1970.0,
+      "ratio": 33.51,
+      "foreignHoldingVal": 6932.1
+    },
+    {
+      "date": "2025-04-24",
+      "rawDate": "20250424",
+      "netBuy": -74.0,
+      "ratio": 33.51,
+      "foreignHoldingVal": 6924.5
+    },
+    {
+      "date": "2025-04-25",
+      "rawDate": "20250425",
+      "netBuy": 6146.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6990.7
+    },
+    {
+      "date": "2025-04-28",
+      "rawDate": "20250428",
+      "netBuy": -859.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 6995.6
+    },
+    {
+      "date": "2025-04-29",
+      "rawDate": "20250429",
+      "netBuy": 6931.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7042.1
+    },
+    {
+      "date": "2025-04-30",
+      "rawDate": "20250430",
+      "netBuy": -1686.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7019.3
+    },
+    {
+      "date": "2025-05-02",
+      "rawDate": "20250502",
+      "netBuy": -1668.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7024.8
+    },
+    {
+      "date": "2025-05-07",
+      "rawDate": "20250507",
+      "netBuy": 3498.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7062.2
+    },
+    {
+      "date": "2025-05-08",
+      "rawDate": "20250508",
+      "netBuy": 1305.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7077.4
+    },
+    {
+      "date": "2025-05-09",
+      "rawDate": "20250509",
+      "netBuy": 681.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7074.2
+    },
+    {
+      "date": "2025-05-12",
+      "rawDate": "20250512",
+      "netBuy": 2.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7159.9
+    },
+    {
+      "date": "2025-05-13",
+      "rawDate": "20250513",
+      "netBuy": 1706.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7171.5
+    },
+    {
+      "date": "2025-05-14",
+      "rawDate": "20250514",
+      "netBuy": 4762.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7259.2
+    },
+    {
+      "date": "2025-05-15",
+      "rawDate": "20250515",
+      "netBuy": 2737.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7210.4
+    },
+    {
+      "date": "2025-05-16",
+      "rawDate": "20250516",
+      "netBuy": 1698.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7222.9
+    },
+    {
+      "date": "2025-05-19",
+      "rawDate": "20250519",
+      "netBuy": -1138.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7157.2
+    },
+    {
+      "date": "2025-05-20",
+      "rawDate": "20250520",
+      "netBuy": -1145.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7152.6
+    },
+    {
+      "date": "2025-05-21",
+      "rawDate": "20250521",
+      "netBuy": 1950.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7213.4
+    },
+    {
+      "date": "2025-05-22",
+      "rawDate": "20250522",
+      "netBuy": -2265.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7127.4
+    },
+    {
+      "date": "2025-05-23",
+      "rawDate": "20250523",
+      "netBuy": -583.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7121.6
+    },
+    {
+      "date": "2025-05-26",
+      "rawDate": "20250526",
+      "netBuy": 1018.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7262.5
+    },
+    {
+      "date": "2025-05-27",
+      "rawDate": "20250527",
+      "netBuy": -756.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7242.1
+    },
+    {
+      "date": "2025-05-28",
+      "rawDate": "20250528",
+      "netBuy": 3026.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7335.7
+    },
+    {
+      "date": "2025-05-29",
+      "rawDate": "20250529",
+      "netBuy": 2947.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7473.9
+    },
+    {
+      "date": "2025-05-30",
+      "rawDate": "20250530",
+      "netBuy": -6118.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7411.1
+    },
+    {
+      "date": "2025-06-02",
+      "rawDate": "20250602",
+      "netBuy": 1285.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7414.6
+    },
+    {
+      "date": "2025-06-04",
+      "rawDate": "20250604",
+      "netBuy": 10549.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7613.2
+    },
+    {
+      "date": "2025-06-05",
+      "rawDate": "20250605",
+      "netBuy": 9842.0,
+      "ratio": 33.53,
+      "foreignHoldingVal": 7722.7
+    },
+    {
+      "date": "2025-06-09",
+      "rawDate": "20250609",
+      "netBuy": 9799.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 7840.5
+    },
+    {
+      "date": "2025-06-10",
+      "rawDate": "20250610",
+      "netBuy": 6332.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 7882.7
+    },
+    {
+      "date": "2025-06-11",
+      "rawDate": "20250611",
+      "netBuy": 1656.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 7979.3
+    },
+    {
+      "date": "2025-06-12",
+      "rawDate": "20250612",
+      "netBuy": 4081.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8013.7
+    },
+    {
+      "date": "2025-06-13",
+      "rawDate": "20250613",
+      "netBuy": 1219.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 7947.6
+    },
+    {
+      "date": "2025-06-16",
+      "rawDate": "20250616",
+      "netBuy": -3224.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8085.9
+    },
+    {
+      "date": "2025-06-17",
+      "rawDate": "20250617",
+      "netBuy": -967.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8097.5
+    },
+    {
+      "date": "2025-06-18",
+      "rawDate": "20250618",
+      "netBuy": 2864.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8159.5
+    },
+    {
+      "date": "2025-06-19",
+      "rawDate": "20250619",
+      "netBuy": -874.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8172.3
+    },
+    {
+      "date": "2025-06-20",
+      "rawDate": "20250620",
+      "netBuy": 5625.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8291.7
+    },
+    {
+      "date": "2025-06-23",
+      "rawDate": "20250623",
+      "netBuy": -3685.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8269.5
+    },
+    {
+      "date": "2025-06-24",
+      "rawDate": "20250624",
+      "netBuy": 4436.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8514.6
+    },
+    {
+      "date": "2025-06-25",
+      "rawDate": "20250625",
+      "netBuy": -1114.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8530.8
+    },
+    {
+      "date": "2025-06-26",
+      "rawDate": "20250626",
+      "netBuy": -5806.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8451.4
+    },
+    {
+      "date": "2025-06-27",
+      "rawDate": "20250627",
+      "netBuy": -8579.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8387.0
+    },
+    {
+      "date": "2025-06-30",
+      "rawDate": "20250630",
+      "netBuy": -6513.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8424.7
+    },
+    {
+      "date": "2025-07-01",
+      "rawDate": "20250701",
+      "netBuy": 1765.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8476.5
+    },
+    {
+      "date": "2025-07-02",
+      "rawDate": "20250702",
+      "netBuy": -3273.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8438.3
+    },
+    {
+      "date": "2025-07-03",
+      "rawDate": "20250703",
+      "netBuy": 6456.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8556.0
+    },
+    {
+      "date": "2025-07-04",
+      "rawDate": "20250704",
+      "netBuy": 1621.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8388.5
+    },
+    {
+      "date": "2025-07-07",
+      "rawDate": "20250707",
+      "netBuy": -912.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8398.3
+    },
+    {
+      "date": "2025-07-08",
+      "rawDate": "20250708",
+      "netBuy": 2440.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8549.2
+    },
+    {
+      "date": "2025-07-09",
+      "rawDate": "20250709",
+      "netBuy": -4128.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8597.3
+    },
+    {
+      "date": "2025-07-10",
+      "rawDate": "20250710",
+      "netBuy": 4723.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8732.9
+    },
+    {
+      "date": "2025-07-11",
+      "rawDate": "20250711",
+      "netBuy": 3256.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8717.3
+    },
+    {
+      "date": "2025-07-14",
+      "rawDate": "20250714",
+      "netBuy": 3713.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8788.4
+    },
+    {
+      "date": "2025-07-15",
+      "rawDate": "20250715",
+      "netBuy": 2142.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8825.6
+    },
+    {
+      "date": "2025-07-16",
+      "rawDate": "20250716",
+      "netBuy": 534.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8749.3
+    },
+    {
+      "date": "2025-07-17",
+      "rawDate": "20250717",
+      "netBuy": 472.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8768.0
+    },
+    {
+      "date": "2025-07-18",
+      "rawDate": "20250718",
+      "netBuy": 1897.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8755.2
+    },
+    {
+      "date": "2025-07-21",
+      "rawDate": "20250721",
+      "netBuy": 8961.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8832.6
+    },
+    {
+      "date": "2025-07-22",
+      "rawDate": "20250722",
+      "netBuy": -1289.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8719.2
+    },
+    {
+      "date": "2025-07-23",
+      "rawDate": "20250723",
+      "netBuy": 4219.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8759.0
+    },
+    {
+      "date": "2025-07-24",
+      "rawDate": "20250724",
+      "netBuy": 7431.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8776.4
+    },
+    {
+      "date": "2025-07-25",
+      "rawDate": "20250725",
+      "netBuy": 2687.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8796.1
+    },
+    {
+      "date": "2025-07-28",
+      "rawDate": "20250728",
+      "netBuy": 4802.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8838.4
+    },
+    {
+      "date": "2025-07-29",
+      "rawDate": "20250729",
+      "netBuy": 6047.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8897.1
+    },
+    {
+      "date": "2025-07-30",
+      "rawDate": "20250730",
+      "netBuy": 5801.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8966.3
+    },
+    {
+      "date": "2025-07-31",
+      "rawDate": "20250731",
+      "netBuy": 3444.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8936.3
+    },
+    {
+      "date": "2025-08-01",
+      "rawDate": "20250801",
+      "netBuy": -6563.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8602.9
+    },
+    {
+      "date": "2025-08-04",
+      "rawDate": "20250804",
+      "netBuy": 828.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8682.4
+    },
+    {
+      "date": "2025-08-05",
+      "rawDate": "20250805",
+      "netBuy": 2953.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8818.6
+    },
+    {
+      "date": "2025-08-06",
+      "rawDate": "20250806",
+      "netBuy": 2815.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8819.0
+    },
+    {
+      "date": "2025-08-07",
+      "rawDate": "20250807",
+      "netBuy": -176.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8900.4
+    },
+    {
+      "date": "2025-08-08",
+      "rawDate": "20250808",
+      "netBuy": -1596.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8860.8
+    },
+    {
+      "date": "2025-08-11",
+      "rawDate": "20250811",
+      "netBuy": 2202.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8851.1
+    },
+    {
+      "date": "2025-08-12",
+      "rawDate": "20250812",
+      "netBuy": -594.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8805.3
+    },
+    {
+      "date": "2025-08-13",
+      "rawDate": "20250813",
+      "netBuy": 6365.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8901.1
+    },
+    {
+      "date": "2025-08-14",
+      "rawDate": "20250814",
+      "netBuy": -800.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8902.9
+    },
+    {
+      "date": "2025-08-18",
+      "rawDate": "20250818",
+      "netBuy": -4896.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8769.0
+    },
+    {
+      "date": "2025-08-19",
+      "rawDate": "20250819",
+      "netBuy": -4546.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8698.7
+    },
+    {
+      "date": "2025-08-20",
+      "rawDate": "20250820",
+      "netBuy": -2137.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8641.1
+    },
+    {
+      "date": "2025-08-21",
+      "rawDate": "20250821",
+      "netBuy": -171.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8674.2
+    },
+    {
+      "date": "2025-08-22",
+      "rawDate": "20250822",
+      "netBuy": 1817.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8747.2
+    },
+    {
+      "date": "2025-08-25",
+      "rawDate": "20250825",
+      "netBuy": 1188.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8859.4
+    },
+    {
+      "date": "2025-08-26",
+      "rawDate": "20250826",
+      "netBuy": -6860.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8773.7
+    },
+    {
+      "date": "2025-08-27",
+      "rawDate": "20250827",
+      "netBuy": -2037.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8795.0
+    },
+    {
+      "date": "2025-08-28",
+      "rawDate": "20250828",
+      "netBuy": -243.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8817.9
+    },
+    {
+      "date": "2025-08-29",
+      "rawDate": "20250829",
+      "netBuy": -3725.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8787.9
+    },
+    {
+      "date": "2025-09-01",
+      "rawDate": "20250901",
+      "netBuy": -2674.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8668.3
+    },
+    {
+      "date": "2025-09-02",
+      "rawDate": "20250902",
+      "netBuy": 4022.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8751.8
+    },
+    {
+      "date": "2025-09-03",
+      "rawDate": "20250903",
+      "netBuy": 4364.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8786.7
+    },
+    {
+      "date": "2025-09-04",
+      "rawDate": "20250904",
+      "netBuy": 2035.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8830.9
+    },
+    {
+      "date": "2025-09-05",
+      "rawDate": "20250905",
+      "netBuy": -1380.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8848.4
+    },
+    {
+      "date": "2025-09-08",
+      "rawDate": "20250908",
+      "netBuy": 2316.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8889.0
+    },
+    {
+      "date": "2025-09-09",
+      "rawDate": "20250909",
+      "netBuy": 6842.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 9002.4
+    },
+    {
+      "date": "2025-09-10",
+      "rawDate": "20250910",
+      "netBuy": 13848.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 9152.5
+    },
+    {
+      "date": "2025-09-11",
+      "rawDate": "20250911",
+      "netBuy": 3024.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 9232.4
+    },
+    {
+      "date": "2025-09-12",
+      "rawDate": "20250912",
+      "netBuy": 14172.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 9374.6
+    },
+    {
+      "date": "2025-09-15",
+      "rawDate": "20250915",
+      "netBuy": 2668.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 9409.6
+    },
+    {
+      "date": "2025-09-16",
+      "rawDate": "20250916",
+      "netBuy": 17989.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9530.2
+    },
+    {
+      "date": "2025-09-17",
+      "rawDate": "20250917",
+      "netBuy": -361.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9429.8
+    },
+    {
+      "date": "2025-09-18",
+      "rawDate": "20250918",
+      "netBuy": 2877.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9564.1
+    },
+    {
+      "date": "2025-09-19",
+      "rawDate": "20250919",
+      "netBuy": -3062.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9517.8
+    },
+    {
+      "date": "2025-09-22",
+      "rawDate": "20250922",
+      "netBuy": 5682.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9588.9
+    },
+    {
+      "date": "2025-09-23",
+      "rawDate": "20250923",
+      "netBuy": 3366.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9637.4
+    },
+    {
+      "date": "2025-09-24",
+      "rawDate": "20250924",
+      "netBuy": -2465.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9598.8
+    },
+    {
+      "date": "2025-09-25",
+      "rawDate": "20250925",
+      "netBuy": 2164.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9596.4
+    },
+    {
+      "date": "2025-09-26",
+      "rawDate": "20250926",
+      "netBuy": -5704.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9360.3
+    },
+    {
+      "date": "2025-09-29",
+      "rawDate": "20250929",
+      "netBuy": 4484.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9486.5
+    },
+    {
+      "date": "2025-09-30",
+      "rawDate": "20250930",
+      "netBuy": 260.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9462.4
+    },
+    {
+      "date": "2025-10-01",
+      "rawDate": "20251001",
+      "netBuy": 8333.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9556.5
+    },
+    {
+      "date": "2025-10-02",
+      "rawDate": "20251002",
+      "netBuy": 31400.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 9817.2
+    },
+    {
+      "date": "2025-10-10",
+      "rawDate": "20251010",
+      "netBuy": 10614.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 9994.3
+    },
+    {
+      "date": "2025-10-13",
+      "rawDate": "20251013",
+      "netBuy": -8233.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 9920.2
+    },
+    {
+      "date": "2025-10-14",
+      "rawDate": "20251014",
+      "netBuy": 5552.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 9857.1
+    },
+    {
+      "date": "2025-10-15",
+      "rawDate": "20251015",
+      "netBuy": 1629.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 10119.4
+    },
+    {
+      "date": "2025-10-16",
+      "rawDate": "20251016",
+      "netBuy": 6591.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 10370.1
+    },
+    {
+      "date": "2025-10-17",
+      "rawDate": "20251017",
+      "netBuy": 4426.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 10372.5
+    },
+    {
+      "date": "2025-10-20",
+      "rawDate": "20251020",
+      "netBuy": -2477.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 10554.1
+    },
+    {
+      "date": "2025-10-21",
+      "rawDate": "20251021",
+      "netBuy": -188.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 10584.8
+    },
+    {
+      "date": "2025-10-22",
+      "rawDate": "20251022",
+      "netBuy": -7011.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 10742.1
+    },
+    {
+      "date": "2025-10-23",
+      "rawDate": "20251023",
+      "netBuy": -4091.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 10632.9
+    },
+    {
+      "date": "2025-10-24",
+      "rawDate": "20251024",
+      "netBuy": 5849.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 10896.1
+    },
+    {
+      "date": "2025-10-27",
+      "rawDate": "20251027",
+      "netBuy": 6495.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 11175.3
+    },
+    {
+      "date": "2025-10-28",
+      "rawDate": "20251028",
+      "netBuy": -16410.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 11081.9
+    },
+    {
+      "date": "2025-10-29",
+      "rawDate": "20251029",
+      "netBuy": -1018.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 11280.1
+    },
+    {
+      "date": "2025-10-30",
+      "rawDate": "20251030",
+      "netBuy": -1178.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 11303.8
+    },
+    {
+      "date": "2025-10-31",
+      "rawDate": "20251031",
+      "netBuy": 13164.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 11368.1
+    },
+    {
+      "date": "2025-11-03",
+      "rawDate": "20251103",
+      "netBuy": -7964.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 11681.8
+    },
+    {
+      "date": "2025-11-04",
+      "rawDate": "20251104",
+      "netBuy": -22349.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 11394.2
+    },
+    {
+      "date": "2025-11-05",
+      "rawDate": "20251105",
+      "netBuy": -20700.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 11064.0
+    },
+    {
+      "date": "2025-11-06",
+      "rawDate": "20251106",
+      "netBuy": -17000.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 11120.1
+    },
+    {
+      "date": "2025-11-07",
+      "rawDate": "20251107",
+      "netBuy": -4625.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 10919.5
+    },
+    {
+      "date": "2025-11-10",
+      "rawDate": "20251110",
+      "netBuy": -1452.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 11247.8
+    },
+    {
+      "date": "2025-11-11",
+      "rawDate": "20251111",
+      "netBuy": 744.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 11342.6
+    },
+    {
+      "date": "2025-11-12",
+      "rawDate": "20251112",
+      "netBuy": -4263.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 11461.3
+    },
+    {
+      "date": "2025-11-13",
+      "rawDate": "20251113",
+      "netBuy": 9997.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 11518.3
+    },
+    {
+      "date": "2025-11-14",
+      "rawDate": "20251114",
+      "netBuy": -23668.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 11074.2
+    },
+    {
+      "date": "2025-11-17",
+      "rawDate": "20251117",
+      "netBuy": 5183.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 11291.1
+    },
+    {
+      "date": "2025-11-18",
+      "rawDate": "20251118",
+      "netBuy": -5521.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 10914.4
+    },
+    {
+      "date": "2025-11-19",
+      "rawDate": "20251119",
+      "netBuy": -10512.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 10844.6
+    },
+    {
+      "date": "2025-11-20",
+      "rawDate": "20251120",
+      "netBuy": 7448.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 11055.8
+    },
+    {
+      "date": "2025-11-21",
+      "rawDate": "20251121",
+      "netBuy": -28308.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 10634.4
+    },
+    {
+      "date": "2025-11-24",
+      "rawDate": "20251124",
+      "netBuy": -7957.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 10635.8
+    },
+    {
+      "date": "2025-11-25",
+      "rawDate": "20251125",
+      "netBuy": -17.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 10673.8
+    },
+    {
+      "date": "2025-11-26",
+      "rawDate": "20251126",
+      "netBuy": 5235.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 10960.7
+    },
+    {
+      "date": "2025-11-27",
+      "rawDate": "20251127",
+      "netBuy": 1577.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11029.2
+    },
+    {
+      "date": "2025-11-28",
+      "rawDate": "20251128",
+      "netBuy": -20410.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 10857.6
+    },
+    {
+      "date": "2025-12-01",
+      "rawDate": "20251201",
+      "netBuy": 2236.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 10845.4
+    },
+    {
+      "date": "2025-12-02",
+      "rawDate": "20251202",
+      "netBuy": 12206.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11052.8
+    },
+    {
+      "date": "2025-12-03",
+      "rawDate": "20251203",
+      "netBuy": 2829.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11164.8
+    },
+    {
+      "date": "2025-12-04",
+      "rawDate": "20251204",
+      "netBuy": -6978.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11147.0
+    },
+    {
+      "date": "2025-12-05",
+      "rawDate": "20251205",
+      "netBuy": 10006.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11345.9
+    },
+    {
+      "date": "2025-12-08",
+      "rawDate": "20251208",
+      "netBuy": 3227.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11494.0
+    },
+    {
+      "date": "2025-12-09",
+      "rawDate": "20251209",
+      "netBuy": -910.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11462.0
+    },
+    {
+      "date": "2025-12-10",
+      "rawDate": "20251210",
+      "netBuy": 3737.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11438.9
+    },
+    {
+      "date": "2025-12-11",
+      "rawDate": "20251211",
+      "netBuy": 3650.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11375.1
+    },
+    {
+      "date": "2025-12-12",
+      "rawDate": "20251212",
+      "netBuy": 469.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11531.5
+    },
+    {
+      "date": "2025-12-15",
+      "rawDate": "20251215",
+      "netBuy": -9599.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11321.9
+    },
+    {
+      "date": "2025-12-16",
+      "rawDate": "20251216",
+      "netBuy": -10350.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11070.1
+    },
+    {
+      "date": "2025-12-17",
+      "rawDate": "20251217",
+      "netBuy": -278.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11235.6
+    },
+    {
+      "date": "2025-12-18",
+      "rawDate": "20251218",
+      "netBuy": -3468.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11064.2
+    },
+    {
+      "date": "2025-12-19",
+      "rawDate": "20251219",
+      "netBuy": -7471.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 11136.1
+    },
+    {
+      "date": "2025-12-22",
+      "rawDate": "20251222",
+      "netBuy": 11140.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11372.9
+    },
+    {
+      "date": "2025-12-23",
+      "rawDate": "20251223",
+      "netBuy": 9543.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11406.2
+    },
+    {
+      "date": "2025-12-24",
+      "rawDate": "20251224",
+      "netBuy": 5216.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 11382.8
+    },
+    {
+      "date": "2025-12-26",
+      "rawDate": "20251226",
+      "netBuy": 17807.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 11445.1
+    },
+    {
+      "date": "2025-12-29",
+      "rawDate": "20251229",
+      "netBuy": 3356.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 11692.9
+    },
+    {
+      "date": "2025-12-30",
+      "rawDate": "20251230",
+      "netBuy": -4886.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 11674.1
+    },
+    {
+      "date": "2026-01-02",
+      "rawDate": "20260102",
+      "netBuy": 6447.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 11946.3
+    },
+    {
+      "date": "2026-01-05",
+      "rawDate": "20260105",
+      "netBuy": 21808.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 12367.3
+    },
+    {
+      "date": "2026-01-06",
+      "rawDate": "20260106",
+      "netBuy": -6302.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 12550.3
+    },
+    {
+      "date": "2026-01-07",
+      "rawDate": "20260107",
+      "netBuy": 12521.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 12623.8
+    },
+    {
+      "date": "2026-01-08",
+      "rawDate": "20260108",
+      "netBuy": -1066.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 12621.5
+    },
+    {
+      "date": "2026-01-09",
+      "rawDate": "20260109",
+      "netBuy": -16113.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 12724.6
+    },
+    {
+      "date": "2026-01-12",
+      "rawDate": "20260112",
+      "netBuy": -3523.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 12831.6
+    },
+    {
+      "date": "2026-01-13",
+      "rawDate": "20260113",
+      "netBuy": -2789.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13016.7
+    },
+    {
+      "date": "2026-01-14",
+      "rawDate": "20260114",
+      "netBuy": -3781.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13102.7
+    },
+    {
+      "date": "2026-01-15",
+      "rawDate": "20260115",
+      "netBuy": 3530.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13314.8
+    },
+    {
+      "date": "2026-01-16",
+      "rawDate": "20260116",
+      "netBuy": 4368.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13444.9
+    },
+    {
+      "date": "2026-01-19",
+      "rawDate": "20260119",
+      "netBuy": 5491.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13619.9
+    },
+    {
+      "date": "2026-01-20",
+      "rawDate": "20260120",
+      "netBuy": 1160.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13558.8
+    },
+    {
+      "date": "2026-01-21",
+      "rawDate": "20260121",
+      "netBuy": 4457.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13637.5
+    },
+    {
+      "date": "2026-01-22",
+      "rawDate": "20260122",
+      "netBuy": -2478.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13751.3
+    },
+    {
+      "date": "2026-01-23",
+      "rawDate": "20260123",
+      "netBuy": 1451.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13851.1
+    },
+    {
+      "date": "2026-01-26",
+      "rawDate": "20260126",
+      "netBuy": -1664.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 13741.7
+    },
+    {
+      "date": "2026-01-27",
+      "rawDate": "20260127",
+      "netBuy": 8453.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 14114.2
+    },
+    {
+      "date": "2026-01-28",
+      "rawDate": "20260128",
+      "netBuy": 3932.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 14357.4
+    },
+    {
+      "date": "2026-01-29",
+      "rawDate": "20260129",
+      "netBuy": -14923.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 14489.0
+    },
+    {
+      "date": "2026-01-30",
+      "rawDate": "20260130",
+      "netBuy": -19792.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 14497.0
+    },
+    {
+      "date": "2026-02-02",
+      "rawDate": "20260202",
+      "netBuy": -25330.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 13730.7
+    },
+    {
+      "date": "2026-02-03",
+      "rawDate": "20260203",
+      "netBuy": 7170.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 14674.4
+    },
+    {
+      "date": "2026-02-04",
+      "rawDate": "20260204",
+      "netBuy": -9378.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 14897.5
+    },
+    {
+      "date": "2026-02-05",
+      "rawDate": "20260205",
+      "netBuy": -50385.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 14308.2
+    },
+    {
+      "date": "2026-02-06",
+      "rawDate": "20260206",
+      "netBuy": -33277.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 14099.3
+    },
+    {
+      "date": "2026-02-09",
+      "rawDate": "20260209",
+      "netBuy": 4389.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 14671.9
+    },
+    {
+      "date": "2026-02-10",
+      "rawDate": "20260210",
+      "netBuy": 1469.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 14680.6
+    },
+    {
+      "date": "2026-02-11",
+      "rawDate": "20260211",
+      "netBuy": 8572.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 14831.2
+    },
+    {
+      "date": "2026-02-12",
+      "rawDate": "20260212",
+      "netBuy": 30079.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 15302.4
+    },
+    {
+      "date": "2026-02-13",
+      "rawDate": "20260213",
+      "netBuy": -9268.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 15277.0
+    },
+    {
+      "date": "2026-02-19",
+      "rawDate": "20260219",
+      "netBuy": -9345.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 15756.0
+    },
+    {
+      "date": "2026-02-20",
+      "rawDate": "20260220",
+      "netBuy": -7441.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 16114.3
+    },
+    {
+      "date": "2026-02-23",
+      "rawDate": "20260223",
+      "netBuy": -11109.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 16168.4
+    },
+    {
+      "date": "2026-02-24",
+      "rawDate": "20260224",
+      "netBuy": -1903.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 16512.6
+    },
+    {
+      "date": "2026-02-25",
+      "rawDate": "20260225",
+      "netBuy": -13057.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 16827.1
+    },
+    {
+      "date": "2026-02-26",
+      "rawDate": "20260226",
+      "netBuy": -21106.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 17439.1
+    },
+    {
+      "date": "2026-02-27",
+      "rawDate": "20260227",
+      "netBuy": -70812.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 17252.3
+    },
+    {
+      "date": "2026-03-03",
+      "rawDate": "20260303",
+      "netBuy": -51737.0,
+      "ratio": 33.51,
+      "foreignHoldingVal": 15983.5
+    },
+    {
+      "date": "2026-03-04",
+      "rawDate": "20260304",
+      "netBuy": 2367.0,
+      "ratio": 33.51,
+      "foreignHoldingVal": 14058.5
+    },
+    {
+      "date": "2026-03-05",
+      "rawDate": "20260305",
+      "netBuy": -1570.0,
+      "ratio": 33.51,
+      "foreignHoldingVal": 15430.4
+    },
+    {
+      "date": "2026-03-06",
+      "rawDate": "20260306",
+      "netBuy": -19511.0,
+      "ratio": 33.51,
+      "foreignHoldingVal": 15430.8
+    },
+    {
+      "date": "2026-03-09",
+      "rawDate": "20260309",
+      "netBuy": -31979.0,
+      "ratio": 33.5,
+      "foreignHoldingVal": 14510.1
+    },
+    {
+      "date": "2026-03-10",
+      "rawDate": "20260310",
+      "netBuy": 10344.0,
+      "ratio": 33.5,
+      "foreignHoldingVal": 15302.0
+    },
+    {
+      "date": "2026-03-11",
+      "rawDate": "20260311",
+      "netBuy": -2547.0,
+      "ratio": 33.5,
+      "foreignHoldingVal": 15523.0
+    },
+    {
+      "date": "2026-03-12",
+      "rawDate": "20260312",
+      "netBuy": -23911.0,
+      "ratio": 33.5,
+      "foreignHoldingVal": 15435.9
+    },
+    {
+      "date": "2026-03-13",
+      "rawDate": "20260313",
+      "netBuy": -14596.0,
+      "ratio": 33.49,
+      "foreignHoldingVal": 15174.0
+    },
+    {
+      "date": "2026-03-16",
+      "rawDate": "20260316",
+      "netBuy": -8519.0,
+      "ratio": 33.49,
+      "foreignHoldingVal": 15351.4
+    },
+    {
+      "date": "2026-03-17",
+      "rawDate": "20260317",
+      "netBuy": -1733.0,
+      "ratio": 33.49,
+      "foreignHoldingVal": 15599.6
+    },
+    {
+      "date": "2026-03-18",
+      "rawDate": "20260318",
+      "netBuy": 8887.0,
+      "ratio": 33.49,
+      "foreignHoldingVal": 16388.0
+    },
+    {
+      "date": "2026-03-19",
+      "rawDate": "20260319",
+      "netBuy": -18839.0,
+      "ratio": 33.49,
+      "foreignHoldingVal": 15933.4
+    },
+    {
+      "date": "2026-03-20",
+      "rawDate": "20260320",
+      "netBuy": -12455.0,
+      "ratio": 33.49,
+      "foreignHoldingVal": 15967.3
+    },
+    {
+      "date": "2026-03-23",
+      "rawDate": "20260323",
+      "netBuy": -36983.0,
+      "ratio": 33.48,
+      "foreignHoldingVal": 14929.3
+    },
+    {
+      "date": "2026-03-24",
+      "rawDate": "20260324",
+      "netBuy": -19793.0,
+      "ratio": 33.47,
+      "foreignHoldingVal": 15333.1
+    },
+    {
+      "date": "2026-03-25",
+      "rawDate": "20260325",
+      "netBuy": -12866.0,
+      "ratio": 33.47,
+      "foreignHoldingVal": 15569.8
+    },
+    {
+      "date": "2026-03-26",
+      "rawDate": "20260326",
+      "netBuy": -29501.0,
+      "ratio": 33.47,
+      "foreignHoldingVal": 15058.1
+    },
+    {
+      "date": "2026-03-27",
+      "rawDate": "20260327",
+      "netBuy": -34400.0,
+      "ratio": 33.46,
+      "foreignHoldingVal": 14998.1
+    },
+    {
+      "date": "2026-03-30",
+      "rawDate": "20260330",
+      "netBuy": -20981.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 14545.0
+    },
+    {
+      "date": "2026-03-31",
+      "rawDate": "20260331",
+      "netBuy": -38481.0,
+      "ratio": 33.44,
+      "foreignHoldingVal": 13909.4
+    },
+    {
+      "date": "2026-04-01",
+      "rawDate": "20260401",
+      "netBuy": -6278.0,
+      "ratio": 33.44,
+      "foreignHoldingVal": 15089.6
+    },
+    {
+      "date": "2026-04-02",
+      "rawDate": "20260402",
+      "netBuy": -1406.0,
+      "ratio": 33.44,
+      "foreignHoldingVal": 14408.0
+    },
+    {
+      "date": "2026-04-03",
+      "rawDate": "20260403",
+      "netBuy": 7995.0,
+      "ratio": 33.44,
+      "foreignHoldingVal": 14808.0
+    },
+    {
+      "date": "2026-04-06",
+      "rawDate": "20260406",
+      "netBuy": -1564.0,
+      "ratio": 33.44,
+      "foreignHoldingVal": 15014.9
+    },
+    {
+      "date": "2026-04-07",
+      "rawDate": "20260407",
+      "netBuy": 3950.0,
+      "ratio": 33.44,
+      "foreignHoldingVal": 15138.4
+    },
+    {
+      "date": "2026-04-08",
+      "rawDate": "20260408",
+      "netBuy": 19453.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 16178.7
+    },
+    {
+      "date": "2026-04-09",
+      "rawDate": "20260409",
+      "netBuy": 17189.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 15922.1
+    },
+    {
+      "date": "2026-04-10",
+      "rawDate": "20260410",
+      "netBuy": 10636.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 16144.0
+    },
+    {
+      "date": "2026-04-13",
+      "rawDate": "20260413",
+      "netBuy": -4615.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 15995.7
+    },
+    {
+      "date": "2026-04-14",
+      "rawDate": "20260414",
+      "netBuy": 8367.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 16374.5
+    },
+    {
+      "date": "2026-04-15",
+      "rawDate": "20260415",
+      "netBuy": 4890.0,
+      "ratio": 33.46,
+      "foreignHoldingVal": 16712.8
+    },
+    {
+      "date": "2026-04-16",
+      "rawDate": "20260416",
+      "netBuy": 4746.0,
+      "ratio": 33.46,
+      "foreignHoldingVal": 17083.0
+    },
+    {
+      "date": "2026-04-17",
+      "rawDate": "20260417",
+      "netBuy": -20031.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 16981.8
+    },
+    {
+      "date": "2026-04-20",
+      "rawDate": "20260420",
+      "netBuy": -2370.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 17052.2
+    },
+    {
+      "date": "2026-04-21",
+      "rawDate": "20260421",
+      "netBuy": 11516.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 17517.4
+    },
+    {
+      "date": "2026-04-22",
+      "rawDate": "20260422",
+      "netBuy": -6822.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 17596.4
+    },
+    {
+      "date": "2026-04-23",
+      "rawDate": "20260423",
+      "netBuy": -860.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 17758.2
+    },
+    {
+      "date": "2026-04-24",
+      "rawDate": "20260424",
+      "netBuy": -19496.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 17746.0
+    },
+    {
+      "date": "2026-04-27",
+      "rawDate": "20260427",
+      "netBuy": 8675.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 18135.6
+    },
+    {
+      "date": "2026-04-28",
+      "rawDate": "20260428",
+      "netBuy": -1935.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 18207.3
+    },
+    {
+      "date": "2026-04-29",
+      "rawDate": "20260429",
+      "netBuy": -6138.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 18348.9
+    },
+    {
+      "date": "2026-04-30",
+      "rawDate": "20260430",
+      "netBuy": -14622.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 18086.2
+    },
+    {
+      "date": "2026-05-04",
+      "rawDate": "20260504",
+      "netBuy": 29457.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 19020.1
+    },
+    {
+      "date": "2026-05-06",
+      "rawDate": "20260506",
+      "netBuy": 31096.0,
+      "ratio": 33.46,
+      "foreignHoldingVal": 20266.9
+    },
+    {
+      "date": "2026-05-07",
+      "rawDate": "20260507",
+      "netBuy": -67173.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 20530.1
+    },
+    {
+      "date": "2026-05-08",
+      "rawDate": "20260508",
+      "netBuy": -53117.0,
+      "ratio": 33.44,
+      "foreignHoldingVal": 20541.4
+    },
+    {
+      "date": "2026-05-11",
+      "rawDate": "20260511",
+      "netBuy": -28365.0,
+      "ratio": 33.43,
+      "foreignHoldingVal": 21433.5
+    },
+    {
+      "date": "2026-05-12",
+      "rawDate": "20260512",
+      "netBuy": -56258.0,
+      "ratio": 33.42,
+      "foreignHoldingVal": 20928.3
+    },
+    {
+      "date": "2026-05-13",
+      "rawDate": "20260513",
+      "netBuy": -37586.0,
+      "ratio": 33.42,
+      "foreignHoldingVal": 21465.7
+    },
+    {
+      "date": "2026-05-14",
+      "rawDate": "20260514",
+      "netBuy": -21680.0,
+      "ratio": 33.41,
+      "foreignHoldingVal": 21842.3
+    },
+    {
+      "date": "2026-05-15",
+      "rawDate": "20260515",
+      "netBuy": -56607.0,
+      "ratio": 33.41,
+      "foreignHoldingVal": 20493.4
+    },
+    {
+      "date": "2026-05-18",
+      "rawDate": "20260518",
+      "netBuy": -36519.0,
+      "ratio": 33.4,
+      "foreignHoldingVal": 20562.5
+    },
+    {
+      "date": "2026-05-19",
+      "rawDate": "20260519",
+      "netBuy": -57474.0,
+      "ratio": 33.39,
+      "foreignHoldingVal": 19890.0
+    },
+    {
+      "date": "2026-05-20",
+      "rawDate": "20260520",
+      "netBuy": -29499.0,
+      "ratio": 33.39,
+      "foreignHoldingVal": 19710.1
+    },
+    {
+      "date": "2026-05-21",
+      "rawDate": "20260521",
+      "netBuy": -2196.0,
+      "ratio": 33.38,
+      "foreignHoldingVal": 21353.7
+    },
+    {
+      "date": "2026-05-22",
+      "rawDate": "20260522",
+      "netBuy": -19265.0,
+      "ratio": 33.38,
+      "foreignHoldingVal": 21436.0
+    },
+    {
+      "date": "2026-05-26",
+      "rawDate": "20260526",
+      "netBuy": -1320.0,
+      "ratio": 33.38,
+      "foreignHoldingVal": 21966.8
+    },
+    {
+      "date": "2026-05-27",
+      "rawDate": "20260527",
+      "netBuy": -2606.0,
+      "ratio": 33.38,
+      "foreignHoldingVal": 22458.4
+    },
+    {
+      "date": "2026-05-28",
+      "rawDate": "20260528",
+      "netBuy": -27354.0,
+      "ratio": 33.38,
+      "foreignHoldingVal": 22334.6
+    },
+    {
+      "date": "2026-05-29",
+      "rawDate": "20260529",
+      "netBuy": -10681.0,
+      "ratio": 33.38,
+      "foreignHoldingVal": 23139.7
+    },
+    {
+      "date": "2026-06-01",
+      "rawDate": "20260601",
+      "netBuy": -28281.0,
+      "ratio": 33.37,
+      "foreignHoldingVal": 24042.6
+    },
+    {
+      "date": "2026-06-02",
+      "rawDate": "20260602",
+      "netBuy": -63191.0,
+      "ratio": 33.36,
+      "foreignHoldingVal": 24072.3
+    },
+    {
+      "date": "2026-06-04",
+      "rawDate": "20260604",
+      "netBuy": -67014.0,
+      "ratio": 33.35,
+      "foreignHoldingVal": 23593.3
+    },
+    {
+      "date": "2026-06-05",
+      "rawDate": "20260605",
+      "netBuy": -27815.0,
+      "ratio": 33.35,
+      "foreignHoldingVal": 22295.8
+    },
+    {
+      "date": "2026-06-08",
+      "rawDate": "20260608",
+      "netBuy": -2839.0,
+      "ratio": 33.35,
+      "foreignHoldingVal": 20450.8
+    },
+    {
+      "date": "2026-06-09",
+      "rawDate": "20260609",
+      "netBuy": -19843.0,
+      "ratio": 33.35,
+      "foreignHoldingVal": 22094.6
+    },
+    {
+      "date": "2026-06-10",
+      "rawDate": "20260610",
+      "netBuy": -28080.0,
+      "ratio": 33.34,
+      "foreignHoldingVal": 21087.3
+    },
+    {
+      "date": "2026-06-11",
+      "rawDate": "20260611",
+      "netBuy": -14796.0,
+      "ratio": 33.34,
+      "foreignHoldingVal": 21178.8
+    },
+    {
+      "date": "2026-06-12",
+      "rawDate": "20260612",
+      "netBuy": 22158.0,
+      "ratio": 33.34,
+      "foreignHoldingVal": 22170.2
+    },
+    {
+      "date": "2026-06-15",
+      "rawDate": "20260615",
+      "netBuy": 11033.0,
+      "ratio": 33.34,
+      "foreignHoldingVal": 23316.9
+    },
+    {
+      "date": "2026-06-16",
+      "rawDate": "20260616",
+      "netBuy": 15309.0,
+      "ratio": 33.35,
+      "foreignHoldingVal": 23817.4
+    },
+    {
+      "date": "2026-06-17",
+      "rawDate": "20260617",
+      "netBuy": -9946.0,
+      "ratio": 33.34,
+      "foreignHoldingVal": 24185.2
+    },
+    {
+      "date": "2026-06-18",
+      "rawDate": "20260618",
+      "netBuy": 12710.0,
+      "ratio": 33.35,
+      "foreignHoldingVal": 24720.5
+    },
+    {
+      "date": "2026-06-19",
+      "rawDate": "20260619",
+      "netBuy": -3519.0,
+      "ratio": 33.35,
+      "foreignHoldingVal": 24672.2
+    },
+    {
+      "date": "2026-06-22",
+      "rawDate": "20260622",
+      "netBuy": -25477.0,
+      "ratio": 33.34,
+      "foreignHoldingVal": 24838.8
+    },
+    {
+      "date": "2026-06-23",
+      "rawDate": "20260623",
+      "netBuy": -42421.0,
+      "ratio": 33.34,
+      "foreignHoldingVal": 22358.0
+    },
+    {
+      "date": "2026-06-24",
+      "rawDate": "20260624",
+      "netBuy": -46529.0,
+      "ratio": 33.33,
+      "foreignHoldingVal": 23090.0
+    },
+    {
+      "date": "2026-06-25",
+      "rawDate": "20260625",
+      "netBuy": -8783.0,
+      "ratio": 33.33,
+      "foreignHoldingVal": 24364.3
+    },
+    {
+      "date": "2026-06-26",
+      "rawDate": "20260626",
+      "netBuy": -43163.0,
+      "ratio": 33.32,
+      "foreignHoldingVal": 22943.4
+    },
+    {
+      "date": "2026-06-29",
+      "rawDate": "20260629",
+      "netBuy": -77560.0,
+      "ratio": 33.31,
+      "foreignHoldingVal": 22866.3
+    },
+    {
+      "date": "2026-06-30",
+      "rawDate": "20260630",
+      "netBuy": -38202.0,
+      "ratio": 33.31,
+      "foreignHoldingVal": 23078.9
+    },
+    {
+      "date": "2026-07-01",
+      "rawDate": "20260701",
+      "netBuy": -17012.0,
+      "ratio": 33.3,
+      "foreignHoldingVal": 22597.3
+    },
+    {
+      "date": "2026-07-02",
+      "rawDate": "20260702",
+      "netBuy": -44045.0,
+      "ratio": 33.3,
+      "foreignHoldingVal": 20814.4
+    },
+    {
+      "date": "2026-07-03",
+      "rawDate": "20260703",
+      "netBuy": -21556.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 22029.6
+    },
+    {
+      "date": "2026-07-06",
+      "rawDate": "20260706",
+      "netBuy": -13379.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 21943.6
+    },
+    {
+      "date": "2026-07-07",
+      "rawDate": "20260707",
+      "netBuy": -29300.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 20858.1
+    },
+    {
+      "date": "2026-07-08",
+      "rawDate": "20260708",
+      "netBuy": 3390.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 19742.2
+    },
+    {
+      "date": "2026-07-09",
+      "rawDate": "20260709",
+      "netBuy": 1428.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 19854.9
+    },
+    {
+      "date": "2026-07-10",
+      "rawDate": "20260710",
+      "netBuy": -3301.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 20366.3
+    },
+    {
+      "date": "2026-07-13",
+      "rawDate": "20260713",
+      "netBuy": -16903.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 18546.8
+    },
+    {
+      "date": "2026-07-14",
+      "rawDate": "20260714",
+      "netBuy": 9737.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 18695.1
+    },
+    {
+      "date": "2026-07-15",
+      "rawDate": "20260715",
+      "netBuy": 23126.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 19843.6
+    },
+    {
+      "date": "2026-07-16",
+      "rawDate": "20260716",
+      "netBuy": -13814.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18563.3
+    },
+    {
+      "date": "2026-07-20",
+      "rawDate": "20260720",
+      "netBuy": 5272.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 17746.6
+    },
+    {
+      "date": "2026-07-21",
+      "rawDate": "20260721",
+      "netBuy": 3087.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18391.8
+    },
+    {
+      "date": "2026-07-22",
+      "rawDate": "20260722",
+      "netBuy": 26299.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18537.6
+    },
+    {
+      "date": "2026-07-23",
+      "rawDate": "20260723",
+      "netBuy": 21487.0,
+      "ratio": 33.3,
+      "foreignHoldingVal": 19359.2
+    },
+    {
+      "date": "2026-07-24",
+      "rawDate": "20260724",
+      "netBuy": -32828.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18241.3
+    },
+    {
+      "date": "2026-07-27",
+      "rawDate": "20260727",
+      "netBuy": -29000.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 18418.5
+    },
+    {
+      "date": "2026-07-28",
+      "rawDate": "20260728",
+      "netBuy": -45261.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 16415.8
+    },
+    {
+      "date": "2026-07-29",
+      "rawDate": "20260729",
+      "netBuy": -12447.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 15535.4
+    },
+    {
+      "date": "2026-07-30",
+      "rawDate": "20260730",
+      "netBuy": 13310.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 15345.1
+    },
+    {
+      "date": "2026-07-31",
+      "rawDate": "20260731",
+      "netBuy": 72773.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18126.6
+    },
+    {
+      "date": "2026-08-03",
+      "rawDate": "20260803",
+      "netBuy": -28385.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 17190.6
+    },
+    {
+      "date": "2026-08-04",
+      "rawDate": "20260804",
+      "netBuy": -3709.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 17456.7
+    },
+    {
+      "date": "2026-08-05",
+      "rawDate": "20260805",
+      "netBuy": 14513.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18115.9
+    },
+    {
+      "date": "2026-08-06",
+      "rawDate": "20260806",
+      "netBuy": -33115.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 17278.0
+    },
+    {
+      "date": "2026-08-07",
+      "rawDate": "20260807",
+      "netBuy": -8696.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 17171.2
+    },
+    {
+      "date": "2026-08-10",
+      "rawDate": "20260810",
+      "netBuy": -14960.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 17283.8
+    },
+    {
+      "date": "2026-08-11",
+      "rawDate": "20260811",
+      "netBuy": 542.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 17432.7
+    },
+    {
+      "date": "2026-08-12",
+      "rawDate": "20260812",
+      "netBuy": 28427.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 18072.6
+    },
+    {
+      "date": "2026-08-13",
+      "rawDate": "20260813",
+      "netBuy": 21245.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 18702.3
+    },
+    {
+      "date": "2026-08-14",
+      "rawDate": "20260814",
+      "netBuy": 30486.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 19166.9
+    },
+    {
+      "date": "2026-08-18",
+      "rawDate": "20260818",
+      "netBuy": 861.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18857.6
+    },
+    {
+      "date": "2026-08-19",
+      "rawDate": "20260819",
+      "netBuy": -34879.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 17752.8
+    },
+    {
+      "date": "2026-08-20",
+      "rawDate": "20260820",
+      "netBuy": 17218.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18815.1
+    },
+    {
+      "date": "2026-08-21",
+      "rawDate": "20260821",
+      "netBuy": -1712.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 19015.9
+    },
+    {
+      "date": "2026-08-24",
+      "rawDate": "20260824",
+      "netBuy": -36808.0,
+      "ratio": 33.28,
+      "foreignHoldingVal": 18387.8
+    },
+    {
+      "date": "2026-08-25",
+      "rawDate": "20260825",
+      "netBuy": -38194.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 18523.8
+    },
+    {
+      "date": "2026-08-26",
+      "rawDate": "20260826",
+      "netBuy": -1039.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 18702.6
+    },
+    {
+      "date": "2026-08-27",
+      "rawDate": "20260827",
+      "netBuy": 1435.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 18972.4
+    },
+    {
+      "date": "2026-08-28",
+      "rawDate": "20260828",
+      "netBuy": -8548.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 18620.2
+    },
+    {
+      "date": "2026-08-31",
+      "rawDate": "20260831",
+      "netBuy": -6439.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 18697.8
+    },
+    {
+      "date": "2026-09-01",
+      "rawDate": "20260901",
+      "netBuy": -4917.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 18749.9
+    },
+    {
+      "date": "2026-09-02",
+      "rawDate": "20260902",
+      "netBuy": -19275.0,
+      "ratio": 33.26,
+      "foreignHoldingVal": 18006.8
+    },
+    {
+      "date": "2026-09-03",
+      "rawDate": "20260903",
+      "netBuy": 452.0,
+      "ratio": 33.26,
+      "foreignHoldingVal": 18048.4
+    },
+    {
+      "date": "2026-09-04",
+      "rawDate": "20260904",
+      "netBuy": 5037.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 18355.2
+    },
+    {
+      "date": "2026-09-07",
+      "rawDate": "20260907",
+      "netBuy": 25868.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 19198.4
+    },
+    {
+      "date": "2026-09-08",
+      "rawDate": "20260908",
+      "netBuy": 6482.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 19084.5
+    },
+    {
+      "date": "2026-09-09",
+      "rawDate": "20260909",
+      "netBuy": -4270.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 19339.9
+    },
+    {
+      "date": "2026-09-10",
+      "rawDate": "20260910",
+      "netBuy": -26230.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 19304.2
+    },
+    {
+      "date": "2026-09-11",
+      "rawDate": "20260911",
+      "netBuy": -23110.0,
+      "ratio": 33.26,
+      "foreignHoldingVal": 18945.8
+    },
+    {
+      "date": "2026-09-14",
+      "rawDate": "20260914",
+      "netBuy": -33506.0,
+      "ratio": 33.26,
+      "foreignHoldingVal": 18314.6
+    },
+    {
+      "date": "2026-09-15",
+      "rawDate": "20260915",
+      "netBuy": -15542.0,
+      "ratio": 33.25,
+      "foreignHoldingVal": 18170.6
+    },
+    {
+      "date": "2026-09-16",
+      "rawDate": "20260916",
+      "netBuy": -16828.0,
+      "ratio": 33.25,
+      "foreignHoldingVal": 18429.2
+    },
+    {
+      "date": "2026-09-17",
+      "rawDate": "20260917",
+      "netBuy": -26362.0,
+      "ratio": 33.25,
+      "foreignHoldingVal": 18416.5
+    },
+    {
+      "date": "2026-09-18",
+      "rawDate": "20260918",
+      "netBuy": 4609.0,
+      "ratio": 33.25,
+      "foreignHoldingVal": 18898.3
+    },
+    {
+      "date": "2026-09-21",
+      "rawDate": "20260921",
+      "netBuy": 185.0,
+      "ratio": 33.25,
+      "foreignHoldingVal": 19231.8
+    },
+    {
+      "date": "2026-09-22",
+      "rawDate": "20260922",
+      "netBuy": 573.0,
+      "ratio": 33.25,
+      "foreignHoldingVal": 19266.7
+    },
+    {
+      "date": "2026-09-23",
+      "rawDate": "20260923",
+      "netBuy": -4949.0,
+      "ratio": 33.25,
+      "foreignHoldingVal": 19456.5
+    },
+    {
+      "date": "2026-09-28",
+      "rawDate": "20260928",
+      "netBuy": -32830.0,
+      "ratio": 33.24,
+      "foreignHoldingVal": 18912.3
+    },
+    {
+      "date": "2026-09-29",
+      "rawDate": "20260929",
+      "netBuy": -29944.0,
+      "ratio": 33.23,
+      "foreignHoldingVal": 18850.0
+    },
+    {
+      "date": "2026-09-30",
+      "rawDate": "20260930",
+      "netBuy": -20692.0,
+      "ratio": 33.23,
+      "foreignHoldingVal": 18736.6
+    },
+    {
+      "date": "2026-10-01",
+      "rawDate": "20261001",
+      "netBuy": 1243.0,
+      "ratio": 33.23,
+      "foreignHoldingVal": 19114.7
+    },
+    {
+      "date": "2026-10-02",
+      "rawDate": "20261002",
+      "netBuy": -1011.0,
+      "ratio": 33.23,
+      "foreignHoldingVal": 19189.9
+    },
+    {
+      "date": "2026-10-06",
+      "rawDate": "20261006",
+      "netBuy": -17567.0,
+      "ratio": 33.23,
+      "foreignHoldingVal": 19017.4
+    },
+    {
+      "date": "2026-10-07",
+      "rawDate": "20261007",
+      "netBuy": -26314.0,
+      "ratio": 33.22,
+      "foreignHoldingVal": 18647.9
+    },
+    {
+      "date": "2026-10-08",
+      "rawDate": "20261008",
+      "netBuy": -20811.0,
+      "ratio": 33.22,
+      "foreignHoldingVal": 18161.8
+    },
+    {
+      "date": "2026-10-12",
+      "rawDate": "20261012",
+      "netBuy": -20182.0,
+      "ratio": 33.22,
+      "foreignHoldingVal": 17497.5
+    },
+    {
+      "date": "2026-10-13",
+      "rawDate": "20261013",
+      "netBuy": -45933.0,
+      "ratio": 33.21,
+      "foreignHoldingVal": 16532.8
+    },
+    {
+      "date": "2026-10-14",
+      "rawDate": "20261014",
+      "netBuy": -11816.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 16459.5
+    },
+    {
+      "date": "2026-10-15",
+      "rawDate": "20261015",
+      "netBuy": -37677.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 15207.5
+    },
+    {
+      "date": "2026-10-16",
+      "rawDate": "20261016",
+      "netBuy": 3214.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 15534.2
+    },
+    {
+      "date": "2026-10-19",
+      "rawDate": "20261019",
+      "netBuy": 962.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 15810.1
+    },
+    {
+      "date": "2026-10-20",
+      "rawDate": "20261020",
+      "netBuy": -5256.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 15216.3
+    },
+    {
+      "date": "2026-10-21",
+      "rawDate": "20261021",
+      "netBuy": 6527.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 15716.7
+    },
+    {
+      "date": "2026-10-22",
+      "rawDate": "20261022",
+      "netBuy": 353.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 15167.8
+    },
+    {
+      "date": "2026-10-23",
+      "rawDate": "20261023",
+      "netBuy": -9785.0,
+      "ratio": 33.19,
+      "foreignHoldingVal": 15210.6
+    },
+    {
+      "date": "2026-10-26",
+      "rawDate": "20261026",
+      "netBuy": -6526.0,
+      "ratio": 33.19,
+      "foreignHoldingVal": 14984.1
+    },
+    {
+      "date": "2026-10-27",
+      "rawDate": "20261027",
+      "netBuy": 5599.0,
+      "ratio": 33.19,
+      "foreignHoldingVal": 15451.9
+    },
+    {
+      "date": "2026-10-28",
+      "rawDate": "20261028",
+      "netBuy": 7781.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 16496.6
+    },
+    {
+      "date": "2026-10-29",
+      "rawDate": "20261029",
+      "netBuy": 6600.0,
+      "ratio": 33.2,
+      "foreignHoldingVal": 16281.6
+    },
+    {
+      "date": "2026-10-30",
+      "rawDate": "20261030",
+      "netBuy": -16158.0,
+      "ratio": 33.19,
+      "foreignHoldingVal": 15701.3
+    },
+    {
+      "date": "2026-11-02",
+      "rawDate": "20261102",
+      "netBuy": -3778.0,
+      "ratio": 33.19,
+      "foreignHoldingVal": 16049.3
+    },
+    {
+      "date": "2026-11-03",
+      "rawDate": "20261103",
+      "netBuy": -15244.0,
+      "ratio": 33.19,
+      "foreignHoldingVal": 15474.5
+    },
+    {
+      "date": "2026-11-04",
+      "rawDate": "20261104",
+      "netBuy": -24467.0,
+      "ratio": 33.18,
+      "foreignHoldingVal": 15565.2
+    },
+    {
+      "date": "2026-11-05",
+      "rawDate": "20261105",
+      "netBuy": -34039.0,
+      "ratio": 33.18,
+      "foreignHoldingVal": 14736.7
+    },
+    {
+      "date": "2026-11-06",
+      "rawDate": "20261106",
+      "netBuy": -26897.0,
+      "ratio": 33.17,
+      "foreignHoldingVal": 13848.1
+    },
+    {
+      "date": "2026-11-09",
+      "rawDate": "20261109",
+      "netBuy": -5250.0,
+      "ratio": 33.17,
+      "foreignHoldingVal": 13739.2
+    },
+    {
+      "date": "2026-11-10",
+      "rawDate": "20261110",
+      "netBuy": 4500.0,
+      "ratio": 33.17,
+      "foreignHoldingVal": 14345.2
+    },
+    {
+      "date": "2026-11-11",
+      "rawDate": "20261111",
+      "netBuy": 6776.0,
+      "ratio": 33.17,
+      "foreignHoldingVal": 14723.3
+    },
+    {
+      "date": "2026-11-12",
+      "rawDate": "20261112",
+      "netBuy": 4122.0,
+      "ratio": 33.17,
+      "foreignHoldingVal": 14645.8
+    },
+    {
+      "date": "2026-11-13",
+      "rawDate": "20261113",
+      "netBuy": -5511.0,
+      "ratio": 33.17,
+      "foreignHoldingVal": 14513.3
+    }
+  ],
+  "foreignMonthly": [
+    {
+      "date": "2024-01-31",
+      "month": "2024-01",
+      "netBuy": 34828.0,
+      "ratio": 33.62,
+      "foreignHoldingVal": 6824.1
+    },
+    {
+      "date": "2024-02-29",
+      "month": "2024-02",
+      "netBuy": 78582.0,
+      "ratio": 33.65,
+      "foreignHoldingVal": 7250.5
+    },
+    {
+      "date": "2024-03-29",
+      "month": "2024-03",
+      "netBuy": 44282.0,
+      "ratio": 33.67,
+      "foreignHoldingVal": 7544.4
+    },
+    {
+      "date": "2024-04-30",
+      "month": "2024-04",
+      "netBuy": 33727.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7390.5
+    },
+    {
+      "date": "2024-05-31",
+      "month": "2024-05",
+      "netBuy": -13308.0,
+      "ratio": 33.68,
+      "foreignHoldingVal": 7244.8
+    },
+    {
+      "date": "2024-06-28",
+      "month": "2024-06",
+      "netBuy": 46112.0,
+      "ratio": 33.7,
+      "foreignHoldingVal": 7697.0
+    },
+    {
+      "date": "2024-07-31",
+      "month": "2024-07",
+      "netBuy": 16936.0,
+      "ratio": 33.71,
+      "foreignHoldingVal": 7627.6
+    },
+    {
+      "date": "2024-08-30",
+      "month": "2024-08",
+      "netBuy": -28682.0,
+      "ratio": 33.69,
+      "foreignHoldingVal": 7370.5
+    },
+    {
+      "date": "2024-09-30",
+      "month": "2024-09",
+      "netBuy": -79213.0,
+      "ratio": 33.66,
+      "foreignHoldingVal": 7121.6
+    },
+    {
+      "date": "2024-10-31",
+      "month": "2024-10",
+      "netBuy": -47001.0,
+      "ratio": 33.63,
+      "foreignHoldingVal": 7008.7
+    },
+    {
+      "date": "2024-11-29",
+      "month": "2024-11",
+      "netBuy": -43041.0,
+      "ratio": 33.61,
+      "foreignHoldingVal": 6761.0
+    },
+    {
+      "date": "2024-12-30",
+      "month": "2024-12",
+      "netBuy": -30437.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 6596.3
+    },
+    {
+      "date": "2025-01-31",
+      "month": "2025-01",
+      "netBuy": -9353.0,
+      "ratio": 33.59,
+      "foreignHoldingVal": 6910.5
+    },
+    {
+      "date": "2025-02-28",
+      "month": "2025-02",
+      "netBuy": -37030.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 6964.8
+    },
+    {
+      "date": "2025-03-31",
+      "month": "2025-03",
+      "netBuy": -16665.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 6825.8
+    },
+    {
+      "date": "2025-04-30",
+      "month": "2025-04",
+      "netBuy": -93552.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7019.3
+    },
+    {
+      "date": "2025-05-30",
+      "month": "2025-05",
+      "netBuy": 11657.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 7411.1
+    },
+    {
+      "date": "2025-06-30",
+      "month": "2025-06",
+      "netBuy": 26926.0,
+      "ratio": 33.54,
+      "foreignHoldingVal": 8424.7
+    },
+    {
+      "date": "2025-07-31",
+      "month": "2025-07",
+      "netBuy": 62809.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 8936.3
+    },
+    {
+      "date": "2025-08-29",
+      "month": "2025-08",
+      "netBuy": -16176.0,
+      "ratio": 33.55,
+      "foreignHoldingVal": 8787.9
+    },
+    {
+      "date": "2025-09-30",
+      "month": "2025-09",
+      "netBuy": 74467.0,
+      "ratio": 33.58,
+      "foreignHoldingVal": 9462.4
+    },
+    {
+      "date": "2025-10-31",
+      "month": "2025-10",
+      "netBuy": 53447.0,
+      "ratio": 33.6,
+      "foreignHoldingVal": 11368.1
+    },
+    {
+      "date": "2025-11-28",
+      "month": "2025-11",
+      "netBuy": -144562.0,
+      "ratio": 33.56,
+      "foreignHoldingVal": 10857.6
+    },
+    {
+      "date": "2025-12-30",
+      "month": "2025-12",
+      "netBuy": 41482.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 11674.1
+    },
+    {
+      "date": "2026-01-30",
+      "month": "2026-01",
+      "netBuy": 1187.0,
+      "ratio": 33.57,
+      "foreignHoldingVal": 14497.0
+    },
+    {
+      "date": "2026-02-27",
+      "month": "2026-02",
+      "netBuy": -210732.0,
+      "ratio": 33.52,
+      "foreignHoldingVal": 17252.3
+    },
+    {
+      "date": "2026-03-31",
+      "month": "2026-03",
+      "netBuy": -358804.0,
+      "ratio": 33.44,
+      "foreignHoldingVal": 13909.4
+    },
+    {
+      "date": "2026-04-30",
+      "month": "2026-04",
+      "netBuy": 11280.0,
+      "ratio": 33.45,
+      "foreignHoldingVal": 18086.2
+    },
+    {
+      "date": "2026-05-29",
+      "month": "2026-05",
+      "netBuy": -447147.0,
+      "ratio": 33.38,
+      "foreignHoldingVal": 23139.7
+    },
+    {
+      "date": "2026-06-30",
+      "month": "2026-06",
+      "netBuy": -486249.0,
+      "ratio": 33.31,
+      "foreignHoldingVal": 23078.9
+    },
+    {
+      "date": "2026-07-31",
+      "month": "2026-07",
+      "netBuy": -98937.0,
+      "ratio": 33.29,
+      "foreignHoldingVal": 18126.6
+    },
+    {
+      "date": "2026-08-31",
+      "month": "2026-08",
+      "netBuy": -101757.0,
+      "ratio": 33.27,
+      "foreignHoldingVal": 18697.8
+    },
+    {
+      "date": "2026-09-30",
+      "month": "2026-09",
+      "netBuy": -215249.0,
+      "ratio": 33.23,
+      "foreignHoldingVal": 18736.6
+    },
+    {
+      "date": "2026-10-30",
+      "month": "2026-10",
+      "netBuy": -186757.0,
+      "ratio": 33.19,
+      "foreignHoldingVal": 15701.3
+    },
+    {
+      "date": "2026-11-13",
+      "month": "2026-11",
+      "netBuy": -99788.0,
+      "ratio": 33.17,
+      "foreignHoldingVal": 14513.3
+    }
+  ],
+  "latestForeign": {
+    "date": "2026-11-13",
+    "rawDate": "20261113",
+    "netBuy": -5511.0,
+    "ratio": 33.17,
+    "foreignHoldingVal": 14513.3
   }
 }

@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-한국은행 ECOS API 및 금융 데이터 자동 수집기 v2.5
+한국은행 ECOS API 및 금융 데이터 자동 수집기 v3.0
 - 뉴스심리지수 (523Y001 / A001) 및 3개월(90일) 이동평균
 - 코스피 과거 일봉/월봉 OHLCV (시가, 고가, 저가, 종가, 거래량)
 - 코스피 20일, 60일, 120일 이동평균선
 - 코스피 월봉 5월, 20월, 60월 이동평균선
+- 외국인 국내주식 일별/월별 보유 비중(%) 및 순매수 대금 추이 (ECOS 802Y001)
 - 수급, 금리차, VIX 보조지표
 """
 
@@ -142,6 +143,79 @@ def calc_series_ma(candles, period):
             ma.append(round(sum(window) / period, 2))
     return ma
 
+def fetch_foreign_holdings(api_key):
+    """한국은행 ECOS 802Y001에서 외국인 일별/월별 순매수 및 시총 비중(%) 산출"""
+    start_date = '20240101'
+    today = datetime.now().strftime('%Y%m%d')
+    
+    # 1. 외국인 순매수(0030000, 억원)
+    url_f = f"https://ecos.bok.or.kr/api/StatisticSearch/{api_key}/json/kr/1/1000/802Y001/D/{start_date}/{today}/0030000"
+    res_f = fetch_json(url_f)
+    rows_f = res_f.get('StatisticSearch', {}).get('row', []) if res_f else []
+    
+    # 2. 시가총액(0183000, 십억원)
+    url_m = f"https://ecos.bok.or.kr/api/StatisticSearch/{api_key}/json/kr/1/1000/802Y001/D/{start_date}/{today}/0183000"
+    res_m = fetch_json(url_m)
+    rows_m = res_m.get('StatisticSearch', {}).get('row', []) if res_m else []
+    
+    if not rows_f or not rows_m:
+        print("[오류] 외국인 순매수/시총 데이터 조회 실패")
+        return [], []
+        
+    mcap_dict = {r['TIME']: float(r['DATA_VALUE']) * 10 for r in rows_m} # 십억원 -> 억원
+    
+    # 기준 시점(2024-01-02) 외국인 보유 비중 약 33.6% (약 721조원)
+    base_time = rows_f[0]['TIME']
+    base_mcap = mcap_dict.get(base_time, 214722300)
+    curr_foreign_val = base_mcap * 0.336
+    
+    daily_list = []
+    month_groups = {}
+    
+    for i, rf in enumerate(rows_f):
+        t = rf['TIME']
+        net_buy = float(rf['DATA_VALUE'])
+        mcap = mcap_dict.get(t, base_mcap)
+        
+        if i > 0:
+            prev_t = rows_f[i-1]['TIME']
+            prev_mcap = mcap_dict.get(prev_t, mcap)
+            price_ratio = mcap / prev_mcap if prev_mcap > 0 else 1.0
+            curr_foreign_val = (curr_foreign_val * price_ratio) + net_buy
+            
+        ratio = round((curr_foreign_val / mcap) * 100, 2)
+        date_str = f"{t[:4]}-{t[4:6]}-{t[6:8]}"
+        
+        item = {
+            "date": date_str,
+            "rawDate": t,
+            "netBuy": round(net_buy, 0),
+            "ratio": ratio,
+            "foreignHoldingVal": round(curr_foreign_val / 10000, 1) # 조원
+        }
+        daily_list.append(item)
+        
+        # 월별 그룹화 (YYYY-MM)
+        month_key = t[:6]
+        if month_key not in month_groups:
+            month_groups[month_key] = []
+        month_groups[month_key].append(item)
+        
+    # 월봉 데이터 집계
+    monthly_list = []
+    for m_key, items in month_groups.items():
+        total_net_buy = sum(x['netBuy'] for x in items)
+        last_item = items[-1]
+        monthly_list.append({
+            "date": last_item['date'],
+            "month": f"{m_key[:4]}-{m_key[4:6]}",
+            "netBuy": round(total_net_buy, 0),
+            "ratio": last_item['ratio'],
+            "foreignHoldingVal": last_item['foreignHoldingVal']
+        })
+        
+    return daily_list, monthly_list
+
 def fetch_market_indicators(api_key):
     """보조 지표 수집"""
     ind = {
@@ -205,9 +279,9 @@ def fetch_market_indicators(api_key):
     return ind
 
 def main():
-    print("=" * 65)
-    print("한국은행 ECOS + 코스피 일봉/월봉 캔들 데이터 수집 시작...")
-    print("=" * 65)
+    print("=" * 68)
+    print("한국은행 ECOS + 코스피 캔들 + 외국인 보유현황(%) 데이터 수집 시작...")
+    print("=" * 68)
     
     # 1. 뉴스심리지수
     raw_data = fetch_news_sentiment(API_KEY)
@@ -217,26 +291,30 @@ def main():
     ma_data, trend, zone, latest_ma = calculate_ma_and_zones(raw_data, period=90)
     print(f"✓ 뉴스심리지수: {len(raw_data)}건 수집 완료 (최신: {raw_data[-1]['value']})")
     
-    # 2. 코스피 일봉 OHLCV + 20/60/120선
+    # 2. 코스피 일봉/월봉
     kospi_daily = fetch_kospi_candles('day', 750)
     ma20_daily = calc_series_ma(kospi_daily, 20)
     ma60_daily = calc_series_ma(kospi_daily, 60)
     ma120_daily = calc_series_ma(kospi_daily, 120)
-    print(f"✓ 코스피 일봉: {len(kospi_daily)}건 수집 완료 (최신 종가: {kospi_daily[-1]['close']})")
     
-    # 3. 코스피 월봉 OHLCV + 5/20/60선
     kospi_monthly = fetch_kospi_candles('month', 60)
     ma5_monthly = calc_series_ma(kospi_monthly, 5)
     ma20_monthly = calc_series_ma(kospi_monthly, 20)
     ma60_monthly = calc_series_ma(kospi_monthly, 60)
-    print(f"✓ 코스피 월봉: {len(kospi_monthly)}건 수집 완료 (최신 월봉 종가: {kospi_monthly[-1]['close']})")
+    print(f"✓ 코스피 캔들: 일봉 {len(kospi_daily)}건 / 월봉 {len(kospi_monthly)}건 수집 완료")
     
+    # 3. 외국인 보유현황 (일별 / 월별)
+    foreign_daily, foreign_monthly = fetch_foreign_holdings(API_KEY)
+    print(f"✓ 외국인 보유현황: 일별 {len(foreign_daily)}건 / 월별 {len(foreign_monthly)}건 산출 완료")
+    if foreign_daily:
+        print(f"  - 최신 외국인 보유비중: {foreign_daily[-1]['ratio']}% | 순매수: {foreign_daily[-1]['netBuy']}억원")
+        
     # 4. 보조 지표
     indicators = fetch_market_indicators(API_KEY)
     
     payload = {
         "updatedAt": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-        "source": "한국은행 ECOS 및 네이버 금융 공식 데이터",
+        "source": "한국은행 ECOS (통계표 523Y001, 802Y001) 및 네이버 금융 공식 데이터",
         "trend": trend,
         "zone": zone,
         "latestValue": raw_data[-1]['value'],
@@ -262,14 +340,18 @@ def main():
             "ma5": ma5_monthly,
             "ma20": ma20_monthly,
             "ma60": ma60_monthly
-        }
+        },
+        
+        # 🌟 외국인 보유현황 & 순매수 추이 (일별 & 월별)
+        "foreignDaily": foreign_daily,
+        "foreignMonthly": foreign_monthly,
+        "latestForeign": foreign_daily[-1] if foreign_daily else None
     }
     
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
         
     print(f"[성공] {DATA_FILE} 저장 완료!")
-    print(f"- 코스피 일봉 캔들: {len(kospi_daily)}개 | 월봉 캔들: {len(kospi_monthly)}개")
 
 if __name__ == '__main__':
     main()

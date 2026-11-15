@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>코스피 밸류에이션 &amp; HTS 캔들 대시보드 (확대/축소 &amp; 수직선)</title>
+<title>코스피 밸류에이션 &amp; HTS 캔들 + 외국인 보유현황 대시보드</title>
 <script src="libs/chart.umd.min.js"></script>
 <script src="libs/chartjs-plugin-annotation.min.js"></script>
 <style>
@@ -38,6 +38,7 @@
   --purple-bg: rgba(139,92,246,0.12);
   --yellow: #ffd166;
   --cyan: #00f5d4;
+  --gold: #f6c85f;
   --radius: 14px;
   --shadow: 0 4px 24px rgba(0,0,0,0.3);
 }
@@ -210,7 +211,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* ========================================
-   CHARTS & SYNCHRONIZED CONTROLLER
+   CHARTS & CONTROLLER
    ======================================== */
 .chart-card { margin-bottom: 24px; position: relative; }
 .chart-header {
@@ -219,7 +220,7 @@ a:hover { text-decoration: underline; }
 }
 .chart-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
-/* 🌟 마스터 통합 제어기 (봉 주기 & 기간) */
+/* 🌟 마스터 통합 제어기 */
 .timeframe-tabs {
   display: inline-flex; background: var(--bg-card-alt);
   border: 1px solid var(--border); border-radius: 8px; padding: 2px;
@@ -248,7 +249,7 @@ a:hover { text-decoration: underline; }
 }
 .chart-btn:hover { border-color: var(--purple); color: var(--text-main); }
 
-/* 🔍 확대/축소/리셋 툴바 */
+/* 🔍 확대/축소/리셋 */
 .zoom-btns { display: flex; gap: 4px; }
 .zoom-btn {
   padding: 5px 10px; border-radius: 7px;
@@ -257,10 +258,7 @@ a:hover { text-decoration: underline; }
   font-weight: 800; transition: all 0.2s;
   display: inline-flex; align-items: center; gap: 4px;
 }
-.zoom-btn:hover {
-  border-color: var(--purple); color: #ffffff;
-  background: var(--bg-hover);
-}
+.zoom-btn:hover { border-color: var(--purple); color: #ffffff; background: var(--bg-hover); }
 
 /* 이동평균선 범례 배지 */
 .ma-legend {
@@ -304,8 +302,36 @@ a:hover { text-decoration: underline; }
 .c-cyan   { background: #00f5d4; color: #00f5d4; }
 .c-purple { background: #a78bfa; color: #a78bfa; }
 
-.chart-wrap { position: relative; height: 340px; touch-action: none; }
-.chart-wrap-candle { height: 380px; }
+/* 🌟 차트 래퍼 높이 */
+.chart-wrap { position: relative; height: 320px; touch-action: none; }
+.chart-wrap-candle { height: 320px; touch-action: none; }
+.chart-wrap-foreign { height: 160px; touch-action: none; margin-top: 4px; }
+
+/* 🌟 외국인 서브패널 헤더 바 (일체형) */
+.subpanel-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 14px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.sp-title {
+  font-size: 0.76rem; font-weight: 800; color: #a78bfa;
+  display: flex; align-items: center; gap: 6px;
+}
+.sp-stats {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  font-size: 0.74rem; font-weight: 700;
+}
+.sp-stat-item {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 9px; border-radius: 6px; background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+}
+.sp-stat-item b { color: #ffd166; }
 
 /* 동기화 배지 */
 .sync-badge {
@@ -367,9 +393,11 @@ a:hover { text-decoration: underline; }
   .top-grid  { grid-template-columns: 1fr; }
   .tl-card   { flex-direction: column; }
   .ind-grid  { grid-template-columns: 1fr; }
-  .chart-wrap { height: 260px; }
-  .chart-wrap-candle { height: 300px; }
+  .chart-wrap { height: 240px; }
+  .chart-wrap-candle { height: 260px; }
+  .chart-wrap-foreign { height: 130px; }
   .draw-toolbar { justify-content: center; }
+  .subpanel-bar { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -378,7 +406,7 @@ a:hover { text-decoration: underline; }
 <!-- ===== HEADER ===== -->
 <header class="app-header">
   <div class="logo">
-    <h1>📊 코스피 밸류에이션 &amp; HTS 캔들 대시보드</h1>
+    <h1>📊 코스피 밸류에이션 &amp; HTS 캔들 + 외국인 수급 대시보드</h1>
     <span class="badge" id="elApiBadge">🟢 ECOS 실시간 연동</span>
   </div>
   <div class="header-actions">
@@ -453,18 +481,16 @@ a:hover { text-decoration: underline; }
     <div class="chart-header">
       <div style="display:flex;align-items:center;gap:10px;">
         <span class="card-label" style="margin:0;">📈 [위 차트 - 심리 지표] 뉴스심리지수 &amp; 3개월 이동평균선</span>
-        <span class="sync-badge">🔗 아래 코스피와 자동 동기화됨</span>
+        <span class="sync-badge">🔗 아래 코스피 &amp; 외국인 지분율 3단 동기화</span>
       </div>
 
       <!-- 🌟 통합 마스터 컨트롤러 -->
       <div class="chart-controls">
-        <!-- 1. 일봉 / 월봉 스위치 -->
         <div class="timeframe-tabs">
           <button class="tf-tab active" id="tabDaily" onclick="setMasterTimeframe('day',this)">일봉 ☀️</button>
           <button class="tf-tab" id="tabMonthly" onclick="setMasterTimeframe('month',this)">월봉 🌙</button>
         </div>
 
-        <!-- 2. 기간 선택 (1개월, 3개월, 6개월, 12개월, 전체) -->
         <div class="chart-btns" id="elMasterRangeBtns">
           <button class="chart-btn" data-r="1m" onclick="setMasterRange('1m',this)">1개월</button>
           <button class="chart-btn" data-r="3m" onclick="setMasterRange('3m',this)">3개월</button>
@@ -473,7 +499,6 @@ a:hover { text-decoration: underline; }
           <button class="chart-btn active" data-r="all" onclick="setMasterRange('all',this)">전체</button>
         </div>
 
-        <!-- 3. 🔍 차트 확대 / 축소 / 리셋 컨트롤러 -->
         <div class="zoom-btns">
           <button class="zoom-btn" onclick="zoomCharts(0.75)" title="차트 확대 (마우스 휠 위로도 가능)">🔍➕ 확대</button>
           <button class="zoom-btn" onclick="zoomCharts(1.33)" title="차트 축소 (마우스 휠 아래로도 가능)">🔍➖ 축소</button>
@@ -482,7 +507,7 @@ a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- 심리지수 선 긋기 툴바 (수직선 추가!) -->
+    <!-- 심리지수 선 긋기 툴바 -->
     <div class="draw-toolbar" id="tbNsi">
       <div class="dt-group">
         <span class="dt-label">선긋기:</span>
@@ -511,17 +536,17 @@ a:hover { text-decoration: underline; }
   </div>
 
   <!-- ========================================================
-       CHART 2: [아래 차트] 코스피 주가 HTS 캔들 차트 (독립 분리)
+       CHART 2: [아래 차트] 코스피 주가 HTS 캔들 + 외국인 보유비중%
+       (옵션 A: 일체형 서브패널 통합 구현!)
        ======================================================== -->
   <div class="card chart-card">
     <div class="chart-header">
       <div style="display:flex;align-items:center;gap:10px;">
-        <span class="card-label" style="margin:0;">🕯️ [아래 차트 - 가격 지표] 코스피 종합주가 HTS 캔들 차트 (독립형)</span>
-        <span class="sync-badge">🔗 위 차트와 같은 날짜 및 줌 동기화</span>
+        <span class="card-label" style="margin:0;">🕯️ [아래 차트] 코스피 HTS 캔들 &amp; 외국인 국내주식 보유 현황</span>
+        <span class="sync-badge">🔗 위 심리지수와 같은 날짜 및 줌 동기화</span>
       </div>
       
       <div class="chart-controls">
-        <!-- 이평선 범례 -->
         <div class="ma-legend" id="maLegendBox">
           <span><span class="ma-dot" style="background:#ffd166;"></span> 20선</span>
           <span><span class="ma-dot" style="background:#00d68f;"></span> 60선</span>
@@ -530,7 +555,7 @@ a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- 코스피 캔들 선 긋기 툴바 (수직선 추가!) -->
+    <!-- 코스피 캔들 선 긋기 툴바 -->
     <div class="draw-toolbar" id="tbKospi">
       <div class="dt-group">
         <span class="dt-label">선긋기:</span>
@@ -553,8 +578,26 @@ a:hover { text-decoration: underline; }
       </div>
     </div>
 
+    <!-- 1. 코스피 캔들 캔버스 (상단 70%) -->
     <div class="chart-wrap chart-wrap-candle">
       <canvas id="cvKospi"></canvas>
+    </div>
+
+    <!-- 2. 🌟 외국인 서브패널 헤더 바 (일체형 분할선) -->
+    <div class="subpanel-bar">
+      <div class="sp-title">
+        <span>📊 외국인 국내주식 보유 비중(%) &amp; 순매수 대금 추이</span>
+      </div>
+      <div class="sp-stats">
+        <div class="sp-stat-item">외국인 시총 지분율: <b id="spForeignRatio">33.17%</b></div>
+        <div class="sp-stat-item">외국인 순매수: <b id="spForeignNetBuy">-5,511억원</b></div>
+        <div class="sp-stat-item">범례: <span style="color:#ffd166;">― 지분율(%)</span> | <span style="color:#3b82f6;">■ 순매수</span> | <span style="color:#ff4d5e;">■ 순매도</span></div>
+      </div>
+    </div>
+
+    <!-- 3. 🌟 외국인 보유비중% & 순매수 캔버스 (하단 30% 일체형 서브패널) -->
+    <div class="chart-wrap chart-wrap-foreign">
+      <canvas id="cvForeign"></canvas>
     </div>
   </div>
 
@@ -595,8 +638,8 @@ a:hover { text-decoration: underline; }
 <!-- ===== FOOTER ===== -->
 <footer class="app-footer">
   ⚠️ 본 대시보드는 참고용이며, 투자 결정에 대한 책임은 투자자 본인에게 있습니다.<br>
-  데이터 출처: 한국은행 경제통계시스템(ECOS) 통계코드 523Y001 · 네이버 금융 FChart OHLCV API<br>
-  뉴스심리지수 기준값 100 = 장기 평균 &nbsp;|&nbsp; 마우스 휠로 위아래 차트 동시 줌 인/아웃 가능
+  데이터 출처: 한국은행 경제통계시스템(ECOS) 통계코드 523Y001, 802Y001 · 네이버 금융 FChart OHLCV API<br>
+  뉴스심리지수 기준값 100 = 장기 평균 &nbsp;|&nbsp; 캔들과 외국인 지분율(%)이 일체형으로 실시간 동기화됩니다.
 </footer>
 
 <!-- Toast -->
@@ -623,33 +666,34 @@ function toast(msg){
 const S = {
   raw:[], ma:[], zone:null, trend:null,
 
-  // 통합 동기화 제어 상태
   masterTf: 'day',      // 'day' (일봉) or 'month' (월봉)
   masterRange: 'all',   // '1m', '3m', '6m', '12m', 'all'
 
   // 🔍 줌 윈도우 상태 (동적 줌 인/아웃)
   zoomWindow: {
     isCustom: false,
-    nsiStart: 0,
-    nsiEnd: 0,
-    kospiStart: 0,
-    kospiEnd: 0
+    nsiStart: 0, nsiEnd: 0,
+    kospiStart: 0, kospiEnd: 0
   },
 
   nsiChart: null,
   kospiChart: null,
+  foreignChart: null,
 
   kospiDaily: null,
   kospiMonthly: null,
 
-  // 십자선 실시간 동기화 상태
+  foreignDaily: [],
+  foreignMonthly: [],
+
+  // 십자선 실시간 동기화 날짜
   syncCrosshairDate: null,
 
   ind: {}
 };
 
 // ========================================
-// ✏️ 선 긋기 상태 관리 (수직선 지원)
+// ✏️ 선 긋기 상태 관리
 // ========================================
 const drawState = {
   nsi: {
@@ -733,6 +777,7 @@ function makeUserLinesPlugin(target) {
     id: 'userLinesPlugin_' + target,
     afterDatasetsDraw(chart) {
       const ds = drawState[target];
+      if (!ds) return;
       const { ctx, scales: { x, y } } = chart;
       ctx.save();
 
@@ -742,7 +787,6 @@ function makeUserLinesPlugin(target) {
         ctx.lineWidth = 2.2;
 
         if (line.type === 'horizontal') {
-          // 📏 수평선
           const yPx = y.getPixelForValue(line.val);
           if (yPx >= y.top && yPx <= y.bottom) {
             ctx.beginPath();
@@ -755,7 +799,6 @@ function makeUserLinesPlugin(target) {
             ctx.fillText(Number(line.val).toFixed(target === 'kospi' ? 0 : 1), x.right - 44, yPx - 5);
           }
         } else if (line.type === 'vertical') {
-          // 📐 수직선
           const xPx = x.getPixelForValue(line.date);
           if (!isNaN(xPx) && xPx >= x.left && xPx <= x.right) {
             ctx.beginPath();
@@ -763,7 +806,6 @@ function makeUserLinesPlugin(target) {
             ctx.lineTo(xPx, y.bottom);
             ctx.stroke();
 
-            // 날짜 배지
             ctx.fillStyle = line.color;
             ctx.font = 'bold 10px sans-serif';
             const tw = ctx.measureText(line.date).width + 8;
@@ -774,7 +816,6 @@ function makeUserLinesPlugin(target) {
             ctx.textAlign = 'start';
           }
         } else if (line.type === 'trend') {
-          // ✏️ 추세선
           const x1 = x.getPixelForValue(line.date1);
           const y1 = y.getPixelForValue(line.val1);
           const x2 = x.getPixelForValue(line.date2);
@@ -795,7 +836,7 @@ function makeUserLinesPlugin(target) {
         }
       }
 
-      // 2. 드래그 중인 임시 선 (추세선 또는 수직선 프리뷰)
+      // 2. 드래그 중인 임시 선
       if (ds.isDrawing && ds.preview) {
         ctx.strokeStyle = ds.color;
         ctx.lineWidth = 2;
@@ -806,7 +847,7 @@ function makeUserLinesPlugin(target) {
         ctx.stroke();
       }
 
-      // 3. 🌟 실시간 상호 동기화 세로선 (Crosshair Vertical Line)
+      // 3. 🌟 실시간 상호 동기화 세로선 (Crosshair Line)
       if (S.syncCrosshairDate && ds.tool === 'none') {
         const syncXPx = x.getPixelForValue(S.syncCrosshairDate);
         if (!isNaN(syncXPx) && syncXPx >= x.left && syncXPx <= x.right) {
@@ -834,8 +875,29 @@ function makeUserLinesPlugin(target) {
   };
 }
 
+// 🌟 외국인 서브패널 전용 가이드라인 플러그인 (십자선 표시)
+const foreignSyncPlugin = {
+  id: 'foreignSyncPlugin',
+  afterDatasetsDraw(chart) {
+    if (!S.syncCrosshairDate) return;
+    const { ctx, scales: { x, y } } = chart;
+    const syncXPx = x.getPixelForValue(S.syncCrosshairDate);
+    if (!isNaN(syncXPx) && syncXPx >= x.left && syncXPx <= x.right) {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+      ctx.lineWidth = 1.3;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.moveTo(syncXPx, y.top);
+      ctx.lineTo(syncXPx, y.bottom);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+};
+
 // ========================================
-// 🖱️ 차트 이벤트 (선긋기 + 십자선 동기화)
+// 🖱️ 3단 차트 상호 인터랙션 (십자선 & 툴팁 동기화)
 // ========================================
 function setupChartEvents(canvas, target, getChart) {
   function getPos(e) {
@@ -846,9 +908,10 @@ function setupChartEvents(canvas, target, getChart) {
   }
 
   function handleStart(e) {
+    if (!target) return;
     const ds = drawState[target];
     const chart = getChart();
-    if (ds.tool === 'none' || !chart) return;
+    if (!ds || ds.tool === 'none' || !chart) return;
     if (e.touches && e.touches.length > 1) return;
 
     const pos = getPos(e);
@@ -857,7 +920,6 @@ function setupChartEvents(canvas, target, getChart) {
 
     if (e.cancelable) e.preventDefault();
 
-    // 1. 수평선 클릭
     if (ds.tool === 'horizontal') {
       const yVal = y.getValueForPixel(pos.y);
       ds.lines.push({
@@ -872,7 +934,6 @@ function setupChartEvents(canvas, target, getChart) {
       return;
     }
 
-    // 2. 📐 수직선 클릭
     if (ds.tool === 'vertical') {
       const xIdx = Math.round(x.getValueForPixel(pos.x));
       const labels = chart.data.labels;
@@ -892,7 +953,6 @@ function setupChartEvents(canvas, target, getChart) {
       return;
     }
 
-    // 3. ✏️ 추세선 드래그 시작
     if (ds.tool === 'trend') {
       ds.isDrawing = true;
       const xIdx = Math.round(x.getValueForPixel(pos.x));
@@ -907,12 +967,11 @@ function setupChartEvents(canvas, target, getChart) {
   }
 
   function handleMove(e) {
-    const ds = drawState[target];
+    const ds = target ? drawState[target] : null;
     const chart = getChart();
     if (!chart) return;
 
-    // 1. 선 긋기 중일 때
-    if (ds.isDrawing && ds.start) {
+    if (ds && ds.isDrawing && ds.start) {
       if (e.cancelable) e.preventDefault();
       const pos = getPos(e);
       ds.preview.x2 = pos.x;
@@ -921,8 +980,8 @@ function setupChartEvents(canvas, target, getChart) {
       return;
     }
 
-    // 2. 🌟 커서 모드일 때: 반대편 차트와 실시간 십자선(Crosshair) 및 툴팁 연동!
-    if (ds.tool === 'none') {
+    // 🌟 3단 차트 실시간 크로스헤어 & 툴팁 동시 연동!
+    if (!ds || ds.tool === 'none') {
       const pos = getPos(e);
       const { x } = chart.scales;
       if (pos.x >= x.left && pos.x <= x.right) {
@@ -936,33 +995,33 @@ function setupChartEvents(canvas, target, getChart) {
 
           if (S.nsiChart) S.nsiChart.render();
           if (S.kospiChart) S.kospiChart.render();
+          if (S.foreignChart) S.foreignChart.render();
 
-          const otherChart = (target === 'nsi') ? S.kospiChart : S.nsiChart;
-          if (otherChart) {
-            const otherIdx = otherChart.data.labels.indexOf(date);
-            if (otherIdx !== -1 && otherChart.tooltip) {
-              const meta = otherChart.getDatasetMeta(0);
-              if (meta && meta.data && meta.data[otherIdx]) {
-                otherChart.tooltip.setActiveElements([
-                  { datasetIndex: 0, index: otherIdx },
-                  { datasetIndex: otherChart.data.datasets.length - 1, index: otherIdx }
-                ], {
-                  x: meta.data[otherIdx].x,
-                  y: meta.data[otherIdx].y
-                });
-                otherChart.update('none');
+          // 모든 차트에 툴팁 동시 팝업 트리거
+          [S.nsiChart, S.kospiChart, S.foreignChart].forEach(ch => {
+            if (!ch || ch === chart) return;
+            const idx = ch.data.labels.indexOf(date);
+            if (idx !== -1 && ch.tooltip) {
+              const meta = ch.getDatasetMeta(0);
+              if (meta && meta.data && meta.data[idx]) {
+                ch.tooltip.setActiveElements([
+                  { datasetIndex: 0, index: idx },
+                  { datasetIndex: ch.data.datasets.length - 1, index: idx }
+                ], { x: meta.data[idx].x, y: meta.data[idx].y });
+                ch.update('none');
               }
             }
-          }
+          });
         }
       }
     }
   }
 
   function handleEnd(e) {
+    if (!target) return;
     const ds = drawState[target];
     const chart = getChart();
-    if (!ds.isDrawing || !ds.start || !chart) return;
+    if (!ds || !ds.isDrawing || !ds.start || !chart) return;
     ds.isDrawing = false;
 
     const { x, y } = chart.scales;
@@ -996,16 +1055,15 @@ function setupChartEvents(canvas, target, getChart) {
   }
 
   function handleLeave() {
-    if (drawState[target].tool === 'none' && S.syncCrosshairDate) {
+    const ds = target ? drawState[target] : null;
+    if ((!ds || ds.tool === 'none') && S.syncCrosshairDate) {
       S.syncCrosshairDate = null;
-      if (S.nsiChart) {
-        S.nsiChart.render();
-        if (S.nsiChart.tooltip) S.nsiChart.tooltip.setActiveElements([], { x: 0, y: 0 });
-      }
-      if (S.kospiChart) {
-        S.kospiChart.render();
-        if (S.kospiChart.tooltip) S.kospiChart.tooltip.setActiveElements([], { x: 0, y: 0 });
-      }
+      [S.nsiChart, S.kospiChart, S.foreignChart].forEach(ch => {
+        if (ch) {
+          ch.render();
+          if (ch.tooltip) ch.tooltip.setActiveElements([], { x: 0, y: 0 });
+        }
+      });
     }
   }
 
@@ -1080,7 +1138,6 @@ function computeSyncedRange() {
   const isDay = (S.masterTf === 'day');
   const zw = S.zoomWindow;
 
-  // 커스텀 줌 상태인 경우
   if (zw.isCustom) {
     return {
       nsiStart: zw.nsiStart,
@@ -1090,7 +1147,6 @@ function computeSyncedRange() {
     };
   }
 
-  // 기본 기간 버튼 상태
   const r = S.masterRange;
   if (isDay) {
     if (r === 'all') {
@@ -1133,7 +1189,6 @@ window.zoomCharts = function(factor) {
   const isDay = (S.masterTf === 'day');
   const kospiAll = (isDay ? S.kospiDaily : S.kospiMonthly).candles;
 
-  // NSI 줌 계산
   const nsiTotal = S.raw.length;
   const nsiLen = current.nsiEnd - current.nsiStart;
   const newNsiLen = Math.max(10, Math.min(nsiTotal, Math.round(nsiLen * factor)));
@@ -1141,7 +1196,6 @@ window.zoomCharts = function(factor) {
   const newNsiStart = Math.max(0, Math.min(nsiTotal - newNsiLen, current.nsiStart + Math.round(nsiDiff)));
   const newNsiEnd = Math.min(nsiTotal, newNsiStart + newNsiLen);
 
-  // KOSPI 줌 계산
   const kospiTotal = kospiAll.length;
   const kospiLen = current.kospiEnd - current.kospiStart;
   const newKospiLen = Math.max(8, Math.min(kospiTotal, Math.round(kospiLen * factor)));
@@ -1159,13 +1213,15 @@ window.zoomCharts = function(factor) {
 
   renderNsiChart();
   renderKospiChart();
-  toast(factor < 1 ? '🔍➕ 차트 확대' : '🔍➖ 차트 축소');
+  renderForeignChart();
+  toast(factor < 1 ? '🔍➕ 전체 차트 확대' : '🔍➖ 전체 차트 축소');
 };
 
 window.resetZoom = function() {
   S.zoomWindow.isCustom = false;
   renderNsiChart();
   renderKospiChart();
+  renderForeignChart();
   toast('🔄 기본 배율로 리셋 완료');
 };
 
@@ -1284,10 +1340,7 @@ function renderKospiChart(){
           borderColor: '#ffd166',
           borderWidth: 1.8,
           fill: false,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.15,
-          spanGaps: true
+          pointRadius: 0, pointHoverRadius: 4, tension: 0.15, spanGaps: true
         },
         {
           label: ma2Label,
@@ -1295,10 +1348,7 @@ function renderKospiChart(){
           borderColor: '#00d68f',
           borderWidth: 2.0,
           fill: false,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.15,
-          spanGaps: true
+          pointRadius: 0, pointHoverRadius: 4, tension: 0.15, spanGaps: true
         },
         {
           label: ma3Label,
@@ -1306,18 +1356,14 @@ function renderKospiChart(){
           borderColor: '#a78bfa',
           borderWidth: 2.2,
           fill: false,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.15,
-          spanGaps: true
+          pointRadius: 0, pointHoverRadius: 4, tension: 0.15, spanGaps: true
         },
         {
           label: '종가',
           data: closes,
           borderColor: 'transparent',
           backgroundColor: 'transparent',
-          pointRadius: 0,
-          borderWidth: 0
+          pointRadius: 0, borderWidth: 0
         }
       ]
     },
@@ -1339,16 +1385,15 @@ function renderKospiChart(){
           padding: 12,
           cornerRadius: 8,
           callbacks: {
-            title: function(items) {
+            title: items => {
               const idx = items[0].dataIndex;
               const c = candles[idx];
               return c ? `${c.date} (${isDay ? '일봉' : '월봉'})` : '';
             },
-            label: function(item) {
+            label: item => {
               const idx = item.dataIndex;
               const c = candles[idx];
               if (!c) return null;
-
               if (item.datasetIndex === 3) {
                 const diff = c.close - c.open;
                 const pct = (diff / c.open) * 100;
@@ -1370,12 +1415,155 @@ function renderKospiChart(){
         },
         y: {
           grid: { color: 'rgba(255,255,255,0.04)' },
-          ticks: {
-            color: '#4f5d7a', font: { size: 11 },
-            callback: v => Number(v).toLocaleString()
-          },
+          ticks: { color: '#4f5d7a', font: { size: 11 }, callback: v => Number(v).toLocaleString() },
           suggestedMin: minL - padding,
           suggestedMax: maxH + padding
+        }
+      }
+    }
+  });
+}
+
+// ========================================
+// 🌟 [하단 서브패널] 외국인 보유비중% & 순매수 렌더링
+// ========================================
+function renderForeignChart(){
+  const isDay = (S.masterTf === 'day');
+  const fSource = isDay ? S.foreignDaily : S.foreignMonthly;
+  if (!fSource || fSource.length === 0) return;
+
+  const { kospiStart, kospiEnd } = computeSyncedRange();
+  const kCandles = (isDay ? S.kospiDaily : S.kospiMonthly).candles.slice(kospiStart, kospiEnd);
+  const labels = kCandles.map(c => c.date);
+
+  // 날짜 매핑
+  const fMap = {};
+  fSource.forEach(item => { fMap[item.date] = item; });
+
+  const ratios = [];
+  const netBuys = [];
+  const barColors = [];
+
+  labels.forEach(d => {
+    const it = fMap[d];
+    if (it) {
+      ratios.push(it.ratio);
+      netBuys.push(it.netBuy);
+      barColors.push(it.netBuy >= 0 ? 'rgba(59, 130, 246, 0.65)' : 'rgba(255, 77, 94, 0.65)');
+    } else {
+      ratios.push(null);
+      netBuys.push(null);
+      barColors.push('transparent');
+    }
+  });
+
+  // 서브패널 최신 수치 배지 갱신
+  const lastValid = fSource[fSource.length - 1];
+  if (lastValid) {
+    $('spForeignRatio').textContent = `${lastValid.ratio}%`;
+    const nb = lastValid.netBuy;
+    $('spForeignNetBuy').textContent = `${nb >= 0 ? '+' : ''}${Number(nb).toLocaleString()}억원`;
+    $('spForeignNetBuy').style.color = (nb >= 0 ? 'var(--blue)' : 'var(--red)');
+  }
+
+  if (S.foreignChart) S.foreignChart.destroy();
+
+  const validR = ratios.filter(v => v !== null);
+  const minR = validR.length ? Math.min(...validR) : 30;
+  const maxR = validR.length ? Math.max(...validR) : 36;
+  const padR = Math.max(0.3, (maxR - minR) * 0.15);
+
+  const ctx = $('cvForeign').getContext('2d');
+  S.foreignChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        // 1. 외국인 보유 비중(%) 골드 라인 (좌측 Y축)
+        {
+          type: 'line',
+          label: '외국인 지분율(%)',
+          data: ratios,
+          borderColor: '#ffd166',
+          backgroundColor: 'transparent',
+          borderWidth: 2.2,
+          pointRadius: 0,
+          pointHoverRadius: 5,
+          tension: 0.25,
+          yAxisID: 'yRatio',
+          spanGaps: true,
+          order: 1
+        },
+        // 2. 외국인 순매수 금액 바 (우측 Y축)
+        {
+          type: 'bar',
+          label: '순매수(억원)',
+          data: netBuys,
+          backgroundColor: barColors,
+          borderColor: barColors,
+          borderWidth: 1,
+          borderRadius: 2,
+          yAxisID: 'yNetBuy',
+          order: 2
+        }
+      ]
+    },
+    plugins: [foreignSyncPlugin],
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#162040',
+          titleColor: '#e4e8f1',
+          bodyColor: '#e4e8f1',
+          borderColor: '#243158',
+          borderWidth: 1,
+          padding: 10,
+          cornerRadius: 7,
+          callbacks: {
+            title: items => `${items[0].label} (외국인 수급)`,
+            label: item => {
+              if (item.datasetIndex === 0) {
+                return `📊 외국인 지분율: ${item.raw ? Number(item.raw).toFixed(2) : '-'}%`;
+              } else {
+                const v = item.raw;
+                return `💰 외국인 순매수: ${v != null ? (v >= 0 ? '+' : '') + Number(v).toLocaleString() + '억원' : '-'}`;
+              }
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.02)' },
+          ticks: { color: '#4f5d7a', font: { size: 9 }, maxRotation: 45, maxTicksLimit: 12 }
+        },
+        // 좌측: 지분율(%)
+        yRatio: {
+          type: 'linear',
+          position: 'left',
+          grid: { color: 'rgba(255,255,255,0.03)' },
+          ticks: {
+            color: '#ffd166',
+            font: { size: 10 },
+            callback: v => `${Number(v).toFixed(1)}%`
+          },
+          min: Math.floor((minR - padR) * 10) / 10,
+          max: Math.ceil((maxR + padR) * 10) / 10
+        },
+        // 우측: 순매수 금액(억원)
+        yNetBuy: {
+          type: 'linear',
+          position: 'right',
+          grid: { drawOnChartArea: false },
+          ticks: {
+            color: '#8b97b5',
+            font: { size: 9 },
+            callback: v => `${(Number(v) / 1000).toFixed(0)}k억`
+          }
         }
       }
     }
@@ -1393,7 +1581,8 @@ window.setMasterTimeframe = function(tf, btn){
 
   renderNsiChart();
   renderKospiChart();
-  toast(tf === 'day' ? '☀️ 전체 차트 일봉 모드 동기화' : '🌙 전체 차트 월봉 모드 동기화');
+  renderForeignChart();
+  toast(tf === 'day' ? '☀️ 전체 3단 차트 일봉 모드 동기화' : '🌙 전체 3단 차트 월봉 모드 동기화');
 };
 
 window.setMasterRange = function(r, btn){
@@ -1404,15 +1593,16 @@ window.setMasterRange = function(r, btn){
 
   renderNsiChart();
   renderKospiChart();
+  renderForeignChart();
 
   const labels = {
-    '1m': '1개월 (단기)',
+    '1m': '1개월',
     '3m': '3개월',
     '6m': '6개월',
-    '12m': '12개월 (1년)',
-    'all': '전체 기간'
+    '12m': '12개월',
+    'all': '전체'
   };
-  toast(`🔗 위·아래 차트 [${labels[r]}] 동시 동기화 완료`);
+  toast(`🔗 3단 차트 [${labels[r]}] 완전 동기화 완료`);
 };
 
 // ========================================
@@ -1570,6 +1760,8 @@ async function loadData(){
     S.zone = json.zone || 'undervalued';
     S.kospiDaily = json.kospiDaily || null;
     S.kospiMonthly = json.kospiMonthly || null;
+    S.foreignDaily = json.foreignDaily || [];
+    S.foreignMonthly = json.foreignMonthly || [];
     S.ind = json.indicators || {};
 
     renderOrb(S.zone);
@@ -1578,10 +1770,11 @@ async function loadData(){
     renderStrat(S.zone);
     renderNsiChart();
     renderKospiChart();
+    renderForeignChart();
     renderInd();
 
     $('elUpdate').textContent = '갱신: ' + (json.updatedAt || new Date().toLocaleString('ko-KR'));
-    toast('✅ 확대/축소 및 수직선 툴 탑재 완료!');
+    toast('✅ 코스피 캔들 + 외국인 지분율(%) 통합 로드 완료!');
   }catch(err){
     console.error(err);
     toast('⚠️ 데이터 로딩 실패, 로컬 데이터를 확인해주세요.');
@@ -1597,6 +1790,7 @@ window.refreshData=refreshData;
 document.addEventListener('DOMContentLoaded', () => {
   setupChartEvents($('cvMain'), 'nsi', () => S.nsiChart);
   setupChartEvents($('cvKospi'), 'kospi', () => S.kospiChart);
+  setupChartEvents($('cvForeign'), null, () => S.foreignChart);
   loadData();
 });
 
