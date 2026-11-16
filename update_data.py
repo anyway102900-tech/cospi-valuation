@@ -311,6 +311,55 @@ def main():
         
     # 4. 보조 지표
     indicators = fetch_market_indicators(API_KEY)
+
+    # 4-1. 당일(오늘) 외국인 지분율 및 순매수 실시간 추정치 보간
+    # 한국은행 공식 통계가 T+1일 지연되더라도 코스피 당일 캔들과 네이버 실시간 수급을 조합하여 오늘치 데이터를 즉시 실시간 연결
+    if foreign_daily and kospi_daily:
+        latest_f_date = foreign_daily[-1]['date']
+        latest_k_candle = kospi_daily[-1]
+        today_date = latest_k_candle['date']
+        
+        if latest_f_date < today_date:
+            prev_candle = None
+            for c in reversed(kospi_daily):
+                if c['date'] == latest_f_date:
+                    prev_candle = c
+                    break
+            if not prev_candle and len(kospi_daily) >= 2:
+                prev_candle = kospi_daily[-2]
+                
+            prev_close = prev_candle['close'] if prev_candle else latest_k_candle['close']
+            today_close = latest_k_candle['close']
+            price_ratio = today_close / prev_close if prev_close > 0 else 1.0
+            
+            last_item = foreign_daily[-1]
+            last_foreign_val = last_item['foreignHoldingVal'] * 10000 # 억원
+            prev_mcap = last_foreign_val / (last_item['ratio'] / 100) if last_item['ratio'] > 0 else 1
+            today_mcap = prev_mcap * price_ratio
+            
+            today_flow = float(indicators.get('foreign_flow', 0))
+            curr_foreign_val = (last_foreign_val * price_ratio) + today_flow
+            est_ratio = round((curr_foreign_val / today_mcap) * 100, 2)
+            
+            est_item = {
+                "date": today_date,
+                "rawDate": today_date.replace('-', ''),
+                "netBuy": round(today_flow, 0),
+                "ratio": est_ratio,
+                "foreignHoldingVal": round(curr_foreign_val / 10000, 1),
+                "isEstimate": True
+            }
+            foreign_daily.append(est_item)
+            print(f"✓ 당일({today_date}) 외국인 지분율 실시간 추정치 추가: {est_ratio}% | 순매수: {today_flow}억원 (잠정)")
+            
+            # 월봉 리스트에도 당일 잠정치 반영
+            m_key = today_date[:7]
+            if foreign_monthly and foreign_monthly[-1]['month'] == m_key:
+                foreign_monthly[-1]['netBuy'] = round(foreign_monthly[-1]['netBuy'] + today_flow, 0)
+                foreign_monthly[-1]['ratio'] = est_ratio
+                foreign_monthly[-1]['foreignHoldingVal'] = est_item['foreignHoldingVal']
+                foreign_monthly[-1]['date'] = today_date
+                foreign_monthly[-1]['isEstimate'] = True
     
     payload = {
         "updatedAt": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),

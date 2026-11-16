@@ -1484,9 +1484,10 @@ function renderForeignChart(){
   // 외국인 최신 수치 배지 갱신
   const lastValid = fSource[fSource.length - 1];
   if (lastValid) {
-    $('spForeignRatio').textContent = `${lastValid.ratio}%`;
+    const isEst = !!lastValid.isEstimate;
+    $('spForeignRatio').innerHTML = `${lastValid.ratio}% ${isEst ? '<span style="font-size:11px;color:#f59e0b;font-weight:normal;">(당일 잠정)</span>' : ''}`;
     const nb = lastValid.netBuy;
-    $('spForeignNetBuy').textContent = `${nb >= 0 ? '+' : ''}${Number(nb).toLocaleString()}억원`;
+    $('spForeignNetBuy').innerHTML = `${nb >= 0 ? '+' : ''}${Number(nb).toLocaleString()}억원 ${isEst ? '<span style="font-size:11px;color:#f59e0b;font-weight:normal;">(당일 잠정)</span>' : ''}`;
     $('spForeignNetBuy').style.color = (nb >= 0 ? 'var(--blue)' : 'var(--red)');
   }
 
@@ -1511,8 +1512,11 @@ function renderForeignChart(){
           borderColor: '#ffd166',
           backgroundColor: 'transparent',
           borderWidth: 2.8,
-          pointRadius: 0,
-          pointHoverRadius: 5,
+          pointRadius: items.map(c => c.isEstimate ? 4.5 : 0),
+          pointBackgroundColor: items.map(c => c.isEstimate ? '#f59e0b' : '#ffd166'),
+          pointBorderColor: '#fff',
+          pointBorderWidth: items.map(c => c.isEstimate ? 1.5 : 0),
+          pointHoverRadius: 6,
           tension: 0.2,
           yAxisID: 'yRatio',
           spanGaps: true,
@@ -1551,11 +1555,13 @@ function renderForeignChart(){
           callbacks: {
             title: items => `${items[0].label} (${isDay ? '일별' : '월별'} 외국인 수급)`,
             label: item => {
+              const curItem = items[item.dataIndex];
+              const estTag = (curItem && curItem.isEstimate) ? ' (당일 잠정)' : '';
               if (item.datasetIndex === 0) {
-                return `📊 외국인 시총 지분율: ${item.raw ? Number(item.raw).toFixed(2) : '-'}%`;
+                return `📊 외국인 시총 지분율: ${item.raw ? Number(item.raw).toFixed(2) : '-'}%${estTag}`;
               } else {
                 const v = item.raw;
-                return `💰 외국인 순매수: ${v != null ? (v >= 0 ? '+' : '') + Number(v).toLocaleString() + '억원' : '-'}`;
+                return `💰 외국인 순매수: ${v != null ? (v >= 0 ? '+' : '') + Number(v).toLocaleString() + '억원' : '-'}${estTag}`;
               }
             }
           }

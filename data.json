@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16 23:23:00",
+  "updatedAt": "2026-11-16 23:49:55",
   "source": "한국은행 ECOS (통계표 523Y001, 802Y001) 및 네이버 금융 공식 데이터",
   "trend": "down",
   "zone": "adjustment",
@@ -11,7 +11,7 @@
     "kospi_change": -3.59,
     "per": 11.2,
     "pbr": 0.91,
-    "vkospi": 20.5,
+    "vkospi": 20.9,
     "foreign_flow": -13287,
     "institution_flow": -4562,
     "spread": 0.13,
@@ -20138,6 +20138,14 @@
       "netBuy": -5511.0,
       "ratio": 33.17,
       "foreignHoldingVal": 14513.3
+    },
+    {
+      "date": "2026-11-16",
+      "rawDate": "20261116",
+      "netBuy": -13287.0,
+      "ratio": 33.17,
+      "foreignHoldingVal": 13990.7,
+      "isEstimate": true
     }
   ],
   "foreignMonthly": [
@@ -20380,18 +20388,20 @@
       "foreignHoldingVal": 15701.3
     },
     {
-      "date": "2026-11-13",
+      "date": "2026-11-16",
       "month": "2026-11",
-      "netBuy": -99788.0,
+      "netBuy": -113075.0,
       "ratio": 33.17,
-      "foreignHoldingVal": 14513.3
+      "foreignHoldingVal": 13990.7,
+      "isEstimate": true
     }
   ],
   "latestForeign": {
-    "date": "2026-11-13",
-    "rawDate": "20261113",
-    "netBuy": -5511.0,
+    "date": "2026-11-16",
+    "rawDate": "20261116",
+    "netBuy": -13287.0,
     "ratio": 33.17,
-    "foreignHoldingVal": 14513.3
+    "foreignHoldingVal": 13990.7,
+    "isEstimate": true
   }
 }
