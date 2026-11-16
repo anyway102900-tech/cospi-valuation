@@ -46,7 +46,7 @@
   --shadow: 0 4px 24px rgba(0,0,0,0.3);
 }
 
-html { font-size: 15px; }
+html { font-size: 16px; }
 
 body {
   font-family: -apple-system, 'Segoe UI', 'Malgun Gothic', '맑은 고딕', sans-serif;
@@ -73,20 +73,20 @@ a:hover { text-decoration: underline; }
 
 .app-header .logo { display: flex; align-items: center; gap: 10px; }
 .app-header h1 {
-  font-size: 1.15rem; font-weight: 800;
+  font-size: 1.25rem; font-weight: 800;
   background: linear-gradient(135deg, #8b5cf6, #00d68f);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
 .badge {
-  font-size: 0.65rem; padding: 4px 10px; border-radius: 20px;
+  font-size: 0.78rem; padding: 5px 12px; border-radius: 20px;
   background: var(--green-bg); color: var(--green);
   border: 1px solid rgba(0,214,143,0.3);
   font-weight: 700;
 }
 
 .header-actions { display: flex; align-items: center; gap: 14px; }
-.update-time { font-size: 0.72rem; color: var(--text-sub); }
+.update-time { font-size: 0.88rem; color: #cbd5e1; font-weight: 600; }
 
 .btn-icon {
   width: 38px; height: 38px; border-radius: 10px;
@@ -173,20 +173,20 @@ a:hover { text-decoration: underline; }
 .tl-orb.blue   { background: radial-gradient(circle, var(--blue) 30%, #1d4ed8);   box-shadow: 0 0 50px var(--blue-glow); }
 .tl-orb.blue::after   { background: var(--blue-glow); }
 
-.tl-label { font-size: 1.08rem; font-weight: 800; margin-bottom: 4px; }
-.tl-sub   { font-size: 0.78rem; color: var(--text-sub); }
+.tl-label { font-size: 1.18rem; font-weight: 800; margin-bottom: 4px; }
+.tl-sub   { font-size: 0.88rem; color: #cbd5e1; font-weight: 600; }
 
 .vals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .val-box {
   background: var(--bg-card-alt); border-radius: 12px;
   padding: 16px; text-align: center;
 }
-.val-title { font-size: 0.7rem; color: var(--text-dim); margin-bottom: 6px; font-weight: 600; }
-.val-num   { font-size: 1.7rem; font-weight: 800; }
+.val-title { font-size: 0.88rem; color: #94a3b8; margin-bottom: 6px; font-weight: 700; }
+.val-num   { font-size: 2.2rem; font-weight: 800; }
 .val-num.pos { color: var(--green); }
 .val-num.neg { color: var(--red); }
 .val-num.neu { color: var(--text-main); }
-.val-delta { font-size: 0.75rem; margin-top: 3px; }
+.val-delta { font-size: 0.92rem; margin-top: 4px; font-weight: 700; }
 
 .trend-tag {
   display: inline-flex; align-items: center; gap: 5px;
@@ -229,9 +229,9 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--border); border-radius: 8px; padding: 2px;
 }
 .tf-tab {
-  padding: 5px 14px; border-radius: 6px; border: none;
+  padding: 6px 16px; border-radius: 6px; border: none;
   background: transparent; color: var(--text-sub);
-  font-size: 0.78rem; font-weight: 800; cursor: pointer;
+  font-size: 0.92rem; font-weight: 800; cursor: pointer;
   transition: all 0.2s;
 }
 .tf-tab.active {
@@ -241,9 +241,9 @@ a:hover { text-decoration: underline; }
 
 .chart-btns { display: flex; gap: 4px; }
 .chart-btn {
-  padding: 5px 11px; border-radius: 7px;
+  padding: 6px 13px; border-radius: 7px;
   border: 1px solid var(--border); background: transparent;
-  color: var(--text-dim); cursor: pointer; font-size: 0.74rem;
+  color: var(--text-dim); cursor: pointer; font-size: 0.88rem;
   font-weight: 700; transition: all 0.2s;
 }
 .chart-btn.active {
@@ -255,9 +255,9 @@ a:hover { text-decoration: underline; }
 /* 🔍 확대/축소/리셋 */
 .zoom-btns { display: flex; gap: 4px; }
 .zoom-btn {
-  padding: 5px 10px; border-radius: 7px;
+  padding: 6px 12px; border-radius: 7px;
   border: 1px solid var(--border); background: var(--bg-card-alt);
-  color: var(--text-sub); cursor: pointer; font-size: 0.73rem;
+  color: var(--text-sub); cursor: pointer; font-size: 0.88rem;
   font-weight: 800; transition: all 0.2s;
   display: inline-flex; align-items: center; gap: 4px;
 }
@@ -265,10 +265,10 @@ a:hover { text-decoration: underline; }
 
 /* 이동평균선 범례 배지 */
 .ma-legend {
-  display: flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 700;
-  background: rgba(255,255,255,0.03); padding: 4px 10px; border-radius: 6px;
+  display: flex; align-items: center; gap: 10px; font-size: 0.88rem; font-weight: 700;
+  background: rgba(255,255,255,0.03); padding: 5px 12px; border-radius: 6px; color: #cbd5e1;
 }
-.ma-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.ma-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
 
 /* 선 긋기 툴바 */
 .draw-toolbar {
@@ -278,12 +278,12 @@ a:hover { text-decoration: underline; }
   border-radius: 9px; padding: 7px 12px; margin-bottom: 12px;
 }
 .dt-group { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
-.dt-label { font-size: 0.7rem; color: var(--text-dim); font-weight: 700; margin-right: 3px; }
+.dt-label { font-size: 0.85rem; color: #cbd5e1; font-weight: 700; margin-right: 3px; }
 
 .dt-btn {
-  padding: 4px 11px; border-radius: 6px; border: 1px solid var(--border);
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border);
   background: var(--bg-card); color: var(--text-sub); cursor: pointer;
-  font-size: 0.72rem; font-weight: 700; transition: all 0.2s;
+  font-size: 0.85rem; font-weight: 700; transition: all 0.2s;
   display: inline-flex; align-items: center; gap: 4px;
 }
 .dt-btn:hover { border-color: var(--purple); color: var(--text-main); }
@@ -306,40 +306,40 @@ a:hover { text-decoration: underline; }
 .c-purple { background: #a78bfa; color: #a78bfa; }
 
 /* 🌟 차트 래퍼 높이 */
-.chart-wrap { position: relative; width: 100%; height: 360px; }
-.chart-wrap-candle { height: 440px; }
-.chart-wrap-foreign { height: 340px; }
+.chart-wrap { position: relative; width: 100%; height: 380px; }
+.chart-wrap-candle { height: 480px; }
+.chart-wrap-foreign { height: 380px; }
 .chart-wrap canvas { display: block; width: 100% !important; height: 100% !important; }
 
 /* 🌟 외국인 서브패널 헤더 바 (일체형) */
 .subpanel-bar {
   display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 8px;
-  background: rgba(255,255,255,0.02);
+  flex-wrap: wrap; gap: 10px;
+  background: rgba(255,255,255,0.03);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 8px 14px;
+  padding: 10px 16px;
   margin-top: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .sp-title {
-  font-size: 0.76rem; font-weight: 800; color: #a78bfa;
-  display: flex; align-items: center; gap: 6px;
+  font-size: 0.95rem; font-weight: 800; color: #a78bfa;
+  display: flex; align-items: center; gap: 8px;
 }
 .sp-stats {
-  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-  font-size: 0.74rem; font-weight: 700;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  font-size: 0.95rem; font-weight: 700;
 }
 .sp-stat-item {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 3px 9px; border-radius: 6px; background: var(--bg-card-alt);
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 8px; background: var(--bg-card-alt);
   border: 1px solid var(--border);
 }
-.sp-stat-item b { color: #ffd166; }
+.sp-stat-item b { color: #ffd166; font-size: 1.25rem; font-weight: 800; }
 
 /* 동기화 배지 */
 .sync-badge {
-  font-size: 0.68rem; padding: 3px 8px; border-radius: 6px;
+  font-size: 0.78rem; padding: 4px 10px; border-radius: 6px;
   background: rgba(0,214,143,0.1); color: var(--green);
   border: 1px solid rgba(0,214,143,0.25); font-weight: 700;
   display: inline-flex; align-items: center; gap: 4px;
@@ -354,17 +354,17 @@ a:hover { text-decoration: underline; }
   gap: 20px; margin-bottom: 20px;
 }
 
-.ind-val  { font-size: 1.5rem; font-weight: 800; margin: 6px 0; }
+.ind-val  { font-size: 1.95rem; font-weight: 800; margin: 6px 0; }
 .ind-meta {
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.75rem; color: var(--text-dim);
+  font-size: 0.88rem; color: #94a3b8; font-weight: 600;
 }
 .ind-bar {
-  height: 5px; background: rgba(255,255,255,0.04); border-radius: 3px;
+  height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px;
   margin-top: 10px; overflow: hidden;
 }
 .ind-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
-.ind-note { margin-top: 8px; font-size: 0.74rem; color: var(--text-sub); line-height: 1.6; }
+.ind-note { margin-top: 8px; font-size: 0.88rem; color: #cbd5e1; line-height: 1.6; font-weight: 500; }
 
 /* ========================================
    FOOTER & TOAST
@@ -391,15 +391,15 @@ a:hover { text-decoration: underline; }
   .ind-grid  { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 680px) {
-  html { font-size: 14px; }
+  html { font-size: 15px; }
   .app-header { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
   .main { padding: 14px; }
   .top-grid  { grid-template-columns: 1fr; }
   .tl-card   { flex-direction: column; }
   .ind-grid  { grid-template-columns: 1fr; }
-  .chart-wrap { height: 240px; }
-  .chart-wrap-candle { height: 260px; }
-  .chart-wrap-foreign { height: 130px; }
+  .chart-wrap { height: 320px; }
+  .chart-wrap-candle { height: 380px; }
+  .chart-wrap-foreign { height: 280px; }
   .draw-toolbar { justify-content: center; }
   .subpanel-bar { flex-direction: column; align-items: flex-start; }
 }
@@ -1297,27 +1297,29 @@ function renderNsiChart(){
       responsive:true, maintainAspectRatio:false,
       interaction:{ mode:'index', intersect:false },
       plugins:{
-        legend:{ labels:{ color:'#8b97b5', usePointStyle:true, pointStyle:'line', font:{size:12} } },
+        legend:{ labels:{ color:'#cbd5e1', usePointStyle:true, pointStyle:'line', font:{size:13, weight:'600'} } },
         tooltip:{
           enabled: (drawState.nsi.tool === 'none'),
-          backgroundColor:'#162040', titleColor:'#e4e8f1', bodyColor:'#e4e8f1',
-          borderColor:'#243158', borderWidth:1, padding:12, cornerRadius:8,
+          backgroundColor:'#162040', titleColor:'#ffffff', bodyColor:'#cbd5e1',
+          borderColor:'#334155', borderWidth:1, padding:14, cornerRadius:8,
+          titleFont:{ size:14, weight:'bold' },
+          bodyFont:{ size:13, weight:'500' },
           callbacks:{ label:c=> c.raw==null?null:`${c.dataset.label}: ${Number(c.raw).toFixed(2)}` }
         },
         annotation:{
           annotations:{
-            h110:{type:'line',yMin:110,yMax:110,borderColor:'rgba(255,77,94,0.5)',borderWidth:1.5,borderDash:[6,4],
-              label:{display:true,content:'과열 110',position:'start',color:'rgba(255,77,94,0.8)',font:{size:10},backgroundColor:'transparent'}},
-            h100:{type:'line',yMin:100,yMax:100,borderColor:'rgba(139,151,181,0.3)',borderWidth:1,borderDash:[4,4],
-              label:{display:true,content:'기준 100',position:'start',color:'rgba(139,151,181,0.6)',font:{size:10},backgroundColor:'transparent'}},
-            h90:{type:'line',yMin:90,yMax:90,borderColor:'rgba(0,214,143,0.5)',borderWidth:1.5,borderDash:[6,4],
-              label:{display:true,content:'침체 90',position:'start',color:'rgba(0,214,143,0.8)',font:{size:10},backgroundColor:'transparent'}}
+            h110:{type:'line',yMin:110,yMax:110,borderColor:'rgba(255,77,94,0.6)',borderWidth:1.8,borderDash:[6,4],
+              label:{display:true,content:'과열 110',position:'start',color:'rgba(255,100,120,1)',font:{size:12, weight:'bold'},backgroundColor:'rgba(15,23,42,0.8)'}},
+            h100:{type:'line',yMin:100,yMax:100,borderColor:'rgba(148,163,184,0.4)',borderWidth:1.2,borderDash:[4,4],
+              label:{display:true,content:'기준 100',position:'start',color:'rgba(203,213,225,0.9)',font:{size:12, weight:'bold'},backgroundColor:'rgba(15,23,42,0.8)'}},
+            h90:{type:'line',yMin:90,yMax:90,borderColor:'rgba(0,214,143,0.6)',borderWidth:1.8,borderDash:[6,4],
+              label:{display:true,content:'침체 90',position:'start',color:'rgba(0,214,143,1)',font:{size:12, weight:'bold'},backgroundColor:'rgba(15,23,42,0.8)'}}
           }
         }
       },
       scales:{
-        x:{ grid:{color:'rgba(255,255,255,0.02)'}, ticks:{color:'#4f5d7a',font:{size:10},maxRotation:45,maxTicksLimit:10} },
-        y:{ grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#4f5d7a',font:{size:11}}, suggestedMin:75, suggestedMax:125 }
+        x:{ grid:{color:'rgba(255,255,255,0.03)'}, ticks:{color:'#cbd5e1',font:{size:13, weight:'600'},maxRotation:45,maxTicksLimit:10} },
+        y:{ grid:{color:'rgba(255,255,255,0.05)'}, ticks:{color:'#cbd5e1',font:{size:13, weight:'600'}}, suggestedMin:75, suggestedMax:125 }
       }
     }
   });
@@ -1411,8 +1413,10 @@ function renderKospiChart(){
           bodyColor: '#e4e8f1',
           borderColor: '#243158',
           borderWidth: 1,
-          padding: 12,
+          padding: 14,
           cornerRadius: 8,
+          titleFont: { size: 14, weight: 'bold' },
+          bodyFont: { size: 13, weight: '500' },
           callbacks: {
             title: items => {
               const idx = items[0].dataIndex;
@@ -1439,12 +1443,12 @@ function renderKospiChart(){
       },
       scales: {
         x: {
-          grid: { color: 'rgba(255,255,255,0.02)' },
-          ticks: { color: '#4f5d7a', font: { size: 10 }, maxRotation: 45, maxTicksLimit: 12 }
+          grid: { color: 'rgba(255,255,255,0.03)' },
+          ticks: { color: '#cbd5e1', font: { size: 13, weight: '600' }, maxRotation: 45, maxTicksLimit: 12 }
         },
         y: {
-          grid: { color: 'rgba(255,255,255,0.04)' },
-          ticks: { color: '#4f5d7a', font: { size: 11 }, callback: v => Number(v).toLocaleString() },
+          grid: { color: 'rgba(255,255,255,0.05)' },
+          ticks: { color: '#cbd5e1', font: { size: 13, weight: '600' }, callback: v => Number(v).toLocaleString() },
           suggestedMin: minL - padding,
           suggestedMax: maxH + padding
         }
@@ -1543,15 +1547,17 @@ function renderForeignChart(){
       maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { labels: { color: '#8b97b5', font: { size: 11 } } },
+        legend: { labels: { color: '#cbd5e1', font: { size: 13, weight: '600' } } },
         tooltip: {
           backgroundColor: '#162040',
-          titleColor: '#e4e8f1',
-          bodyColor: '#e4e8f1',
-          borderColor: '#243158',
+          titleColor: '#ffffff',
+          bodyColor: '#cbd5e1',
+          borderColor: '#334155',
           borderWidth: 1,
-          padding: 10,
-          cornerRadius: 7,
+          padding: 14,
+          cornerRadius: 8,
+          titleFont: { size: 14, weight: 'bold' },
+          bodyFont: { size: 13, weight: '500' },
           callbacks: {
             title: items => `${items[0].label} (${isDay ? '일별' : '월별'} 외국인 수급)`,
             label: item => {
@@ -1569,17 +1575,17 @@ function renderForeignChart(){
       },
       scales: {
         x: {
-          grid: { color: 'rgba(255,255,255,0.02)' },
-          ticks: { color: '#4f5d7a', font: { size: 9 }, maxRotation: 45, maxTicksLimit: 12 }
+          grid: { color: 'rgba(255,255,255,0.03)' },
+          ticks: { color: '#cbd5e1', font: { size: 13, weight: '600' }, maxRotation: 45, maxTicksLimit: 12 }
         },
         // 좌측: 지분율(%)
         yRatio: {
           type: 'linear',
           position: 'left',
-          grid: { color: 'rgba(255,255,255,0.03)' },
+          grid: { color: 'rgba(255,255,255,0.04)' },
           ticks: {
             color: '#ffd166',
-            font: { size: 10 },
+            font: { size: 14, weight: 'bold' },
             callback: v => `${Number(v).toFixed(1)}%`
           },
           min: Math.floor((minR - padR) * 10) / 10,
@@ -1590,12 +1596,12 @@ function renderForeignChart(){
           type: 'linear',
           position: 'right',
           grid: {
-            color: context => context.tick && context.tick.value === 0 ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.02)',
+            color: context => context.tick && context.tick.value === 0 ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.02)',
             lineWidth: context => context.tick && context.tick.value === 0 ? 1.5 : 1
           },
           ticks: {
-            color: '#8b97b5',
-            font: { size: 9 },
+            color: '#cbd5e1',
+            font: { size: 12, weight: '600' },
             callback: v => `${Number(v).toLocaleString()}억`
           }
         }
