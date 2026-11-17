@@ -317,6 +317,40 @@ def fetch_market_indicators(api_key):
             
     return ind
 
+def generate_daily_commentary(kospi, kospi_change, foreign_flow, usdkrw, usdkrw_change, dxy, vkospi, foreign_ratio):
+    """대시보드 핵심 지표 종합 3줄 실전 논평 자동 생성"""
+    # 1줄: 시장 진단 & 국면
+    if kospi_change <= -2.0:
+        line1 = f"🌧️ [시장 진단] 코스피가 {kospi:,.2f}P({kospi_change:+.2f}%)로 급락하며 5,000선 등 주요 지지선이 무너진 본격 투매 및 하락 조정 국면입니다."
+    elif kospi_change < 0:
+        line1 = f"☁️ [시장 진단] 코스피가 {kospi:,.2f}P({kospi_change:+.2f}%)로 약세를 보이며 하방 압력을 받는 숨고르기 국면입니다."
+    elif kospi_change < 1.5:
+        line1 = f"⛅ [시장 진단] 코스피가 {kospi:,.2f}P({kospi_change:+.2f}%)로 반등하며 단기 하방 경직성을 시험하는 구간입니다."
+    else:
+        line1 = f"☀️ [시장 진단] 코스피가 {kospi:,.2f}P({kospi_change:+.2f}%)로 강하게 상승하며 지수 반등 탄력이 살아나는 국면입니다."
+
+    # 2줄: 수급 & 환율/달러 원인 분석
+    f_sign = "순매도" if foreign_flow < 0 else "순매수"
+    f_amt = abs(round(foreign_flow))
+    fx_status = "원화 약세" if (usdkrw >= 1340 or usdkrw_change > 0) else "환율 안정"
+    
+    if foreign_flow <= -10000:
+        line2 = f"🔍 [수급/환율] 원/달러 환율({usdkrw:,.1f}원) {fx_status}와 달러 인덱스({dxy:.2f}P) 속에서 외국인이 -{f_amt:,}억 원의 대량 매도 폭탄을 쏟아내며 지분율({foreign_ratio:.2f}%) 하락을 주도했습니다."
+    elif foreign_flow < 0:
+        line2 = f"🔍 [수급/환율] 환율({usdkrw:,.1f}원) 부담 속에 외국인이 {foreign_flow:+,}억 원 {f_sign}를 지속하며 수급 주도권이 여전히 보수적인 흐름입니다."
+    else:
+        line2 = f"🔍 [수급/환율] 외국인이 +{f_amt:,}억 원 순매수로 유입되며 환율({usdkrw:,.1f}원) 안정세와 함께 수급 개선 신호를 보였습니다."
+
+    # 3줄: 실전 매매 및 대응 전략
+    if foreign_flow < -5000 and kospi_change < -1.0:
+        line3 = "🎯 [실전 대응] 성급한 저가 매수나 물타기를 멈추고, 외국인 매도세 진정 및 환율 반락이 확인될 때까지 현금을 방어하며 관망하는 전략이 필수적입니다."
+    elif foreign_flow < 0:
+        line3 = "🎯 [실전 대응] 반등 시 현금 비중을 유지하고, 외국인 수급 전환 여부를 체크하며 분할 매수 시점을 신중히 저울질할 시기입니다."
+    else:
+        line3 = "🎯 [실전 대응] 우량주 및 지수 추종 ETF를 중심으로 분할 매수 접근이 유효하며, 환율 추세를 지켜보며 비중을 확대할 수 있는 구간입니다."
+
+    return [line1, line2, line3]
+
 def main():
     print("=" * 68)
     print("한국은행 ECOS + 코스피 캔들 + 외국인 보유현황(%) 데이터 수집 시작...")
@@ -400,6 +434,22 @@ def main():
                 foreign_monthly[-1]['date'] = today_date
                 foreign_monthly[-1]['isEstimate'] = True
     
+    # 3줄 실전 논평 자동 생성
+    f_ratio = foreign_daily[-1]['ratio'] if foreign_daily else 33.17
+    commentary = generate_daily_commentary(
+        indicators.get('kospi', 4968.48),
+        indicators.get('kospi_change', 0.0),
+        indicators.get('foreign_flow', 0),
+        indicators.get('usdkrw', 1338.10),
+        indicators.get('usdkrw_change', 0.0),
+        indicators.get('dxy', 103.69),
+        indicators.get('vkospi', 23.1),
+        f_ratio
+    )
+    print("✓ 오늘자 3줄 실전 논평 생성 완료:")
+    for c in commentary:
+        print(f"  {c}")
+
     payload = {
         "updatedAt": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         "source": "한국은행 ECOS (통계표 523Y001, 802Y001) 및 네이버 금융 공식 데이터",
@@ -409,6 +459,7 @@ def main():
         "latestMA": latest_ma,
         "latestDate": raw_data[-1]['date'],
         "indicators": indicators,
+        "dailyCommentary": commentary,
         
         # 뉴스심리지수 시계열
         "timeSeries": raw_data,

@@ -367,6 +367,49 @@ a:hover { text-decoration: underline; }
 .ind-note { margin-top: 8px; font-size: 0.88rem; color: #cbd5e1; line-height: 1.6; font-weight: 500; }
 
 /* ========================================
+   🌟 3줄 실전 논평 카드 (DAILY COMMENTARY)
+   ======================================== */
+.commentary-box {
+  background: linear-gradient(135deg, rgba(30, 41, 69, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+  border: 1.5px solid rgba(139, 92, 246, 0.45);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+.commentary-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px; margin-bottom: 14px;
+  padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.commentary-title {
+  font-size: 1.18rem; font-weight: 800; color: #f8fafc;
+  display: flex; align-items: center; gap: 8px;
+}
+.commentary-badge {
+  font-size: 0.85rem; font-weight: 700; padding: 5px 14px; border-radius: 20px;
+  background: rgba(139, 92, 246, 0.2); color: #c4b5fd;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+}
+.commentary-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.comm-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 18px; border-radius: 10px;
+  font-size: 1.08rem; font-weight: 600; line-height: 1.7; color: #f1f5f9;
+}
+.comm-item.item-diag {
+  background: rgba(239, 68, 68, 0.1); border-left: 5px solid #ef4444;
+}
+.comm-item.item-flow {
+  background: rgba(59, 130, 246, 0.1); border-left: 5px solid #3b82f6;
+}
+.comm-item.item-act {
+  background: rgba(16, 185, 129, 0.1); border-left: 5px solid #10b981;
+}
+
+/* ========================================
    FOOTER & TOAST
    ======================================== */
 .app-footer {
@@ -479,6 +522,22 @@ a:hover { text-decoration: underline; }
       <div class="strat-phase" id="elSP">-</div>
       <div class="strat-desc"  id="elSD">-</div>
       <div class="strat-list"  id="elSA"></div>
+    </div>
+  </div>
+
+  <!-- 🌟 오늘자 대시보드 종합 심층 3줄 논평 박스 -->
+  <div class="commentary-box">
+    <div class="commentary-header">
+      <div class="commentary-title">
+        <span>💡</span>
+        <span>오늘의 시장 종합 진단 &amp; 3줄 실전 논평</span>
+      </div>
+      <span class="commentary-badge" id="elCommBadge">🤖 AI 매크로·수급 자동 분석</span>
+    </div>
+    <div class="commentary-list">
+      <div class="comm-item item-diag" id="elCommLine1">분석 데이터를 불러오는 중입니다…</div>
+      <div class="comm-item item-flow" id="elCommLine2">수급 및 환율 지표를 분석 중입니다…</div>
+      <div class="comm-item item-act" id="elCommLine3">실전 대응 전략을 생성 중입니다…</div>
     </div>
   </div>
 
@@ -1894,6 +1953,14 @@ async function loadData(){
     renderKospiChart();
     renderForeignChart();
     renderInd();
+
+    // 🌟 3줄 실전 논평 렌더링
+    const comm = json.dailyCommentary || [];
+    if(comm.length >= 3){
+      $('elCommLine1').textContent = comm[0];
+      $('elCommLine2').textContent = comm[1];
+      $('elCommLine3').textContent = comm[2];
+    }
 
     $('elUpdate').textContent = '갱신: ' + (json.updatedAt || new Date().toLocaleString('ko-KR'));
     toast('✅ 코스피 캔들 및 외국인 보유 현황 로드 완료!');
