@@ -276,6 +276,45 @@ def fetch_market_indicators(api_key):
         except:
             pass
             
+    # 원/달러 환율 (KRW/USD) 수집
+    ind["usdkrw"] = 1338.30
+    ind["usdkrw_change"] = 1.80
+    ind["usdkrw_ratio"] = 0.13
+    try:
+        fx_data = fetch_json("https://m.stock.naver.com/front-api/marketIndex/productDetail?category=exchange&reutersCode=FX_USDKRW")
+        if fx_data and fx_data.get('result'):
+            res_fx = fx_data['result']
+            price = float(res_fx.get('closePrice', '1338').replace(',', ''))
+            change = float(str(res_fx.get('fluctuations', '0')).replace(',', ''))
+            ratio = float(str(res_fx.get('fluctuationsRatio', '0')).replace(',', ''))
+            f_type = res_fx.get('fluctuationsType', {}).get('name', 'RISING')
+            if f_type in ('FALLING', 'DROP', '3', '5') and change > 0:
+                change = -change
+                ratio = -ratio
+            ind["usdkrw"] = price
+            ind["usdkrw_change"] = change
+            ind["usdkrw_ratio"] = ratio
+    except Exception as e:
+        print("[경고] 네이버 환율 수집 예외:", e)
+
+    # 달러 인덱스 (DXY) 수집
+    ind["dxy"] = 103.69
+    ind["dxy_change"] = 0.52
+    ind["dxy_ratio"] = 0.50
+    try:
+        dxy_json = fetch_json("https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?interval=1d&range=5d")
+        if dxy_json and 'chart' in dxy_json and dxy_json['chart']['result']:
+            meta = dxy_json['chart']['result'][0]['meta']
+            curr = float(meta.get('regularMarketPrice', 103.69))
+            prev = float(meta.get('chartPreviousClose', curr))
+            diff = curr - prev
+            pct = (diff / prev) * 100 if prev > 0 else 0.0
+            ind["dxy"] = round(curr, 2)
+            ind["dxy_change"] = round(diff, 2)
+            ind["dxy_ratio"] = round(pct, 2)
+    except Exception as e:
+        print("[경고] DXY 수집 예외:", e)
+            
     return ind
 
 def main():

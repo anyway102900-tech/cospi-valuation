@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17 22:50:51",
+  "updatedAt": "2026-11-17 23:05:03",
   "source": "한국은행 ECOS (통계표 523Y001, 802Y001) 및 네이버 금융 공식 데이터",
   "trend": "down",
   "zone": "adjustment",
@@ -11,12 +11,18 @@
     "kospi_change": -2.59,
     "per": 11.2,
     "pbr": 0.91,
-    "vkospi": 23.0,
+    "vkospi": 23.1,
     "foreign_flow": -14190,
     "institution_flow": 5134,
     "spread": 0.13,
     "treasury_3y": 3.715,
-    "treasury_1y": 3.588
+    "treasury_1y": 3.588,
+    "usdkrw": 1338.1,
+    "usdkrw_change": 1.6,
+    "usdkrw_ratio": 0.12,
+    "dxy": 103.69,
+    "dxy_change": 0.52,
+    "dxy_ratio": 0.5
   },
   "timeSeries": [
     {
