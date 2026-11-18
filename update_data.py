@@ -11,6 +11,7 @@
 
 import os
 import json
+import time
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
@@ -19,15 +20,19 @@ API_KEY = 'TWSDJSZHSK3FJKI0KDUP'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(BASE_DIR, 'data.json')
 
-def fetch_json(url, timeout=15):
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    req = urllib.request.Request(url, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:
-            return json.loads(response.read().decode('utf-8'))
-    except Exception as e:
-        print(f"Fetch error for {url}: {e}")
-        return None
+def fetch_json(url, timeout=12, retries=3):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+    for attempt in range(1, retries + 1):
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                return json.loads(response.read().decode('utf-8'))
+        except Exception as e:
+            if attempt < retries:
+                time.sleep(1.2)
+            else:
+                print(f"Fetch error for {url} (시도 {retries}회 최종 실패): {e}")
+                return None
 
 def fetch_news_sentiment(api_key):
     """한국은행 ECOS 뉴스심리지수 수집"""
@@ -356,13 +361,27 @@ def main():
     print("한국은행 ECOS + 코스피 캔들 + 외국인 보유현황(%) 데이터 수집 시작...")
     print("=" * 68)
     
-    # 1. 뉴스심리지수
+    # [안전장치 1] 기존 data.json 캐시 로드 (외부 통신 장애 시 안전망)
+    cached_data = {}
+    if os.path.exists(DATA_FILE):
+        try:
+            with open(DATA_FILE, 'r', encoding='utf-8') as f:
+                cached_data = json.load(f)
+        except Exception as e:
+            print("[경고] 기존 data.json 캐시 로드 실패:", e)
+
+    # 1. 뉴스심리지수 (통신 실패 시 캐시 재사용, 프로그램 절대 중단 안 함)
     raw_data = fetch_news_sentiment(API_KEY)
-    if not raw_data:
-        print("[오류] 뉴스심리지수 수집 실패")
-        return
-    ma_data, trend, zone, latest_ma = calculate_ma_and_zones(raw_data, period=90)
-    print(f"✓ 뉴스심리지수: {len(raw_data)}건 수집 완료 (최신: {raw_data[-1]['value']})")
+    if raw_data:
+        ma_data, trend, zone, latest_ma = calculate_ma_and_zones(raw_data, period=90)
+        print(f"✓ 뉴스심리지수: {len(raw_data)}건 수집 완료 (최신: {raw_data[-1]['value']})")
+    else:
+        print("[안전망 가동] 한국은행 뉴스심리지수 수집 실패 - 기존 캐시 데이터를 안전하게 재사용합니다.")
+        raw_data = cached_data.get('timeSeries', [])
+        ma_data = cached_data.get('maSeries', [])
+        trend = cached_data.get('trend', 'down')
+        zone = cached_data.get('zone', 'undervalued')
+        latest_ma = cached_data.get('latestMA', 98.0)
     
     # 2. 코스피 일봉/월봉
     kospi_daily = fetch_kospi_candles('day', 750)
@@ -376,8 +395,12 @@ def main():
     ma60_monthly = calc_series_ma(kospi_monthly, 60)
     print(f"✓ 코스피 캔들: 일봉 {len(kospi_daily)}건 / 월봉 {len(kospi_monthly)}건 수집 완료")
     
-    # 3. 외국인 보유현황 (일별 / 월별)
+    # 3. 외국인 보유현황 (일별 / 월별) (통신 실패 시 캐시 재사용)
     foreign_daily, foreign_monthly = fetch_foreign_holdings(API_KEY)
+    if not foreign_daily:
+        print("[안전망 가동] 한국은행 외국인 지분율 수집 실패 - 기존 캐시 데이터를 안전하게 재사용합니다.")
+        foreign_daily = cached_data.get('foreignDaily', [])
+        foreign_monthly = cached_data.get('foreignMonthly', [])
     print(f"✓ 외국인 보유현황: 일별 {len(foreign_daily)}건 / 월별 {len(foreign_monthly)}건 산출 완료")
     if foreign_daily:
         print(f"  - 최신 외국인 보유비중: {foreign_daily[-1]['ratio']}% | 순매수: {foreign_daily[-1]['netBuy']}억원")

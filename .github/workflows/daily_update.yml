@@ -2,8 +2,10 @@ name: Daily Data Auto-Update
 
 on:
   schedule:
-    # 매일 평일(월~금) 한국 시간 16:30 (UTC 07:30)에 자동 실행
-    - cron: '30 7 * * 1-5'
+    # 1차 실행: 평일 한국 시간 16:40 (07:40 UTC, 정각/30분 트래픽 몰림 회피)
+    - cron: '40 7 * * 1-5'
+    # 2차 보조 실행: 평일 한국 시간 17:15 (08:15 UTC, 지연 방지용 이중 안전망)
+    - cron: '15 8 * * 1-5'
   workflow_dispatch: # 필요 시 GitHub 웹에서 버튼 클릭으로 즉시 실행 가능
 
 permissions:

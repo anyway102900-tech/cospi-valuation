@@ -88,6 +88,20 @@ a:hover { text-decoration: underline; }
 .header-actions { display: flex; align-items: center; gap: 14px; }
 .update-time { font-size: 0.88rem; color: #cbd5e1; font-weight: 600; }
 
+.btn-cloud-run {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(0,214,143,0.3));
+  border: 1.5px solid rgba(139,92,246,0.5);
+  color: #ffffff; padding: 6px 14px; border-radius: 9px;
+  font-size: 0.88rem; font-weight: 700; text-decoration: none;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.btn-cloud-run:hover {
+  background: linear-gradient(135deg, rgba(139,92,246,0.5), rgba(0,214,143,0.5));
+  border-color: var(--purple); color: #ffffff; text-decoration: none;
+  box-shadow: 0 0 14px rgba(139,92,246,0.45);
+}
+
 .btn-icon {
   width: 38px; height: 38px; border-radius: 10px;
   background: var(--bg-card); border: 1px solid var(--border);
@@ -464,6 +478,7 @@ a:hover { text-decoration: underline; }
   <div class="header-actions">
     <span class="update-time" id="elUpdate">-</span>
     <button class="btn-icon" onclick="refreshData()" title="데이터 새로고침">🔄</button>
+    <a href="https://github.com/anyway102900-tech/cospi-valuation/actions/workflows/daily_update.yml" target="_blank" class="btn-cloud-run" title="스마트폰/PC 원클릭 클라우드 즉시 갱신">⚡ 클라우드 즉시 갱신</a>
   </div>
 </header>
 
