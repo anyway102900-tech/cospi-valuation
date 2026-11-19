@@ -7,6 +7,8 @@ on:
     # 2차 보조 실행: 평일 한국 시간 17:15 (08:15 UTC, 지연 방지용 이중 안전망)
     - cron: '15 8 * * 1-5'
   workflow_dispatch: # 필요 시 GitHub 웹에서 버튼 클릭으로 즉시 실행 가능
+  repository_dispatch: # 외부 Web Cron (Cron-Job.org 등) 호출 시 100% 즉시 실행
+    types: [daily-update, update-data]
 
 permissions:
   contents: write # 레포지토리에 git push 권한 부여
