@@ -359,6 +359,33 @@ a:hover { text-decoration: underline; }
   display: inline-flex; align-items: center; gap: 4px;
 }
 
+/* 차트별 최신 기준일 배지 (저시력 배려: 크고 선명한 폰트 & 고대비) */
+.chart-date-badge {
+  font-size: 0.92rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.02em;
+}
+.chart-date-badge.purple {
+  background: rgba(167, 139, 250, 0.18);
+  color: #c4b5fd;
+  border: 1.5px solid rgba(167, 139, 250, 0.45);
+}
+.chart-date-badge.yellow {
+  background: rgba(255, 209, 102, 0.18);
+  color: #ffd166;
+  border: 1.5px solid rgba(255, 209, 102, 0.45);
+}
+.chart-date-badge.cyan {
+  background: rgba(0, 245, 212, 0.18);
+  color: #00f5d4;
+  border: 1.5px solid rgba(0, 245, 212, 0.45);
+}
+
 /* ========================================
    INDICATORS ROW (6 CARDS)
    ======================================== */
@@ -562,9 +589,10 @@ a:hover { text-decoration: underline; }
        ======================================================== -->
   <div class="card chart-card">
     <div class="chart-header">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <span class="card-label" style="margin:0;">📈 [위 차트 - 심리 지표] 뉴스심리지수 &amp; 3개월 이동평균선</span>
         <span class="sync-badge">🔗 아래 코스피 캔들과 1:1 동기화</span>
+        <span class="chart-date-badge purple" id="nsiDateBadge">📅 기준일: -</span>
       </div>
 
       <!-- 🌟 통합 마스터 컨트롤러 -->
@@ -624,9 +652,10 @@ a:hover { text-decoration: underline; }
        ======================================================== -->
   <div class="card chart-card">
     <div class="chart-header">
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <span class="card-label" style="margin:0;">🕯️ [아래 차트] 코스피 HTS 캔들스틱 차트</span>
         <span class="sync-badge">🔗 위 심리지수와 1:1 동기화</span>
+        <span class="chart-date-badge yellow" id="kospiDateBadge">📅 기준일: -</span>
       </div>
       
       <div class="chart-controls">
@@ -676,6 +705,7 @@ a:hover { text-decoration: underline; }
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <span class="card-label" style="margin:0;">📊 외국인 국내주식 보유 현황 &amp; 순매수 대금 추이</span>
         <span class="sync-badge" style="background:rgba(167,139,250,0.1);color:var(--purple);border-color:rgba(167,139,250,0.25);">⭐ 독립 차트 (연동 분리)</span>
+        <span class="chart-date-badge cyan" id="foreignDateBadge">📅 기준일: -</span>
       </div>
 
       <div class="chart-controls">
@@ -1419,6 +1449,7 @@ function renderNsiChart(){
       }
     }
   });
+  updateChartDateBadges();
 }
 
 // ========================================
@@ -1551,6 +1582,7 @@ function renderKospiChart(){
       }
     }
   });
+  updateChartDateBadges();
 }
 
 // ========================================
@@ -1704,6 +1736,7 @@ function renderForeignChart(){
       }
     }
   });
+  updateChartDateBadges();
 }
 
 // 🌟 외국인 독립 차트 제어기 함수
@@ -1942,6 +1975,37 @@ function renderInd(){
 }
 
 // ========================================
+// 📅 차트별 최신 기준일 배지 업데이트
+// ========================================
+function updateChartDateBadges(){
+  // 1) [위 차트] 뉴스심리지수 (Chart 1)
+  const elNsi = $('nsiDateBadge');
+  if(elNsi){
+    const lastNsi = (S.raw && S.raw.length) ? S.raw[S.raw.length - 1].date : '-';
+    elNsi.textContent = '📅 기준일: ' + lastNsi;
+  }
+
+  // 2) [아래 차트] 코스피 캔들 (Chart 2)
+  const elKospi = $('kospiDateBadge');
+  if(elKospi){
+    const isDay = (S.masterTf === 'day');
+    const source = isDay ? S.kospiDaily : S.kospiMonthly;
+    const candles = (source && source.candles) ? source.candles : [];
+    const lastKospi = candles.length ? candles[candles.length - 1].date : '-';
+    elKospi.textContent = '📅 기준일: ' + lastKospi;
+  }
+
+  // 3) [독립 차트] 외국인 보유/수급 (Chart 3)
+  const elForeign = $('foreignDateBadge');
+  if(elForeign){
+    const isDay = (S.foreignTf === 'day');
+    const source = isDay ? S.foreignDaily : S.foreignMonthly;
+    const lastForeign = (source && source.length) ? source[source.length - 1].date : '-';
+    elForeign.textContent = '📅 기준일: ' + lastForeign;
+  }
+}
+
+// ========================================
 // 초기화 & 실행
 // ========================================
 async function loadData(){
@@ -1968,6 +2032,7 @@ async function loadData(){
     renderKospiChart();
     renderForeignChart();
     renderInd();
+    updateChartDateBadges();
 
     // 🌟 3줄 실전 논평 렌더링
     const comm = json.dailyCommentary || [];
