@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26 14:31:46",
+  "updatedAt": "2026-11-26 17:53:33",
   "source": "한국은행 ECOS (523Y001, 802Y001, 901Y014) · 네이버 금융 · 글로벌 지수 실시간 연동",
   "trend": "down",
   "zone": "undervalued",
@@ -13,8 +13,8 @@
     "pbr": 0.94,
     "div_yield": 1.35,
     "yield_gap": 9.12,
-    "vkospi": 27.1,
-    "vkospi_change": -1.2,
+    "vkospi": 26.8,
+    "vkospi_change": -1.49,
     "vkospi_peaked": true,
     "foreign_flow": -880,
     "institution_flow": 7529,
@@ -23,13 +23,13 @@
     "spread": 0.07,
     "treasury_3y": 3.639,
     "treasury_1y": 3.568,
-    "usdkrw": 1343.8,
-    "usdkrw_change": -1.7,
-    "usdkrw_ratio": -0.13,
-    "usdkrw_ma5": 1343.86,
-    "dxy": 103.64,
-    "dxy_change": -0.03,
-    "dxy_ratio": -0.03,
+    "usdkrw": 1344.4,
+    "usdkrw_change": -1.1,
+    "usdkrw_ratio": -0.08,
+    "usdkrw_ma5": 1343.98,
+    "dxy": 103.78,
+    "dxy_change": 0.11,
+    "dxy_ratio": 0.11,
     "nasdaq": 23585.8,
     "nasdaq_change": -147.74,
     "nasdaq_ratio": -0.62,
@@ -54,9 +54,9 @@
     "programNetBuy": 1639
   },
   "buyStrategy": {
-    "totalScore": 54,
+    "totalScore": 46,
     "passCount": 1,
-    "partialCount": 3,
+    "partialCount": 2,
     "verdict": "🟡 관망 · 소액 정찰병 구간 (진바닥 탐색 중)",
     "verdictColor": "orange",
     "stockWeight": 25,
@@ -64,8 +64,8 @@
     "actionSummary": "가격·밸류 매력은 높으나 외국인 누적 수급 전환과 확실한 반등 캔들이 아직 대기 중입니다. 현금 75%를 지키며 정찰병(20~25%)만 유지하세요.",
     "disparity20": 90.69,
     "rsi14": 35.5,
-    "foreignCum5": -25269.0,
-    "foreignCum20": -175216.0,
+    "foreignCum5": -24689.0,
+    "foreignCum20": -174636.0,
     "checklist": [
       {
         "id": "valuation",
@@ -101,28 +101,28 @@
         "id": "foreign",
         "title": "④ 수급 바닥 (외국인 5일 누적 순매수)",
         "target": "외국인 5거래일 누적 순매수(+) 전환",
-        "current": "5일 누적 -25,269억",
+        "current": "5일 누적 -24,689억",
         "status": "fail",
         "badge": "❌ 외국인 이탈중",
         "score": 0,
-        "desc": "외국인 5일 누적 -25,269억 / 20일 누적 -175,216억 — 추세 매도 지속 (속임수 반등 주의)"
+        "desc": "외국인 5일 누적 -24,689억 / 20일 누적 -174,636억 — 추세 매도 지속 (속임수 반등 주의)"
       },
       {
         "id": "macro",
         "title": "⑤ 환율·공포·미 반도체 진정",
         "target": "환율 5일선 하향 안정 & VIX 진정 & SOX 지지",
-        "current": "환율 1,343.8원 / SOX -0.65%",
-        "status": "partial",
-        "badge": "⏳ 진정 진행중",
-        "score": 12,
-        "desc": "환율(1,343.8원) 진정세이나 VIX(27.1)·미 반도체(-0.65%) 추가 안정 확인 필요"
+        "current": "환율 1,344.4원 / SOX -0.65%",
+        "status": "fail",
+        "badge": "❌ 대외 경계",
+        "score": 4,
+        "desc": "환율 1,344.4원 · VIX 26.8 · 미 반도체 -0.65% — 글로벌 변동성 경계 구간"
       }
     ]
   },
   "dailyCommentary": [
     "🌧️ [추세/밸류 진단] 코스피 4,711.21P(+0.29%)로 20일선(5,195P) 아래 역배열(이격도 90.7%) 조정 국면이나, 밸류에이션(PBR 0.94배·PER 7.8배)과 RSI(35.5)는 저평가 과매도 권역에 진입해 있습니다.",
-    "🔍 [누적수급/글로벌] 외국인 당일 -880억(5일 누적 -25,269억 순매도 이탈 지속) · 환율 1,343.8원 · 미 나스닥(-0.62%) 및 필라델피아 반도체(-0.65%) 흐름이 국내 수급 방향성을 좌우하고 있습니다.",
-    "🎯 [실전 매수 전략] 매수 타점 점수 54점(5대 핵심조건 중 1개 충족) ➔ 현재 권장 비중 【주식 25% : 현금 75%】 유지 (본격 비중 확대 방아쇠: 외국인 5일 누적 순매수(+) 전환 및 20일선 탈환 확인 시)."
+    "🔍 [누적수급/글로벌] 외국인 당일 -880억(5일 누적 -24,689억 순매도 이탈 지속) · 환율 1,344.4원 · 미 나스닥(-0.62%) 및 필라델피아 반도체(-0.65%) 흐름이 국내 수급 방향성을 좌우하고 있습니다.",
+    "🎯 [실전 매수 전략] 매수 타점 점수 46점(5대 핵심조건 중 1개 충족) ➔ 현재 권장 비중 【주식 25% : 현금 75%】 유지 (본격 비중 확대 방아쇠: 외국인 5일 누적 순매수(+) 전환 및 20일선 탈환 확인 시)."
   ],
   "timeSeries": [
     {
@@ -23377,21 +23377,20 @@
     {
       "date": "2026-11-25",
       "rawDate": "20261125",
-      "netBuy": -19068.0,
+      "netBuy": -18283.0,
       "ratio": 33.16,
-      "foreignHoldingVal": 12757.7,
-      "cum5": -28443.0,
-      "cum20": -167736.0
+      "foreignHoldingVal": 12757.8,
+      "cum5": -27658.0,
+      "cum20": -166951.0
     },
     {
       "date": "2026-11-26",
       "rawDate": "20261126",
-      "netBuy": -880.0,
+      "netBuy": -1085.0,
       "ratio": 33.16,
-      "foreignHoldingVal": 12794.8,
-      "isEstimate": true,
-      "cum5": -25269.0,
-      "cum20": -175216.0
+      "foreignHoldingVal": 12799.6,
+      "cum5": -24689.0,
+      "cum20": -174636.0
     }
   ],
   "foreignMonthly": [
@@ -23670,21 +23669,19 @@
     {
       "date": "2026-11-26",
       "month": "2026-11",
-      "netBuy": -159058.0,
+      "netBuy": -158478.0,
       "ratio": 33.16,
-      "foreignHoldingVal": 12794.8,
-      "cum3": -561064.0,
-      "isEstimate": true
+      "foreignHoldingVal": 12799.6,
+      "cum3": -560484.0
     }
   ],
   "latestForeign": {
     "date": "2026-11-26",
     "rawDate": "20261126",
-    "netBuy": -880.0,
+    "netBuy": -1085.0,
     "ratio": 33.16,
-    "foreignHoldingVal": 12794.8,
-    "isEstimate": true,
-    "cum5": -25269.0,
-    "cum20": -175216.0
+    "foreignHoldingVal": 12799.6,
+    "cum5": -24689.0,
+    "cum20": -174636.0
   }
 }
