@@ -2,3 +2,8 @@ cloudflared.exe
 *.log
 __pycache__/
 .vscode/
+
+# 로컬 자동화 스크립트 및 로그 제외
+trigger_update.ps1
+setup_task.ps1
+auto_update.log
