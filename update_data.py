@@ -15,7 +15,7 @@ import json
 import time
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 API_KEY = 'TWSDJSZHSK3FJKI0KDUP'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -575,6 +575,246 @@ def fetch_market_indicators(api_key, cached_ind=None):
     return ind
 
 
+# ==========================================================
+# 📉 다우존스 / 코스피 고점 대비 등락률 (52주 고점 · 역대 고점)
+# ==========================================================
+def _ts_to_date(ts):
+    try:
+        return datetime.fromtimestamp(int(ts), timezone.utc).strftime('%Y-%m-%d')
+    except Exception:
+        return ''
+
+
+def fetch_dow_drawdown(cached=None):
+    """야후 파이낸스 ^DJI: 현재가 · 전일비 · 52주 고점 · 역대 고점 대비 등락률"""
+    out = dict(cached or {})
+    try:
+        d1 = fetch_json("https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?interval=1d&range=1y")
+        if d1 and d1.get('chart', {}).get('result'):
+            r = d1['chart']['result'][0]
+            ts = r.get('timestamp') or []
+            q = r.get('indicators', {}).get('quote', [{}])[0]
+            highs = q.get('high') or []
+            closes = [c for c in (q.get('close') or []) if c is not None]
+            price = float(r['meta'].get('regularMarketPrice', closes[-1] if closes else 0))
+            prev = float(closes[-2]) if len(closes) >= 2 else price
+            hi_idx = max((i for i in range(len(highs)) if highs[i] is not None), key=lambda i: highs[i])
+            high52 = float(highs[hi_idx])
+            out.update({
+                "price": round(price, 2),
+                "change": round(price - prev, 2),
+                "ratio": round((price - prev) / prev * 100.0, 2) if prev else 0.0,
+                "high52": round(high52, 2),
+                "high52Date": _ts_to_date(ts[hi_idx]) if hi_idx < len(ts) else '',
+                "dd52": round((price - high52) / high52 * 100.0, 2) if high52 else 0.0,
+            })
+
+        dm = fetch_json("https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?interval=1mo&range=max")
+        if dm and dm.get('chart', {}).get('result'):
+            r = dm['chart']['result'][0]
+            ts = r.get('timestamp') or []
+            highs = r.get('indicators', {}).get('quote', [{}])[0].get('high') or []
+            valid = [i for i in range(len(highs)) if highs[i] is not None]
+            if valid:
+                ai = max(valid, key=lambda i: highs[i])
+                ath = max(float(highs[ai]), float(out.get('high52', 0)))
+                ath_date = _ts_to_date(ts[ai])[:7] if float(highs[ai]) >= float(out.get('high52', 0)) else out.get('high52Date', '')
+                price = float(out.get('price', 0))
+                out.update({
+                    "ath": round(ath, 2),
+                    "athDate": ath_date,
+                    "ddAth": round((price - ath) / ath * 100.0, 2) if ath else 0.0,
+                })
+    except Exception as e:
+        print("[경고] 다우존스 고점대비 산출 예외:", e)
+    return out
+
+
+def calc_kospi_drawdown(kospi_daily, kospi_monthly, ind):
+    """코스피 일봉(최근 250거래일)·월봉(최근 5년) 기반 52주/역대(5년) 고점 대비 등락률"""
+    out = {}
+    if not kospi_daily:
+        return out
+    price = float(kospi_daily[-1]['close'])
+    last250 = kospi_daily[-250:]
+    h52 = max(last250, key=lambda c: c['high'])
+    out.update({
+        "price": round(price, 2),
+        "ratio": float(ind.get('kospi_change', 0.0)),
+        "high52": h52['high'],
+        "high52Date": h52['date'],
+        "dd52": round((price - h52['high']) / h52['high'] * 100.0, 2),
+        "low52": min(c['low'] for c in last250),
+    })
+    out["upFromLow52"] = round((price - out["low52"]) / out["low52"] * 100.0, 2) if out["low52"] else 0.0
+    pool = list(kospi_monthly or []) + list(kospi_daily)
+    hath = max(pool, key=lambda c: c['high'])
+    out.update({
+        "ath": hath['high'],
+        "athDate": str(hath['date'])[:7],
+        "ddAth": round((price - hath['high']) / hath['high'] * 100.0, 2),
+    })
+    return out
+
+
+# ==========================================================
+# 📰 외부(글로벌) · 내부(국내) 요인 뉴스 헤드라인 심층 분석
+# ==========================================================
+NEWS_POS = {
+    '폭등': 3, '급등': 3, '호실적': 3, '서프라이즈': 2, '반등': 2, '순매수': 2, '사자': 2, '회복': 2,
+    '호조': 2, '인하': 2, '완화': 2, '부양': 2, '강세': 2, '랠리': 2, '훈풍': 2, '안도': 2, '타결': 2,
+    '기대': 1, '대책': 1, '최고': 1, '돌파': 1, '개선': 1, '상승': 1, '유입': 1, '저가매수': 2, '귀환': 2
+}
+NEWS_NEG = {
+    '폭락': 3, '급락': 3, '반토막': 3, '패닉': 3, '투매': 3, '디폴트': 3, '파산': 3, '반대매매': 3,
+    '순매도': 2, '팔자': 2, '공포': 2, '증발': 2, '고금리': 2, '위기': 2, '약세': 2, '충격': 2, '쇼크': 2,
+    '침체': 2, '전쟁': 2, '불안': 2, '긴축': 2, '이탈': 2, '하락': 1, '매도': 1, '우려': 1, '긴장': 1,
+    '인상': 1, '부채': 1, '관세': 1, '경고': 1, '둔화': 1, '손실': 1, '최저': 1, '역주행': 1, '굴욕': 1
+}
+
+EXT_THEMES = {
+    '미 연준·금리': (['연준', 'Fed', 'FOMC', '파월', '금리', '국채', '긴축'],
+                 '금리 부담 완화로 성장주·신흥국 자금 유입 여건 개선', '고금리 장기화 우려로 글로벌 위험자산 할인율 상승 압력'),
+    '미 물가·경기': (['물가', 'CPI', 'PCE', '인플레', '성장률', 'GDP', '고용', '실업', '소비'],
+                 '연착륙 기대가 위험선호를 지지', '경기·물가 불확실성이 변동성을 키우는 구간'),
+    'AI·반도체 빅테크': (['AI', '반도체', '엔비디아', '빅테크', '기술주', '나스닥', '마이크론'],
+                   '반도체 업황 기대가 국내 대형 반도체주에 직접 호재', 'AI·반도체 밸류 부담이 국내 반도체 대형주 수급에 직격탄'),
+    '달러·환율·원자재': (['달러', '환율', '엔화', '위안', '유가', '원유', '금값', '원자재'],
+                   '달러 약세·원자재 안정으로 신흥국 증시 우호적', '강달러·원자재 변동이 외국인 환차손 우려를 자극'),
+    '지정학·무역': (['관세', '무역', '전쟁', '중동', '러시아', '우크라', '중국', '트럼프', '제재'],
+               '지정학·무역 긴장 완화로 수출주 심리 개선', '지정학·무역 리스크가 수출 중심 국내 증시에 부담'),
+}
+INT_THEMES = {
+    '외국인·기관 수급': (['외국인', '기관', '순매수', '순매도', '사자', '팔자', '수급', '개인'],
+                   '외국인 귀환이 지수 하단을 지지 — 연속성(5일 누적) 확인이 관건', '외국인 이탈이 지속되며 지수 하방 압력 확대'),
+    '정부 정책·증시대책': (['정부', '대책', '금융위', '밸류업', '공매도', '세제', '부양', '증시안정', '정책'],
+                    '증시 안정 정책 기대가 투자심리를 떠받치는 국면', '정책 불확실성이 시장 신뢰 회복을 지연'),
+    '반도체·대형주 실적': (['삼성전자', '하이닉스', '반도체', 'HBM', '실적', '영업이익', '대형주'],
+                    '대형 반도체주 반등이 지수 회복을 견인할 가능성', '대형 반도체주 약세가 지수 전체를 끌어내리는 구간'),
+    '한은 금리·환율': (['한은', '한국은행', '기준금리', '금통위', '원화', '환율'],
+                 '금리·환율 안정이 외국인 수급 환경을 개선', '원화 약세·금리 부담이 외국인 매도 요인으로 작용'),
+    '신용·반대매매 리스크': (['반대매매', '신용', '빚투', '마진콜', '레버리지', '청산'],
+                     '신용 물량 정리로 악성 매물 부담 완화', '반대매매·신용 청산 매물이 추가 하락을 증폭'),
+}
+
+EXT_QUERIES = ['뉴욕증시', '미국 연준 금리', '글로벌 증시', '미국 반도체 엔비디아']
+INT_QUERIES = ['코스피 마감', '코스피 외국인', '증시 대책 정부', '삼성전자 SK하이닉스 주가']
+
+
+def _score_title(title):
+    text = title
+    pos = neg = 0
+    for w in sorted(NEWS_POS.keys() | NEWS_NEG.keys(), key=len, reverse=True):
+        if w in text:
+            if w in NEWS_POS:
+                pos += NEWS_POS[w]
+            else:
+                neg += NEWS_NEG[w]
+            text = text.replace(w, ' ')
+    return pos, neg
+
+
+def _fetch_google_news(queries, per_query=15):
+    import urllib.parse
+    seen = set()
+    items = []
+    for q in queries:
+        url = 'https://news.google.com/rss/search?q=' + urllib.parse.quote(q + ' when:1d') + '&hl=ko&gl=KR&ceid=KR:ko'
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            root = ET.fromstring(urllib.request.urlopen(req, timeout=12).read())
+        except Exception as e:
+            print(f"[경고] 뉴스 RSS 수집 실패 ({q}): {e}")
+            continue
+        for it in root.findall('.//item')[:per_query]:
+            raw = (it.findtext('title') or '').strip()
+            if ' - ' in raw:
+                title, source = raw.rsplit(' - ', 1)
+            else:
+                title, source = raw, ''
+            key = re.sub(r'[^0-9A-Za-z가-힣]', '', title)[:28]
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            items.append({"title": title.strip(), "source": source.strip(),
+                          "link": it.findtext('link') or '', "pubDate": it.findtext('pubDate') or ''})
+    return items
+
+
+def analyze_news_factor(items, themes, label):
+    """헤드라인 호재/악재 점수 + 핵심 테마 판별 → 한줄 평가 생성"""
+    if not items:
+        return None
+    theme_stat = {t: {"cnt": 0, "pos": 0, "neg": 0, "best": None} for t in themes}
+    tot_pos = tot_neg = 0
+    scored = []
+    for it in items:
+        p, n = _score_title(it['title'])
+        it = dict(it, pos=p, neg=n, score=p - n)
+        scored.append(it)
+        tot_pos += p
+        tot_neg += n
+        for t, (kws, _, _) in themes.items():
+            if any(k.lower() in it['title'].lower() for k in kws):
+                st = theme_stat[t]
+                st["cnt"] += 1
+                st["pos"] += p
+                st["neg"] += n
+                if st["best"] is None or abs(it['score']) > abs(st["best"]['score']):
+                    st["best"] = it
+
+    top_theme = max(theme_stat, key=lambda t: (theme_stat[t]["cnt"], theme_stat[t]["pos"] + theme_stat[t]["neg"]))
+    st = theme_stat[top_theme]
+    denom = tot_pos + tot_neg
+    tone_score = round((tot_pos - tot_neg) / denom * 100) if denom else 0
+    if tone_score >= 20:
+        tone, tone_cls, icon = "호재 우위", "pos", "🟢"
+    elif tone_score <= -20:
+        tone, tone_cls, icon = "악재 우위", "neg", "🔴"
+    else:
+        tone, tone_cls, icon = "호재·악재 혼조", "mix", "🟡"
+
+    pos_impl, neg_impl = themes[top_theme][1], themes[top_theme][2]
+    theme_tone = st["pos"] - st["neg"]
+    if theme_tone > 0:
+        impl = pos_impl
+    elif theme_tone < 0:
+        impl = neg_impl
+    else:
+        impl = pos_impl if tone_score > 0 else neg_impl if tone_score < 0 else "방향성 탐색 구간 — 지표 확인 후 대응"
+
+    rep = st["best"] or max(scored, key=lambda x: abs(x['score']))
+    rep_title = rep['title'] if len(rep['title']) <= 48 else rep['title'][:47] + '…'
+    line = f"{icon} [{label}] '{top_theme}' 이슈가 핵심 — \"{rep_title}\" ➔ {impl}."
+
+    heads = sorted(scored, key=lambda x: abs(x['score']), reverse=True)[:5]
+    return {
+        "line": line,
+        "tone": tone,
+        "toneClass": tone_cls,
+        "toneScore": tone_score,
+        "theme": top_theme,
+        "themeCount": st["cnt"],
+        "posCount": sum(1 for x in scored if x['score'] > 0),
+        "negCount": sum(1 for x in scored if x['score'] < 0),
+        "total": len(scored),
+        "headlines": [{"title": h['title'], "source": h['source'], "link": h['link'], "score": h['score']} for h in heads],
+    }
+
+
+def fetch_news_factors(cached=None):
+    cached = cached or {}
+    ext_items = _fetch_google_news(EXT_QUERIES)
+    int_items = _fetch_google_news(INT_QUERIES)
+    ext = analyze_news_factor(ext_items, EXT_THEMES, "외부 요인") or cached.get('external')
+    inn = analyze_news_factor(int_items, INT_THEMES, "내부 요인") or cached.get('internal')
+    return {
+        "updatedAt": datetime.now().strftime('%Y-%m-%d %H:%M'),
+        "external": ext,
+        "internal": inn,
+    }
+
+
 def evaluate_buy_strategy(raw_nsi, kospi_candles, ma20_daily, rsi_daily, foreign_daily, ind, valuation):
     """
     🎯 실전 매수 타점 5대 체크리스트 & 종합 스코어(0~100점) 및 권장 현금/주식 비중 산출
@@ -993,6 +1233,22 @@ def main():
     for c in commentary:
         print(f"  {c}")
 
+    # 8. 다우존스 · 코스피 고점 대비 등락률
+    drawdown = {
+        "kospi": calc_kospi_drawdown(kospi_daily, kospi_monthly, indicators),
+        "dow": fetch_dow_drawdown((cached_data.get('drawdown') or {}).get('dow')),
+    }
+    for k, nm in (("kospi", "코스피"), ("dow", "다우존스")):
+        d = drawdown[k]
+        if d:
+            print(f"✓ {nm}: {d.get('price')} | 52주 고점대비 {d.get('dd52')}% | 역대 고점대비 {d.get('ddAth')}%")
+
+    # 9. 외부·내부 요인 뉴스 한줄 평가
+    news_factors = fetch_news_factors(cached_data.get('newsFactors'))
+    for k in ('external', 'internal'):
+        if news_factors.get(k):
+            print(f"✓ {news_factors[k]['line']}")
+
     payload = {
         "updatedAt": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         "source": "한국은행 ECOS (523Y001, 802Y001, 901Y014) · 네이버 금융 · 글로벌 지수 실시간 연동",
@@ -1005,6 +1261,8 @@ def main():
         "valuation": valuation,
         "buyStrategy": buy_strategy,
         "dailyCommentary": commentary,
+        "drawdown": drawdown,
+        "newsFactors": news_factors,
 
         "timeSeries": raw_data,
         "maSeries": ma_data,
