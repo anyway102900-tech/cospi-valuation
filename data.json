@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27 17:39:43",
+  "updatedAt": "2026-11-27 18:09:14",
   "source": "한국은행 ECOS (523Y001, 802Y001, 901Y014) · 네이버 금융 · 글로벌 지수 실시간 연동",
   "trend": "down",
   "zone": "undervalued",
@@ -14,7 +14,7 @@
     "div_yield": 1.29,
     "yield_gap": 8.59,
     "vkospi": 24.6,
-    "vkospi_change": -2.23,
+    "vkospi_change": -2.22,
     "vkospi_peaked": true,
     "foreign_flow": 11625,
     "institution_flow": 2190,
@@ -23,21 +23,21 @@
     "spread": 0.06,
     "treasury_3y": 3.633,
     "treasury_1y": 3.57,
-    "usdkrw": 1335.1,
-    "usdkrw_change": -8.9,
-    "usdkrw_ratio": -0.66,
-    "usdkrw_ma5": 1341.92,
-    "dxy": 103.99,
-    "dxy_change": 0.32,
-    "dxy_ratio": 0.31,
-    "nasdaq": 24028.77,
-    "nasdaq_change": 442.97,
-    "nasdaq_ratio": 1.88,
-    "sox": 9045.32,
-    "sox_change": 270.46,
-    "sox_ratio": 3.08,
+    "usdkrw": 1334.4,
+    "usdkrw_change": -9.6,
+    "usdkrw_ratio": -0.71,
+    "usdkrw_ma5": 1341.74,
+    "dxy": 104.02,
+    "dxy_change": 0.35,
+    "dxy_ratio": 0.33,
+    "nasdaq": 24129.5,
+    "nasdaq_change": 543.7,
+    "nasdaq_ratio": 2.31,
+    "sox": 9186.71,
+    "sox_change": 411.85,
+    "sox_ratio": 4.69,
     "us10y": 4.93,
-    "us10y_change": 0.09
+    "us10y_change": 0.08
   },
   "valuation": {
     "per": 8.18,
@@ -111,17 +111,17 @@
         "id": "macro",
         "title": "⑤ 환율·공포·미 반도체 진정",
         "target": "환율 5일선 하향 안정 & VIX 진정 & SOX 지지",
-        "current": "환율 1,335.1원 / SOX +3.08%",
+        "current": "환율 1,334.4원 / SOX +4.69%",
         "status": "pass",
         "badge": "✅ 대외 안정",
         "score": 20,
-        "desc": "환율(1,335.1원 ≤ 5일선 1,341.9원) 하향 안정 및 미 반도체(+3.08%)·변동성 진정"
+        "desc": "환율(1,334.4원 ≤ 5일선 1,341.7원) 하향 안정 및 미 반도체(+4.69%)·변동성 진정"
       }
     ]
   },
   "dailyCommentary": [
     "⛅ [추세/밸류 진단] 코스피가 4,915.68P(+4.34%)로 반등했으나 여전히 20일선(5,154P) 아래 역배열(이격도 95.4%) 구간이며, PBR 0.98배·PER 8.2배·RSI 41.2에서 진바닥을 시험 중입니다.",
-    "🔍 [누적수급/글로벌] 외국인 당일 +11,625억(5일 누적 -2,078억 순매도 이탈 지속) · 환율 1,335.1원 · 미 나스닥(+1.88%) 및 필라델피아 반도체(+3.08%) 흐름이 국내 수급 방향성을 좌우하고 있습니다.",
+    "🔍 [누적수급/글로벌] 외국인 당일 +11,625억(5일 누적 -2,078억 순매도 이탈 지속) · 환율 1,334.4원 · 미 나스닥(+2.31%) 및 필라델피아 반도체(+4.69%) 흐름이 국내 수급 방향성을 좌우하고 있습니다.",
     "🎯 [실전 매수 전략] 매수 타점 점수 70점(5대 핵심조건 중 3개 충족) ➔ 현재 권장 비중 【주식 50% : 현금 50%】 유지 (본격 비중 확대 방아쇠: 외국인 5일 누적 순매수(+) 전환 및 20일선 탈환 확인 시)."
   ],
   "drawdown": {
@@ -138,47 +138,41 @@
       "ddAth": -47.63
     },
     "dow": {
-      "price": 50765.19,
-      "change": 582.24,
-      "ratio": 1.16,
+      "price": 50774.94,
+      "change": 591.99,
+      "ratio": 1.18,
       "high52": 54744.33,
       "high52Date": "2026-08-05",
-      "dd52": -7.27,
+      "dd52": -7.25,
       "ath": 54744.33,
       "athDate": "2026-08-05",
-      "ddAth": -7.27
+      "ddAth": -7.25
     }
   },
   "newsFactors": {
-    "updatedAt": "2026-11-27 17:39",
+    "updatedAt": "2026-11-27 18:09",
     "external": {
-      "line": "🟡 [외부 요인] 'AI·반도체 빅테크' 이슈가 핵심 — \"글로벌 기술주 반등세 지속…유럽증시 상승 출발·나스닥 선물 3% 급등\" ➔ 반도체 업황 기대가 국내 대형 반도체주에 직접 호재.",
-      "tone": "호재·악재 혼조",
-      "toneClass": "mix",
-      "toneScore": 8,
+      "line": "🟢 [외부 요인] 'AI·반도체 빅테크' 이슈가 핵심 — \"[속보][뉴욕증시] AI 강세에 일제히 상승…앤스로픽, 11% 폭등\" ➔ 반도체 업황 기대가 국내 대형 반도체주에 직접 호재.",
+      "tone": "호재 우위",
+      "toneClass": "pos",
+      "toneScore": 21,
       "theme": "AI·반도체 빅테크",
-      "themeCount": 32,
-      "posCount": 17,
-      "negCount": 15,
+      "themeCount": 39,
+      "posCount": 19,
+      "negCount": 17,
       "total": 59,
       "headlines": [
+        {
+          "title": "[속보][뉴욕증시] AI 강세에 일제히 상승…앤스로픽, 11% 폭등",
+          "source": "파이낸셜뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tckt0dDktNXpPeDlEV2tLeUQ0SjFkWnV6cEdlbElvbE5tbFVDcDM2dW9XSTgzTGRrTFh4d1V5aU9BR0NlMkpTNlZuNkN4TThmZl9oTkxvYjlIUQ?oc=5",
+          "score": 6
+        },
         {
           "title": "글로벌 기술주 반등세 지속…유럽증시 상승 출발·나스닥 선물 3% 급등",
           "source": "아주경제",
           "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBVRndyb3ZYYkNoTHNRQUJqdUZmOE16cFI1Qk1FQVdhRmhIY3FTcWtfV0dWeWU4NTREelNULUhWV0RNLXRYZzJXLThseThXLVRndHJvcnc1T0LSAVhBVV95cUxQVUZ3cm92WGJDaExzUUFCanVGZjhNenBSNUJNRUFXYUZoSGNxU3FrX1dHVnllODU0RHpTVC1IVldETS10WGcyVy04bHk4Vy1UZ3Ryb3J3NU9C?oc=5",
           "score": 6
-        },
-        {
-          "title": "뉴욕증시, AI 투자 불안에 혼조 마감...마이크론 이틀 새 15% 급락",
-          "source": "M이코노미뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5MeXB3R3FrTV9IUnR4YlVCZzFmeGZ1bDRWRDFFbFkzejdwTkhvTHFKNDFiLVZLdXNwQUhfRXlnb0dkWmNZN2JlcjVCWE91Z2NJTnNpVnZHNVdtZzRrUDRWR3ZDN0w5MG8?oc=5",
-          "score": -5
-        },
-        {
-          "title": "\"젠슨 황 이탈은 금리 3번 인상 충격\"...미국 경제의 민낯",
-          "source": "YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE8yNFhqVWNRSXdzRG1RblFfenBRT1NWYnBHZ2k3ZmVCRU03bkdsa1lCNU9zVzgtRUw2YkQ1ZzNoWnlFSHhkekM5WlNhSlhmeUFia3VhQk1PNHZ5ZGhKVnc?oc=5",
-          "score": -5
         },
         {
           "title": "[모닝 경제 브리핑] 美 증시 휴장, 글로벌 증시 동반 상승…AI 반도체 반등에 위험 선호 회복",
@@ -187,10 +181,16 @@
           "score": 5
         },
         {
-          "title": "[오늘의 증시]뉴욕 휴장 속 유럽증시 일제 상승…코스피 반등 기대감",
-          "source": "뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0ydkMxV2pFV092UEswemxOa3BzREEtdUdpZWtpVF9yamR4TDktdzQ2X19WZTh4cjhKd1BnOUE4czF4MDNQRVBEMGxYajNxZHI1RzQ2TkVnd3VHalphWV9Jd9IBeEFVX3lxTE5OMHpaSWNMTkFIcFpERHdhRUM4ZTZ0dVIySmRTT3kxdDhqMXh1cjVrTzNIN184ckQ3YzJZOXhRbFVXN3psTmdiYUp4QWJHZmJZcjEwdWFnTzhrdmQwRXVRYnI1bVgwOHJzWDRQalhFNHpFMWhkUTRReg?oc=5",
+          "title": "AI주 저가매수세, 뉴욕증시 반등…엔비디아 '中 밀반입 의혹' 3%↓ - 머니투데이",
+          "source": "머니투데이",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBiSHdzSy04QV8xY2tIcmZ4STM1M01zc1hFWXZydkp0VVBUc1VFWXpCMm9CSHlXT1NZcHY5MkotV1pwZGJxSnl2MmJjZGR0NzJwdEljZUZMQWt1WllxdmEwcEpBT183elBt0gFuQVVfeXFMTWl5SHF5eW9aODBYZGxFUGdEZVo2d1VWODZhMkFRZ0hGWmNFc1BFTno0YWpOclNuZUl5cDFqU3BIbDJ2OGJaa0YwX1lnT1RmZGRpMmhIdTc3YjRzYTRnMVBDdl9CUVNnd0c4dk1VN2c?oc=5",
           "score": 4
+        },
+        {
+          "title": "美 연준, 기술주 급락에도 12월 금리인상 전망…물가 압력 경계",
+          "source": "뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE8tb21vWkhkTGtDVTZxV0hIbjBwdHJyaENCWlpralpGa2tiUmdwQjdITlVka3piSmMwSDNVUGtMbzRiTzl4TDcybVlWQUQ4VGRfVzEtRUg0UTRPYVlzTTNBVtIBeEFVX3lxTE9GdzRnZEU5Wk1QQlJZYTFRZkotNGhmTDBNOUNNRHhUZGlBd3B3VkUyM2IyUlBGM3lhT2xjVC1FQ3lJOUF4M3R0VGJndWwxb2lUazJuN0R2Wk03RzdpejZ5US1tSkU1VUNHaDZWVWgxR0dFMERqMG5Fag?oc=5",
+          "score": -4
         }
       ]
     },
@@ -198,12 +198,12 @@
       "line": "🟢 [내부 요인] '외국인·기관 수급' 이슈가 핵심 — \"코스피, 외국인 귀환에 4900선 회복…코스닥은 8%대 급등\" ➔ 외국인 귀환이 지수 하단을 지지 — 연속성(5일 누적) 확인이 관건.",
       "tone": "호재 우위",
       "toneClass": "pos",
-      "toneScore": 79,
+      "toneScore": 81,
       "theme": "외국인·기관 수급",
-      "themeCount": 21,
-      "posCount": 38,
+      "themeCount": 20,
+      "posCount": 37,
       "negCount": 6,
-      "total": 54,
+      "total": 55,
       "headlines": [
         {
           "title": "코스피, 외국인 귀환에 4900선 회복…코스닥은 8%대 급등",
@@ -214,8 +214,14 @@
         {
           "title": "외국인 '사자'에 코스피·코스닥 일제히 급등‥증시 안정 대책 기대감 등 영향",
           "source": "MBC 뉴스",
-          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBIcWt5OW9XYXozMlRaMmliQkZnMzJLd3MxNVA0ZTFtTnNXd3k3bC13WGpWdm10WThjNGw0amtUakM3Y19rR0hrNGNWV2RxRFVOYUl4dHptSjdEenZ5Z0JwaU52QmY2elExa1U2ZGdBYWFrbjIy0gF0QVVfeXFMUEhxa3k5b1dhejMyVFoyaWJCRmczMkt3czE1UDRlMW1Oc1d3eTdsLXdYalZ2bXRZOGM0bDRqa1RqQzdjX2tHSGs0Y1ZXZHFEVU5hSXh0em1KN0R6dnlnQnBpTnZCZjZ6UTFrVTZkZ0FhYWtuMjI?oc=5",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBUVGFsb0w0c1NoVkRMY2RmMGc1S1pYRF81alZvLW5teW1UU2wzb0hEVHcyYkRfVGNKSzZtQVZCVGwwUXFhUl9sUXlldndOaTZidGFuUXFkT19fNVIxSEtnR1JaVEI0cEpENFlMNE9mbGwySjF10gF0QVVfeXFMUEhxa3k5b1dhejMyVFoyaWJCRmczMkt3czE1UDRlMW1Oc1d3eTdsLXdYalZ2bXRZOGM0bDRqa1RqQzdjX2tHSGs0Y1ZXZHFEVU5hSXh0em1KN0R6dnlnQnBpTnZCZjZ6UTFrVTZkZ0FhYWtuMjI?oc=5",
           "score": 7
+        },
+        {
+          "title": "[마감시황] 코스피, 4%대 상승에 4900선 회복…코스닥도 8% 급등",
+          "source": "뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE10cE5idGxCeWVrVWJxa3VPX1VBUlRjeFQxLTZZdDEzU3lWSHZfUXBGODIyc0Y1RTd3d0U5QmZDSHdYeXp3OHdYX1lpNlVKWkhrOGVVRzRlb09kblcy?oc=5",
+          "score": 6
         },
         {
           "title": "코스피, 외국인 1.1조원 ‘사자’에 4.3% 상승 마감...코스닥은 8% 폭등",
@@ -227,12 +233,6 @@
           "title": "3거래일 만에 4900선 회복한 코스피, 코스닥도 8% 급등···외국인 매수세·증안펀드 확대 기대감",
           "source": "경향신문",
           "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9PTDFDdUpfSnpsTmZnUkczczBWcDB2OGIyTGtqM0NQUjVvZ0tGSVZBY01jaWM0ZG0zc1BIbmlITU1tOGhqRHRIMWV6ZHZhMUJMYVc3OWZtVTRVUdIBX0FVX3lxTFBVUThGQUpkZG1KMWtrU3dORGxtNTQ2bkl0LTl5QWhnc044T3NQQm10eDdmbUJWXzRKOTNPUEdYU054QW9JOEZFbm4xVU1hZ0Z3em44bTE4eU1lRHZBMGdV?oc=5",
-          "score": 6
-        },
-        {
-          "title": "삼성전자·SK하이닉스 주가 급등…외국인 순매수 유입 : 금융",
-          "source": "재경일보",
-          "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBRYWpkMU9RLU1NZUZKNWZET1B3YzdhRmZFMWc0WXRoaXdDdThfcVNiNnJCQWxlaWN6SUZwZk1INnB3WjViVTdlQUEySQ?oc=5",
           "score": 6
         }
       ]
